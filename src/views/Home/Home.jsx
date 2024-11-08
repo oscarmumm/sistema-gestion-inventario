@@ -5,6 +5,7 @@ import { Sidebar } from '../../components/Sidebar/Sidebar'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Inicio } from '../../components/Sections/Inicio/Inicio'
 import { RegistrarVentas } from '../../components/Sections/RegistrarVentas/RegistrarVentas'
+import { Productos } from '../../components/Sections/Productos/Productos'
 
 const sidebarVariants = {
     open: { marginLeft: 0 },
@@ -20,7 +21,7 @@ export const Home = () => {
         <>
             <Router>
                 <Header toggleSidebar={toggleSidebar} />
-                <main className='flex flex-grow'>
+                <main className='flex flex-grow mt-16'>
                     <motion.div
                         variants={sidebarVariants}
                         animate={sidebarStatus ? 'open' : 'close'}
@@ -28,13 +29,14 @@ export const Home = () => {
                     >
                         <Sidebar />
                     </motion.div>
-                    <div className='bg-slate-300 flex-grow p-3'>
+                    <div className='bg-slate-300 flex-grow'>
                         <Routes>
                             <Route path='/' element={<Inicio />} />
                             <Route
                                 path='/registrar-ventas'
                                 element={<RegistrarVentas />}
                             />
+                            <Route path='/productos' element={<Productos />} />
                         </Routes>
                     </div>
                 </main>

@@ -88,6 +88,9 @@ export const Sidebar = () => {
                             className='ml-9 h-0 overflow-hidden'
                         >
                             <li className='mt-2 hover:text-sky-200'>
+                                <Link to='/productos'>Productos</Link>
+                            </li>
+                            <li className='mt-2 hover:text-sky-200'>
                                 <Link>Conteo</Link>
                             </li>
                             <li className='mt-2 hover:text-sky-200'>

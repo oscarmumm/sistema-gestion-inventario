@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 /* SCROLLBAR CUSTOMIZATION */
 /* width */
 ::-webkit-scrollbar {
@@ -20,4 +19,8 @@
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #38bdf8;
+}
+
+.modal-main-bg {
+    background: rgba(0, 0, 0, 0.6);
 }
