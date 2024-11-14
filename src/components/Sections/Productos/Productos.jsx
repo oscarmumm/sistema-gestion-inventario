@@ -1,10 +1,12 @@
-import { dbProducts } from '../../../db/dbProducts'
 import { IconContext } from 'react-icons'
 import { MdOutlineSearch } from 'react-icons/md'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 import { ProductModal } from '../../Modals/ProductModal'
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { AnimatePresence } from 'framer-motion'
+import { useContext, useState, useEffect } from 'react'
+import { NewProductModal } from '../../Modals/NewProductModal'
+import { DataContext } from '../../../context/DataContext'
 
 const arrowVariants = {
     asc: { rotate: -180 },
@@ -12,30 +14,46 @@ const arrowVariants = {
 }
 
 export const Productos = () => {
-    const [productModalActive, setProductModalAvtive] = useState(false)
+    const { data, setData } = useContext(DataContext)
+    const [productModalActive, setProductModalActive] = useState(false)
+    const [newProductModalActive, setNewProductModalActive] = useState(false)
     const [selectedProduct, setSelectedProduct] = useState({})
-    const [searchResults, setSearchResults] = useState(dbProducts) 
-    const [orderedProducts, setOrderedProducts] = useState(dbProducts)
+    const [searchResults, setSearchResults] = useState(data)
+    const [orderedProducts, setOrderedProducts] = useState(data)
     const [order, setOrder] = useState('')
     const [searchValue, setSearchValue] = useState('')
 
-    // El valor predeterminado para mostrarse en la tabla es el de la lista ordenada (orderedList)
-    // que por defecto viene con el valor dbProducts, es decir, la DB original
+    // El valor predeterminado para mostrarse en la tabla es el de la lista ordenada (orderedProducts)
+    // que por defecto viene con el valor data, es decir, la DB original
     // en caso de que se ingrese un termino de busqueda la lista que se utiliza proviene
     // de los resultados de la busqueda
 
+    useEffect(() => {
+        setOrderedProducts(data)
+        setSearchResults(data)
+    }, [data])
+
     const closeModal = () => {
-        setProductModalAvtive(false)
+        setProductModalActive(false)
+    }
+
+    const openNewProductModal = () => {
+        setNewProductModalActive(true)
+        console.log(data)
+    }
+
+    const closeNewProductModal = () => {
+        setNewProductModalActive(false)
     }
 
     const searchProduct = (search) => {
         if (searchValue.trim() === '') {
             console.log('Debe introducir un término de búsqueda')
-            setOrderedProducts(dbProducts)
+            setOrderedProducts(data)
         } else {
             // CORREGIR LA LINEA UTILIZANDO REGEX PARA FLEXIBILIZAR LA BUSQUEDA, IGNORANDO MAYUSCULAS Y ESPACIOS, ETC
-            // let temp = dbProducts.filter((el) => el.nombre === `/^\\s*${search}\s*$/i`)
-            let temp = dbProducts.filter((el) => el.nombre === search)
+            // let temp = data.filter((el) => el.nombre === `/^\\s*${search}\s*$/i`)
+            let temp = data.filter((el) => el.nombre === search)
             setSearchResults(temp)
             setOrderedProducts(temp)
             setSearchValue('')
@@ -124,17 +142,20 @@ export const Productos = () => {
 
     return (
         <div
-            className='flex flex-col h-full overflow-y-auto p-3'
+            className='flex flex-col h-full overflow-auto p-3'
             style={{ maxHeight: 'calc(100vh - 64px)' }}
         >
             <div className='flex items-center justify-between'>
                 <h2 className='text-xl my-5'>Productos</h2>
-                <button className='bg-green-600 hover:bg-green-500 text-slate-50 p-3 my-5 rounded-md'>
+                <button
+                    className='bg-green-600 hover:bg-green-500 text-slate-50 p-3 my-5 rounded-md shadow-lg'
+                    onClick={openNewProductModal}
+                >
                     Nuevo Producto
                 </button>
             </div>
             {/* ----------SEARCHBAR-------- */}
-            <div className='flex my-3 rounded-md'>
+            <div className='flex my-3 rounded-md shadow-lg'>
                 <input
                     className='p-3 flex-grow rounded-l-md outline-none'
                     type='text'
@@ -153,7 +174,7 @@ export const Productos = () => {
                     </IconContext.Provider>
                 </button>
             </div>
-            <table className='bg-slate-50 text-center rounded-md min-w-max'>
+            <table className='bg-slate-50 text-center min-w-fit'>
                 <thead className='bg-slate-500 text-slate-200'>
                     <IconContext.Provider
                         value={{ className: 'text-slate-200 w-7 h-7' }}
@@ -274,7 +295,7 @@ export const Productos = () => {
                             className='hover:bg-slate-200 border-t-slate-200 border-t-2 cursor-pointer'
                             onClick={() => {
                                 setSelectedProduct(product)
-                                setProductModalAvtive(true)
+                                setProductModalActive(true)
                             }}
                         >
                             <td className='p-3'>{product.nombre}</td>
@@ -286,12 +307,21 @@ export const Productos = () => {
                     ))}
                 </tbody>
             </table>
-            {productModalActive ? (
-                <ProductModal
-                    producto={selectedProduct}
-                    closeModal={closeModal}
-                />
-            ) : null}
+            <AnimatePresence>
+                {productModalActive ? (
+                    <ProductModal
+                        producto={selectedProduct}
+                        closeModal={closeModal}
+                    />
+                ) : null}
+            </AnimatePresence>
+            <AnimatePresence>
+                {newProductModalActive && (
+                    <NewProductModal
+                        closeNewProductModal={closeNewProductModal}
+                    />
+                )}
+            </AnimatePresence>
         </div>
     )
 }

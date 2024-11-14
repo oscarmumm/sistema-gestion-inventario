@@ -9,7 +9,7 @@ export const Header = ({ toggleSidebar }) => {
     }
     return (
         <IconContext.Provider value={{ className: 'w-8 h-8' }}>
-            <header className='bg-slate-700 text-slate-200 p-3 h-16 fixed top-0 w-full flex items-center justify-between'>
+            <header className='bg-slate-700 text-slate-200 p-3 h-16 fixed top-0 w-full flex items-center justify-between shadow-lg'>
                 <div className='flex items-center'>
                     <button onClick={clickOnMenu}>
                         <MdMenu />

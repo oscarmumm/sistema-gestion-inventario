@@ -1,10 +1,13 @@
-import { Home } from "./views/Home/Home"
+import { Home } from './views/Home/Home'
+import { DataProvider } from './context/DataContext'
 
 function App() {
     return (
-        <div className="flex flex-col h-screen w-screen overflow-hidden">
-            <Home />
-        </div>
+        <DataProvider>
+            <div className='flex flex-col h-screen w-screen overflow-auto'>
+                <Home />
+            </div>
+        </DataProvider>
     )
 }
 
