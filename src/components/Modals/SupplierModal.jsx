@@ -5,71 +5,69 @@ import { useState, useContext } from 'react'
 import { ConfirmationModal } from './ConfirmationModal'
 import { DataContext } from '../../context/DataContext'
 
-const productFormat = {
+const supplierFormat = {
     id: '',
     nombre: '',
-    color: '',
-    proveedor: '',
-    precioUnitario: '',
-    cantidadPorCaja: '',
+    email: '',
+    direccion: '',
+    telefono: '',
 }
 
-export const ProductModal = ({ producto, closeModal }) => {
+export const SupplierModal = ({ supplier, closeSupplierModal }) => {
     const { data, setData } = useContext(DataContext)
     const [isDisabled, setIsDisabled] = useState(true)
-    const [productEdited, setProductEdited] = useState(producto)
+    const [editedSupplier, setEditedSupplier] = useState(supplier)
     const [confirmationModalActive, setConfirmationModalActive] =
         useState(false)
 
     const handleClick = () => {
-        closeModal()
+        closeSupplierModal()
     }
 
     const handleChange = (e) => {
-        setProductEdited({
-            ...productEdited,
+        setEditedSupplier({
+            ...editedSupplier,
             [e.target.name]: e.target.value,
         })
     }
 
-    const editProduct = () => {
+    const editSupplier = () => {
         setIsDisabled(false)
     }
 
     const saveEditedData = (e) => {
         e.preventDefault()
-        let temp = data.productos.map((el) =>
-            el.id === producto.id
+        let temp = data.proveedores.map((el) =>
+            el.id === supplier.id
                 ? {
-                      id: producto.id,
-                      nombre: productEdited.nombre,
-                      color: productEdited.color,
-                      proveedor: productEdited.proveedor,
-                      precioUnitario: productEdited.precioUnitario,
-                      cantidadPorCaja: productEdited.cantidadPorCaja,
+                      id: editedSupplier.id,
+                      nombre: editedSupplier.nombre,
+                      email: editedSupplier.email,
+                      direccion: editedSupplier.direccion,
+                      telefono: editedSupplier.telefono,
                   }
                 : el
         )
         setData({
             ...data,
-            productos: temp,
+            proveedores: temp,
         })
-        closeModal()
-        console.log(data.productos)
+        closeSupplierModal()
     }
 
-    const deleteProduct = () => {
+    const deleteSupplier = () => {
         setConfirmationModalActive(true)
     }
 
     const agreeAction = () => {
-        let temp = data.productos.filter((el) => el.id !== producto.id)
+        let temp = data.proveedores.filter((el) => el.id !== supplier.id);
         setData({
-            ...data,
-            productos: temp
-        })
-        closeModal()
+            ...data,        
+            proveedores: temp
+        });
+        closeSupplierModal();
     }
+    
 
     const cancelAction = () => {
         setConfirmationModalActive(false)
@@ -108,51 +106,40 @@ export const ProductModal = ({ producto, closeModal }) => {
                             disabled={isDisabled}
                             type='text'
                             name='nombre'
-                            value={productEdited.nombre}
+                            value={editedSupplier.nombre}
                             onChange={handleChange}
                         />
                         <label className='mb-1' htmlFor=''>
-                            Color
+                            Email
                         </label>
                         <input
                             className='mb-3 p-2 rounded-md outline-none shadow-lg'
                             disabled={isDisabled}
                             type='text'
-                            name='color'
-                            value={productEdited.color}
+                            name='email'
+                            value={editedSupplier.email}
                             onChange={handleChange}
                         />
                         <label className='mb-1' htmlFor=''>
-                            Proveedor
+                            Dirección
                         </label>
                         <input
                             className='mb-3 p-2 rounded-md outline-none shadow-lg'
                             disabled={isDisabled}
                             type='text'
-                            name='proveedor'
-                            value={productEdited.proveedor}
+                            name='direccion'
+                            value={editedSupplier.direccion}
                             onChange={handleChange}
                         />
                         <label className='mb-1' htmlFor=''>
-                            Precio Unitario
+                            Teléfono
                         </label>
                         <input
                             className='mb-3 p-2 rounded-md outline-none shadow-lg'
                             disabled={isDisabled}
                             type='text'
-                            name='precioUnitario'
-                            value={productEdited.precioUnitario}
-                            onChange={handleChange}
-                        />
-                        <label className='mb-1' htmlFor=''>
-                            Cantidad por caja
-                        </label>
-                        <input
-                            className='mb-3 p-2 rounded-md outline-none shadow-lg'
-                            disabled={isDisabled}
-                            type='text'
-                            name='cantidadPorCaja'
-                            value={productEdited.cantidadPorCaja}
+                            name='telefono'
+                            value={editedSupplier.telefono}
                             onChange={handleChange}
                         />
                     </form>
@@ -160,7 +147,7 @@ export const ProductModal = ({ producto, closeModal }) => {
                         {isDisabled ? (
                             <button
                                 className='bg-slate-600 hover:bg-slate-500 text-slate-50 p-2 w-24 rounded-md shadow-lg'
-                                onClick={editProduct}
+                                onClick={editSupplier}
                             >
                                 Editar
                             </button>
@@ -174,7 +161,7 @@ export const ProductModal = ({ producto, closeModal }) => {
                         )}
                         <button
                             className='bg-slate-700 hover:bg-slate-600 text-slate-50 p-2 w-24 ml-3 rounded-md shadow-lg'
-                            onClick={deleteProduct}
+                            onClick={deleteSupplier}
                         >
                             Eliminar
                         </button>
@@ -183,10 +170,10 @@ export const ProductModal = ({ producto, closeModal }) => {
                 <AnimatePresence>
                     {confirmationModalActive && (
                         <ConfirmationModal
-                            message='¿Está seguro que desea eliminar el producto?'
+                            message='¿Está seguro que desea eliminar el proveedor?'
                             agreeAction={agreeAction}
                             cancelAction={cancelAction}
-                            productInfo={producto}
+                            supplierInfo={supplier}
                         />
                     )}
                 </AnimatePresence>

@@ -4,36 +4,35 @@ import { useContext, useState } from 'react'
 import { DataContext } from '../../context/DataContext'
 import { motion } from 'framer-motion'
 
-const newProductFormat = {
+const formatoNuevoProveedor = {
     id: '',
     nombre: '',
-    color: '',
-    proveedor: '',
-    precioUnitario: '',
-    cantidadPorCaja: '',
+    email: '',
+    direccion: '',
+    telefono: '',
 }
 
-export const NewProductModal = ({ closeNewProductModal }) => {
+export const ModalNuevoProveedor = ({ cerrarModalNuevoProveedor }) => {
     const { data, setData } = useContext(DataContext)
-    const [newProduct, setNewProduct] = useState(newProductFormat)
+    const [nuevoProveedor, setNuevoProveedor] = useState(formatoNuevoProveedor)
 
     const handleChange = (e) => {
-        setNewProduct({
-            ...newProduct,
+        setNuevoProveedor({
+            ...nuevoProveedor,
             [e.target.name]: e.target.value,
         })
     }
 
     const handleClick = (e) => {
         e.preventDefault()
-        closeNewProductModal()
+        cerrarModalNuevoProveedor()
     }
 
     const guardarProducto = (e) => {
         e.preventDefault()
-        newProduct.id = Date.now()
-        setData({ ...data, productos: [...data.productos, newProduct] })
-        closeNewProductModal()
+        nuevoProveedor.id = Date.now()
+        setData({ ...data, proveedores: [...data.proveedores, nuevoProveedor] })
+        cerrarModalNuevoProveedor()
     }
 
     return (
@@ -50,7 +49,7 @@ export const NewProductModal = ({ closeNewProductModal }) => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 100 }}
             >
-                <h3 className='text-2xl my-5'>Alta de nuevo producto:</h3>
+                <h3 className='text-2xl my-5'>Alta de nuevo proveedor:</h3>
                 <button
                     className='hover:bg-slate-300 rounded-md absolute top-0 right-0 p-2'
                     onClick={(e) => handleClick(e)}
@@ -65,47 +64,37 @@ export const NewProductModal = ({ closeNewProductModal }) => {
                 <input
                     onChange={handleChange}
                     name='nombre'
-                    value={newProduct.nombre}
+                    value={nuevoProveedor.nombre}
                     type='text'
                     className='mb-3 p-2 rounded-md outline-none shadow-lg'
                 />
                 <label className='mb-1' htmlFor=''>
-                    Color
+                    Email
                 </label>
                 <input
                     onChange={handleChange}
-                    name='color'
-                    value={newProduct.color}
+                    name='email'
+                    value={nuevoProveedor.email}
                     type='text'
                     className='mb-3 p-2 rounded-md outline-none shadow-lg'
                 />
                 <label className='mb-1' htmlFor=''>
-                    Proveedor
+                    Dirección
                 </label>
                 <input
                     onChange={handleChange}
-                    name='proveedor'
-                    value={newProduct.proveedor}
+                    name='direccion'
+                    value={nuevoProveedor.direccion}
                     type='text'
                     className='mb-3 p-2 rounded-md outline-none shadow-lg'
                 />
                 <label className='mb-1' htmlFor=''>
-                    Precio unitario
+                    Teléfono
                 </label>
                 <input
                     onChange={handleChange}
-                    name='precioUnitario'
-                    value={newProduct.precioUnitario}
-                    type='text'
-                    className='mb-3 p-2 rounded-md outline-none shadow-lg'
-                />
-                <label className='mb-1' htmlFor=''>
-                    Cantidad por caja
-                </label>
-                <input
-                    onChange={handleChange}
-                    name='cantidadPorCaja'
-                    value={newProduct.cantidadPorCaja}
+                    name='telefono'
+                    value={nuevoProveedor.telefono}
                     type='text'
                     className='mb-3 p-2 rounded-md outline-none shadow-lg'
                 />

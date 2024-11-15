@@ -5,6 +5,7 @@ export const ConfirmationModal = ({
     agreeAction,
     cancelAction,
     productInfo,
+    supplierInfo,
 }) => {
     const clickOnAgree = () => {
         agreeAction()
@@ -28,6 +29,11 @@ export const ConfirmationModal = ({
                 exit={{ opacity: 0, y: 100 }}
             >
                 <span className='text-xl'>{message}</span>
+                {supplierInfo && (
+                    <div className='text-xl font-bold flex flex-col my-5'>
+                        <span>{supplierInfo.nombre}</span>
+                    </div>
+                )}
                 {productInfo && (
                     <div className='text-xl font-bold flex flex-col my-5'>
                         <span>{productInfo.nombre}</span>

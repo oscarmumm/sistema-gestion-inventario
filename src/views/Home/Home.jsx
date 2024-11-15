@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Inicio } from '../../components/Sections/Inicio/Inicio'
 import { RegistrarVentas } from '../../components/Sections/RegistrarVentas/RegistrarVentas'
 import { Productos } from '../../components/Sections/Productos/Productos'
+import { Proveedores } from '../../components/Sections/Proveedores/Proveedores'
 
 const sidebarVariants = {
     open: { marginLeft: 0 },
@@ -37,6 +38,7 @@ export const Home = () => {
                                 element={<RegistrarVentas />}
                             />
                             <Route path='/productos' element={<Productos />} />
+                            <Route path='/proveedores' element={<Proveedores />} />
                         </Routes>
                     </div>
                 </main>

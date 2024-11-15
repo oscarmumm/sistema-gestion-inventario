@@ -8,19 +8,21 @@ import { AnimatePresence } from 'framer-motion'
 import { useContext, useState, useEffect } from 'react'
 import { NewProductModal } from '../../Modals/NewProductModal'
 import { DataContext } from '../../../context/DataContext'
+import { ModalNuevoProveedor } from '../../Modals/ModalNuevoProveedor'
+import { SupplierModal } from '../../Modals/SupplierModal'
 
 const arrowVariants = {
     asc: { rotate: -180 },
     des: { rotate: 0 },
 }
 
-export const Productos = () => {
+export const Proveedores = () => {
     const { data, setData } = useContext(DataContext)
-    const [productModalActive, setProductModalActive] = useState(false)
-    const [newProductModalActive, setNewProductModalActive] = useState(false)
-    const [selectedProduct, setSelectedProduct] = useState({})
-    const [searchResults, setSearchResults] = useState(data.productos)
-    const [orderedProducts, setOrderedProducts] = useState(data.productos)
+    const [supplierModalActive, setSupplierModalActive] = useState(false)
+    const [modalNuevoProveedorActivo, setModalNuevoProveedorActivo] = useState(false)
+    const [selectedSupplier, setSelectedSupplier] = useState({})
+    const [searchResults, setSearchResults] = useState(data.proveedores)
+    const [orderedSuppliers, setOrderedSuppliers] = useState(data.proveedores)
     const [order, setOrder] = useState('')
     const [searchValue, setSearchValue] = useState('')
 
@@ -30,119 +32,104 @@ export const Productos = () => {
     // de los resultados de la busqueda
 
     useEffect(() => {
-        setOrderedProducts(data.productos)
-        setSearchResults(data.productos)
-    }, [data.productos])
+        setOrderedSuppliers(data.proveedores)
+        setSearchResults(data.proveedores)
+    }, [data.proveedores])
 
-    const closeModal = () => {
-        setProductModalActive(false)
+    const closeSupplierModal = () => {
+        setSupplierModalActive(false)
     }
 
-    const openNewProductModal = () => {
-        setNewProductModalActive(true)
+    const abrirModalNuevoProveedor = () => {
+        setModalNuevoProveedorActivo(true)
     }
 
-    const closeNewProductModal = () => {
-        setNewProductModalActive(false)
+    const cerrarModalNuevoProveedor = () => {
+        setModalNuevoProveedorActivo(false)
     }
 
-    const searchProduct = (search) => {
+    const searchSupplier = (search) => {
         if (searchValue.trim() === '') {
-            setOrderedProducts(data.productos)
-            setSearchResults(data.productos)
+            setOrderedSuppliers(data.proveedores)
+            setSearchResults(data.proveedores)
         } else {
             // CORREGIR LA LINEA UTILIZANDO REGEX PARA FLEXIBILIZAR LA BUSQUEDA, IGNORANDO MAYUSCULAS Y ESPACIOS, ETC
             // let temp = data.filter((el) => el.nombre === `/^\\s*${search}\s*$/i`)
             const regex = new RegExp(search.trim(), 'i')
-            let temp = data.productos.filter((el) => regex.test(el.nombre))
+            let temp = data.proveedores.filter((el) => regex.test(el.nombre))
             setSearchResults(temp)
-            setOrderedProducts(temp)
+            setOrderedSuppliers(temp)
         }
     }
 
     const resetSearch = () => {
-        setSearchResults(data.productos)
-        setOrderedProducts(data.productos)
+        setSearchResults(data.proveedores)
+        setOrderedSuppliers(data.proveedores)
         setSearchValue('')
     }
 
-    const orderByNombre = () => {
+    const ordenarPorNombre = () => {
         if (order === 'nombreAsc') {
             let temp = searchResults.toSorted((a, b) =>
                 b.nombre.localeCompare(a.nombre)
             )
             setOrder('nombreDesc')
-            setOrderedProducts(temp)
+            setOrderedSuppliers(temp)
         } else {
             let temp = searchResults.toSorted((a, b) =>
                 a.nombre.localeCompare(b.nombre)
             )
             setOrder('nombreAsc')
-            setOrderedProducts(temp)
+            setOrderedSuppliers(temp)
         }
     }
 
-    const orderByPrecio = () => {
-        if (order === 'precioAsc') {
-            let temp = searchResults.toSorted(
-                (a, b) => a.precioUnitario - b.precioUnitario
+
+    const ordenarPorEmail = () => {
+        if (order === 'emailAsc') {
+            let temp = searchResults.toSorted((a, b) =>
+                b.email.localeCompare(a.email)
             )
-            setOrder('precioDesc')
-            setOrderedProducts(temp)
+            setOrder('emailDesc')
+            setOrderedSuppliers(temp)
         } else {
-            let temp = searchResults.toSorted(
-                (a, b) => b.precioUnitario - a.precioUnitario
+            let temp = searchResults.toSorted((a, b) =>
+                a.email.localeCompare(b.email)
             )
-            setOrder('precioAsc')
-            setOrderedProducts(temp)
+            setOrder('emailAsc')
+            setOrderedSuppliers(temp)
         }
     }
 
-    const orderByColor = () => {
-        if (order === 'colorAsc') {
+    const ordenarPorDireccion = () => {
+        if (order === 'direccionAsc') {
             let temp = searchResults.toSorted((a, b) =>
-                b.color.localeCompare(a.color)
+                b.direccion.localeCompare(a.direccion)
             )
-            setOrder('colorDesc')
-            setOrderedProducts(temp)
+            setOrder('direccionDesc')
+            setOrderedSuppliers(temp)
         } else {
             let temp = searchResults.toSorted((a, b) =>
-                a.color.localeCompare(b.color)
+                a.direccion.localeCompare(b.direccion)
             )
-            setOrder('colorAsc')
-            setOrderedProducts(temp)
+            setOrder('direccionAsc')
+            setOrderedSuppliers(temp)
         }
     }
 
-    const orderByProveedor = () => {
-        if (order === 'proveedorAsc') {
+    const ordenarPorTelefono = () => {
+        if (order === 'telefonoAsc') {
             let temp = searchResults.toSorted((a, b) =>
-                b.proveedor.localeCompare(a.proveedor)
+                b.telefono.localeCompare(a.telefono)
             )
-            setOrder('proveedorDesc')
-            setOrderedProducts(temp)
+            setOrder('telefonoDesc')
+            setOrderedSuppliers(temp)
         } else {
             let temp = searchResults.toSorted((a, b) =>
-                a.proveedor.localeCompare(b.proveedor)
+                a.telefono.localeCompare(b.telefono)
             )
-            setOrder('proveedorAsc')
-            setOrderedProducts(temp)
-        }
-    }
-
-    const orderByCantidad = () => {
-        if (order === 'cantidadAsc') {
-            let temp = searchResults.toSorted(
-                (a, b) => a.cantidadPorCaja - b.cantidadPorCaja
-            )
-            setOrder('cantidadDesc')
-            setOrderedProducts(temp)
-        } else {
-            let temp = searchResults.toSorted(
-                (a, b) => b.cantidadPorCaja - a.cantidadPorCaja
-            )
-            setOrder('cantidadAsc')
-            setOrderedProducts(temp)
+            setOrder('telefonoAsc')
+            setOrderedSuppliers(temp)
         }
     }
 
@@ -152,12 +139,12 @@ export const Productos = () => {
             style={{ maxHeight: 'calc(100vh - 64px)' }}
         >
             <div className='flex items-center justify-between'>
-                <h2 className='text-xl my-5'>Productos</h2>
+                <h2 className='text-xl my-5'>Agenda de Proveedores</h2>
                 <button
                     className='bg-green-600 hover:bg-green-500 text-slate-50 p-3 my-5 rounded-md shadow-lg'
-                    onClick={openNewProductModal}
+                    onClick={abrirModalNuevoProveedor}
                 >
-                    Nuevo Producto
+                    Nuevo Proveedor
                 </button>
             </div>
             {/* ----------SEARCHBAR-------- */}
@@ -182,7 +169,7 @@ export const Productos = () => {
                     )}
                     <button
                         className='px-3 bg-slate-600 rounded-r-md'
-                        onClick={() => searchProduct(searchValue)}
+                        onClick={() => searchSupplier(searchValue)}
                     >
                         <MdOutlineSearch />
                     </button>
@@ -197,7 +184,7 @@ export const Productos = () => {
                             <th className='p-3'>
                                 <div className='flex items-center justify-center'>
                                     Nombre
-                                    <button onClick={orderByNombre}>
+                                    <button onClick={ordenarPorNombre}>
                                         <motion.div
                                             animate={
                                                 order === 'nombreAsc'
@@ -217,11 +204,11 @@ export const Productos = () => {
                             </th>
                             <th className='p-3'>
                                 <div className='flex items-center justify-center'>
-                                    Color
-                                    <button onClick={orderByColor}>
+                                    Email
+                                    <button onClick={ordenarPorEmail}>
                                         <motion.div
                                             animate={
-                                                order === 'colorAsc'
+                                                order === 'emailAsc'
                                                     ? 'asc'
                                                     : 'desc'
                                             }
@@ -238,11 +225,11 @@ export const Productos = () => {
                             </th>
                             <th className='p-3'>
                                 <div className='flex items-center justify-center'>
-                                    Proveedor
-                                    <button onClick={orderByProveedor}>
+                                    Dirección
+                                    <button onClick={ordenarPorDireccion}>
                                         <motion.div
                                             animate={
-                                                order === 'proveedorAsc'
+                                                order === 'direccionAsc'
                                                     ? 'asc'
                                                     : 'desc'
                                             }
@@ -259,32 +246,11 @@ export const Productos = () => {
                             </th>
                             <th className='p-3'>
                                 <div className='flex items-center justify-center'>
-                                    Precio unitario
-                                    <button onClick={orderByPrecio}>
+                                    Teléfono
+                                    <button onClick={ordenarPorTelefono}>
                                         <motion.div
                                             animate={
-                                                order === 'precioAsc'
-                                                    ? 'asc'
-                                                    : 'desc'
-                                            }
-                                            variants={arrowVariants}
-                                            transition={{
-                                                type: 'tween',
-                                                duration: 0.2,
-                                            }}
-                                        >
-                                            <MdKeyboardArrowDown />
-                                        </motion.div>
-                                    </button>
-                                </div>
-                            </th>
-                            <th className='p-3'>
-                                <div className='flex items-center justify-center'>
-                                    Cantidad por caja
-                                    <button onClick={orderByCantidad}>
-                                        <motion.div
-                                            animate={
-                                                order === 'cantidadAsc'
+                                                order === 'telefonoAsc'
                                                     ? 'asc'
                                                     : 'desc'
                                             }
@@ -303,36 +269,35 @@ export const Productos = () => {
                     </IconContext.Provider>
                 </thead>
                 <tbody>
-                    {orderedProducts.map((product) => (
+                    {orderedSuppliers.map((supplier) => (
                         <tr
-                            key={product.id}
+                            key={supplier.id}
                             className='hover:bg-slate-200 border-t-slate-200 border-t-2 cursor-pointer'
                             onClick={() => {
-                                setSelectedProduct(product)
-                                setProductModalActive(true)
+                                setSelectedSupplier(supplier)
+                                setSupplierModalActive(true)
                             }}
                         >
-                            <td className='p-3'>{product.nombre}</td>
-                            <td className='p-3'>{product.color}</td>
-                            <td className='p-3'>{product.proveedor}</td>
-                            <td className='p-3'>$ {product.precioUnitario}</td>
-                            <td className='p-3'>{product.cantidadPorCaja}</td>
+                            <td className='p-3'>{supplier.nombre}</td>
+                            <td className='p-3'>{supplier.email}</td>
+                            <td className='p-3'>{supplier.direccion}</td>
+                            <td className='p-3'>{supplier.telefono}</td>
                         </tr>
                     ))}
                 </tbody>
             </table>
             <AnimatePresence>
-                {productModalActive ? (
-                    <ProductModal
-                        producto={selectedProduct}
-                        closeModal={closeModal}
+                {supplierModalActive ? (
+                    <SupplierModal
+                        supplier={selectedSupplier}
+                        closeSupplierModal={closeSupplierModal}
                     />
                 ) : null}
             </AnimatePresence>
             <AnimatePresence>
-                {newProductModalActive && (
-                    <NewProductModal
-                        closeNewProductModal={closeNewProductModal}
+                {modalNuevoProveedorActivo && (
+                    <ModalNuevoProveedor
+                    cerrarModalNuevoProveedor={cerrarModalNuevoProveedor}
                     />
                 )}
             </AnimatePresence>
