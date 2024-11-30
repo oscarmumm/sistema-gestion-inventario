@@ -2,19 +2,19 @@ import { IconContext } from 'react-icons'
 import { MdOutlineSearch } from 'react-icons/md'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 import { MdReplay } from 'react-icons/md'
-import { ProductModal } from '../../Modals/ProductModal'
+import { ProductModal } from '../components/Modals/ProductModal'
 import { motion } from 'framer-motion'
 import { AnimatePresence } from 'framer-motion'
 import { useContext, useState, useEffect } from 'react'
-import { NewProductModal } from '../../Modals/NewProductModal'
-import { DataContext } from '../../../context/DataContext'
+import { NewProductModal } from '../components/Modals/NewProductModal'
+import { DataContext } from '../context/DataContext'
 
 const arrowVariants = {
     asc: { rotate: -180 },
     des: { rotate: 0 },
 }
 
-export const Productos = () => {
+export const Products = () => {
     const { data, setData } = useContext(DataContext)
     const [productModalActive, setProductModalActive] = useState(false)
     const [newProductModalActive, setNewProductModalActive] = useState(false)
@@ -321,6 +321,11 @@ export const Productos = () => {
                     ))}
                 </tbody>
             </table>
+            {/* BUTTONS FOR PAGINATION */}
+            {/* <div className='my-3'>
+                <button> Atras </button>
+                <button> Adelante </button>
+            </div> */}
             <AnimatePresence>
                 {productModalActive ? (
                     <ProductModal

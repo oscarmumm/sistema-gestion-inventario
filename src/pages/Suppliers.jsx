@@ -2,24 +2,22 @@ import { IconContext } from 'react-icons'
 import { MdOutlineSearch } from 'react-icons/md'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 import { MdReplay } from 'react-icons/md'
-import { ProductModal } from '../../Modals/ProductModal'
 import { motion } from 'framer-motion'
 import { AnimatePresence } from 'framer-motion'
 import { useContext, useState, useEffect } from 'react'
-import { NewProductModal } from '../../Modals/NewProductModal'
-import { DataContext } from '../../../context/DataContext'
-import { ModalNuevoProveedor } from '../../Modals/ModalNuevoProveedor'
-import { SupplierModal } from '../../Modals/SupplierModal'
+import { DataContext } from '../context/DataContext'
+import { SupplierModal } from '../components/Modals/SupplierModal'
+import { NewSupplierModal } from '../components/Modals/NewSupplierModal'
 
 const arrowVariants = {
     asc: { rotate: -180 },
     des: { rotate: 0 },
 }
 
-export const Proveedores = () => {
+export const Suppliers = () => {
     const { data, setData } = useContext(DataContext)
     const [supplierModalActive, setSupplierModalActive] = useState(false)
-    const [modalNuevoProveedorActivo, setModalNuevoProveedorActivo] = useState(false)
+    const [newSupplierModalActive, setNewSupplierModalActive] = useState(false)
     const [selectedSupplier, setSelectedSupplier] = useState({})
     const [searchResults, setSearchResults] = useState(data.proveedores)
     const [orderedSuppliers, setOrderedSuppliers] = useState(data.proveedores)
@@ -40,12 +38,12 @@ export const Proveedores = () => {
         setSupplierModalActive(false)
     }
 
-    const abrirModalNuevoProveedor = () => {
-        setModalNuevoProveedorActivo(true)
+    const openNewSupplierModal = () => {
+        setNewSupplierModalActive(true)
     }
 
-    const cerrarModalNuevoProveedor = () => {
-        setModalNuevoProveedorActivo(false)
+    const closeNewSupplierModal = () => {
+        setNewSupplierModalActive(false)
     }
 
     const searchSupplier = (search) => {
@@ -142,7 +140,7 @@ export const Proveedores = () => {
                 <h2 className='text-xl my-5'>Agenda de Proveedores</h2>
                 <button
                     className='bg-green-600 hover:bg-green-500 text-slate-50 p-3 my-5 rounded-md shadow-lg'
-                    onClick={abrirModalNuevoProveedor}
+                    onClick={openNewSupplierModal}
                 >
                     Nuevo Proveedor
                 </button>
@@ -155,7 +153,7 @@ export const Proveedores = () => {
                     <input
                         className='p-3 flex-grow rounded-l-md outline-none'
                         type='text'
-                        placeholder='nombre del producto...'
+                        placeholder='nombre del proveedor...'
                         value={searchValue}
                         onChange={(e) => setSearchValue(e.target.value)}
                     />
@@ -295,9 +293,9 @@ export const Proveedores = () => {
                 ) : null}
             </AnimatePresence>
             <AnimatePresence>
-                {modalNuevoProveedorActivo && (
-                    <ModalNuevoProveedor
-                    cerrarModalNuevoProveedor={cerrarModalNuevoProveedor}
+                {newSupplierModalActive && (
+                    <NewSupplierModal
+                    closeNewSupplierModal={closeNewSupplierModal}
                     />
                 )}
             </AnimatePresence>

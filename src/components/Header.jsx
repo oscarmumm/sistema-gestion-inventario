@@ -1,4 +1,4 @@
-import headerLogo from '../../assets/img/logo/pencil-svgrepo-com.svg'
+import headerLogo from '../assets/img/logo/header-logo.png'
 import { IconContext } from 'react-icons'
 import { MdMenu } from 'react-icons/md'
 import { MdPerson } from 'react-icons/md'

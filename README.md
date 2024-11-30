@@ -23,3 +23,19 @@
 7. **Configuración**:
    - **Usuarios**: Gestión de usuarios y permisos de acceso.
    - **Configuración General**: Opciones de personalización de la app, como impuestos, moneda, etc.# sistema-gestion-inventario
+
+Estructura de carpetas
+├── public/
+│   └── index.html           # HTML base
+├── src/
+│   ├── assets/              # Imágenes, íconos, etc.
+│   ├── components/          # Componentes reutilizables (Botones, Card, Navbar, etc.)
+│   ├── pages/               # Páginas principales (Home, Products, Sales, etc.)
+│   ├── routes/              # Configuración de rutas
+│   ├── services/            # Funciones para interactuar con localStorage
+│   ├── styles/              # Configuración de Tailwind y estilos globales
+│   ├── App.jsx              # Componente principal
+│   └── index.js             # Punto de entrada
+├── .gitignore               # Archivos a ignorar por git
+├── package.json             # Dependencias y scripts
+└── tailwind.config.js       # Configuración de Tailwind

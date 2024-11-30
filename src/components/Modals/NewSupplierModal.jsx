@@ -12,7 +12,7 @@ const formatoNuevoProveedor = {
     telefono: '',
 }
 
-export const ModalNuevoProveedor = ({ cerrarModalNuevoProveedor }) => {
+export const NewSupplierModal = ({ closeNewSupplierModal }) => {
     const { data, setData } = useContext(DataContext)
     const [nuevoProveedor, setNuevoProveedor] = useState(formatoNuevoProveedor)
 
@@ -25,14 +25,14 @@ export const ModalNuevoProveedor = ({ cerrarModalNuevoProveedor }) => {
 
     const handleClick = (e) => {
         e.preventDefault()
-        cerrarModalNuevoProveedor()
+        closeNewSupplierModal()
     }
 
     const guardarProducto = (e) => {
         e.preventDefault()
         nuevoProveedor.id = Date.now()
         setData({ ...data, proveedores: [...data.proveedores, nuevoProveedor] })
-        cerrarModalNuevoProveedor()
+        closeNewSupplierModal()
     }
 
     return (
