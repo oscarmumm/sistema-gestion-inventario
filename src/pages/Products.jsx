@@ -5,9 +5,10 @@ import { MdReplay } from 'react-icons/md'
 import { ProductModal } from '../components/Modals/ProductModal'
 import { motion } from 'framer-motion'
 import { AnimatePresence } from 'framer-motion'
-import { useContext, useState, useEffect } from 'react'
+import { useContext, useState, useEffect, startTransition } from 'react'
 import { NewProductModal } from '../components/Modals/NewProductModal'
 import { DataContext } from '../context/DataContext'
+import { Searchbar } from '../components/Searchbar'
 
 const arrowVariants = {
     asc: { rotate: -180 },
@@ -22,7 +23,6 @@ export const Products = () => {
     const [searchResults, setSearchResults] = useState(data.productos)
     const [orderedProducts, setOrderedProducts] = useState(data.productos)
     const [order, setOrder] = useState('')
-    const [searchValue, setSearchValue] = useState('')
 
     // El valor predeterminado para mostrarse en la tabla es el de la lista ordenada (orderedProducts)
     // que por defecto viene con el valor data, es decir, la DB original
@@ -46,8 +46,8 @@ export const Products = () => {
         setNewProductModalActive(false)
     }
 
-    const searchProduct = (search) => {
-        if (searchValue.trim() === '') {
+    const startSearch = (search) => {
+        if (search.trim() === '') {
             setOrderedProducts(data.productos)
             setSearchResults(data.productos)
         } else {
@@ -63,7 +63,6 @@ export const Products = () => {
     const resetSearch = () => {
         setSearchResults(data.productos)
         setOrderedProducts(data.productos)
-        setSearchValue('')
     }
 
     const orderByNombre = () => {
@@ -160,34 +159,7 @@ export const Products = () => {
                     Nuevo Producto
                 </button>
             </div>
-            {/* ----------SEARCHBAR-------- */}
-            <div className='flex my-3 rounded-md shadow-lg'>
-                <IconContext.Provider
-                    value={{ className: 'text-slate-200 w-8 h-8' }}
-                >
-                    <input
-                        className='p-3 flex-grow rounded-l-md outline-none'
-                        type='text'
-                        placeholder='nombre del producto...'
-                        value={searchValue}
-                        onChange={(e) => setSearchValue(e.target.value)}
-                    />
-                    {searchValue && (
-                        <button
-                            className='px-3 bg-orange-600 rounded-l-md'
-                            onClick={resetSearch}
-                        >
-                            <MdReplay />
-                        </button>
-                    )}
-                    <button
-                        className='px-3 bg-slate-600 rounded-r-md'
-                        onClick={() => searchProduct(searchValue)}
-                    >
-                        <MdOutlineSearch />
-                    </button>
-                </IconContext.Provider>
-            </div>
+            <Searchbar startSearch={startSearch} resetSearch={resetSearch}/>
             <table className='bg-slate-50 text-center min-w-fit'>
                 <thead className='bg-slate-500 text-slate-200'>
                     <IconContext.Provider
