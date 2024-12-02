@@ -88,10 +88,10 @@ export const Sidebar = () => {
                             className='ml-9 h-0 overflow-hidden'
                         >
                             <li className='mt-2 hover:text-sky-200'>
-                                <Link to='/productos'>Productos</Link>
+                                <Link to='/products'>Productos</Link>
                             </li>
                             <li className='mt-2 hover:text-sky-200'>
-                                <Link>Conteo</Link>
+                                <Link to='/inventory-count'>Conteo</Link>
                             </li>
                             <li className='mt-2 hover:text-sky-200'>
                                 <Link>Estado de stock</Link>
@@ -152,7 +152,7 @@ export const Sidebar = () => {
                             className='ml-9 h-0 overflow-hidden'
                         >
                             <li className='mt-3 hover:text-sky-200'>
-                                <Link to='/proveedores'>Agenda</Link>
+                                <Link to='/suppliers'>Agenda</Link>
                             </li>
                             <li className='mt-3 hover:text-sky-200'>
                                 <Link>Pedidos</Link>
