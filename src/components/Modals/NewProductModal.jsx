@@ -63,6 +63,7 @@ export const NewProductModal = ({ closeNewProductModal }) => {
                     Nombre
                 </label>
                 <input
+                    autoComplete='off'
                     onChange={handleChange}
                     name='nombre'
                     value={newProduct.nombre}
@@ -73,6 +74,7 @@ export const NewProductModal = ({ closeNewProductModal }) => {
                     Color
                 </label>
                 <input
+                    autoComplete='off'
                     onChange={handleChange}
                     name='color'
                     value={newProduct.color}
@@ -83,6 +85,7 @@ export const NewProductModal = ({ closeNewProductModal }) => {
                     Proveedor
                 </label>
                 <input
+                    autoComplete='off'
                     onChange={handleChange}
                     name='proveedor'
                     value={newProduct.proveedor}
@@ -93,6 +96,7 @@ export const NewProductModal = ({ closeNewProductModal }) => {
                     Precio unitario
                 </label>
                 <input
+                    autoComplete='off'
                     onChange={handleChange}
                     name='precioUnitario'
                     value={newProduct.precioUnitario}
@@ -103,6 +107,7 @@ export const NewProductModal = ({ closeNewProductModal }) => {
                     Cantidad por caja
                 </label>
                 <input
+                    autoComplete='off'
                     onChange={handleChange}
                     name='cantidadPorCaja'
                     value={newProduct.cantidadPorCaja}

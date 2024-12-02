@@ -14,7 +14,7 @@ const productFormat = {
     cantidadPorCaja: '',
 }
 
-export const ProductModal = ({ producto, closeModal }) => {
+export const ProductModal = ({ producto, closeProductModal }) => {
     const { data, setData } = useContext(DataContext)
     const [isDisabled, setIsDisabled] = useState(true)
     const [productEdited, setProductEdited] = useState(producto)
@@ -22,7 +22,7 @@ export const ProductModal = ({ producto, closeModal }) => {
         useState(false)
 
     const handleClick = () => {
-        closeModal()
+        closeProductModal()
     }
 
     const handleChange = (e) => {
@@ -54,7 +54,7 @@ export const ProductModal = ({ producto, closeModal }) => {
             ...data,
             productos: temp,
         })
-        closeModal()
+        closeProductModal()
         console.log(data.productos)
     }
 

@@ -174,7 +174,7 @@ export const db = {
             nombre: 'Rivadavia',
             email: 'contacto@rivadavia.com',
             direccion: 'Av. Alberdi 4618',
-            telefono: '4156-8122'
+            telefono: '5156-8122'
         },
     ],
 }

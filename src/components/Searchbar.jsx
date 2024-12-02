@@ -10,7 +10,7 @@ export const Searchbar = ({ startSearch, resetSearch }) => {
         setSearchValue('')
     }
     return (
-        <div className='flex my-3 rounded-md shadow-lg'>
+        <div className='flex my-3 rounded-md shadow-lg w-96'>
             <IconContext.Provider
                 value={{ className: 'text-slate-200 w-8 h-8' }}
             >
@@ -23,7 +23,7 @@ export const Searchbar = ({ startSearch, resetSearch }) => {
                 />
                 {searchValue && (
                     <button
-                        className='px-3 bg-orange-600 rounded-l-md'
+                        className='px-3 bg-orange-600'
                         onClick={handleCLick}
                     >
                         <MdReplay />

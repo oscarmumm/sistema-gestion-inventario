@@ -1,13 +1,18 @@
 import { IconContext } from 'react-icons'
-import { MdOutlineSearch } from 'react-icons/md'
 import { MdKeyboardArrowDown } from 'react-icons/md'
-import { MdReplay } from 'react-icons/md'
 import { motion } from 'framer-motion'
 import { AnimatePresence } from 'framer-motion'
 import { useContext, useState, useEffect } from 'react'
 import { DataContext } from '../context/DataContext'
 import { SupplierModal } from '../components/Modals/SupplierModal'
 import { NewSupplierModal } from '../components/Modals/NewSupplierModal'
+import { Searchbar } from '../components/Searchbar'
+import {
+    stringAscSort,
+    stringDesSort,
+    numericAscSort,
+    numericDesSort,
+} from '../utils/Utils'
 
 const arrowVariants = {
     asc: { rotate: -180 },
@@ -46,13 +51,11 @@ export const Suppliers = () => {
         setNewSupplierModalActive(false)
     }
 
-    const searchSupplier = (search) => {
-        if (searchValue.trim() === '') {
+    const startSearch = (search) => {
+        if (search.trim() === '') {
             setOrderedSuppliers(data.proveedores)
             setSearchResults(data.proveedores)
         } else {
-            // CORREGIR LA LINEA UTILIZANDO REGEX PARA FLEXIBILIZAR LA BUSQUEDA, IGNORANDO MAYUSCULAS Y ESPACIOS, ETC
-            // let temp = data.filter((el) => el.nombre === `/^\\s*${search}\s*$/i`)
             const regex = new RegExp(search.trim(), 'i')
             let temp = data.proveedores.filter((el) => regex.test(el.nombre))
             setSearchResults(temp)
@@ -63,72 +66,15 @@ export const Suppliers = () => {
     const resetSearch = () => {
         setSearchResults(data.proveedores)
         setOrderedSuppliers(data.proveedores)
-        setSearchValue('')
     }
 
-    const ordenarPorNombre = () => {
-        if (order === 'nombreAsc') {
-            let temp = searchResults.toSorted((a, b) =>
-                b.nombre.localeCompare(a.nombre)
-            )
-            setOrder('nombreDesc')
-            setOrderedSuppliers(temp)
-        } else {
-            let temp = searchResults.toSorted((a, b) =>
-                a.nombre.localeCompare(b.nombre)
-            )
-            setOrder('nombreAsc')
-            setOrderedSuppliers(temp)
-        }
-    }
-
-
-    const ordenarPorEmail = () => {
-        if (order === 'emailAsc') {
-            let temp = searchResults.toSorted((a, b) =>
-                b.email.localeCompare(a.email)
-            )
-            setOrder('emailDesc')
-            setOrderedSuppliers(temp)
-        } else {
-            let temp = searchResults.toSorted((a, b) =>
-                a.email.localeCompare(b.email)
-            )
-            setOrder('emailAsc')
-            setOrderedSuppliers(temp)
-        }
-    }
-
-    const ordenarPorDireccion = () => {
-        if (order === 'direccionAsc') {
-            let temp = searchResults.toSorted((a, b) =>
-                b.direccion.localeCompare(a.direccion)
-            )
-            setOrder('direccionDesc')
-            setOrderedSuppliers(temp)
-        } else {
-            let temp = searchResults.toSorted((a, b) =>
-                a.direccion.localeCompare(b.direccion)
-            )
-            setOrder('direccionAsc')
-            setOrderedSuppliers(temp)
-        }
-    }
-
-    const ordenarPorTelefono = () => {
-        if (order === 'telefonoAsc') {
-            let temp = searchResults.toSorted((a, b) =>
-                b.telefono.localeCompare(a.telefono)
-            )
-            setOrder('telefonoDesc')
-            setOrderedSuppliers(temp)
-        } else {
-            let temp = searchResults.toSorted((a, b) =>
-                a.telefono.localeCompare(b.telefono)
-            )
-            setOrder('telefonoAsc')
-            setOrderedSuppliers(temp)
-        }
+    const sortColumn = (key, isString = false) => {
+        const isAsc = order === `${key}Asc`
+        const temp = isAsc
+            ? (isString ? stringDesSort(searchResults, key) : numericDesSort(searchResults, key))
+            : (isString ? stringAscSort(searchResults, key) : numericAscSort(searchResults, key))
+        setOrder(isAsc ? `${key}Desc` : `${key}Asc`)
+        setOrderedSuppliers(temp)
     }
 
     return (
@@ -136,42 +82,23 @@ export const Suppliers = () => {
             className='flex flex-col h-full overflow-auto p-3'
             style={{ maxHeight: 'calc(100vh - 64px)' }}
         >
-            <div className='flex items-center justify-between'>
+            <div className='flex items-center justify-between max-w-screen-sm'>
                 <h2 className='text-xl my-5'>Agenda de Proveedores</h2>
+            </div>
+            <div className='flex justify-between items-center w-full min-w-max'>
+                <div className='flex items-center'>
+                    <span className='mr-3'>Búsqueda de Proveedor</span>
+                    <Searchbar
+                        startSearch={startSearch}
+                        resetSearch={resetSearch}
+                    />
+                </div>
                 <button
-                    className='bg-green-600 hover:bg-green-500 text-slate-50 p-3 my-5 rounded-md shadow-lg'
+                    className='bg-green-600 hover:bg-green-500 text-slate-50 p-3 my-3 ml-3 rounded-md shadow-lg'
                     onClick={openNewSupplierModal}
                 >
                     Nuevo Proveedor
                 </button>
-            </div>
-            {/* ----------SEARCHBAR-------- */}
-            <div className='flex my-3 rounded-md shadow-lg'>
-                <IconContext.Provider
-                    value={{ className: 'text-slate-200 w-8 h-8' }}
-                >
-                    <input
-                        className='p-3 flex-grow rounded-l-md outline-none'
-                        type='text'
-                        placeholder='nombre del proveedor...'
-                        value={searchValue}
-                        onChange={(e) => setSearchValue(e.target.value)}
-                    />
-                    {searchValue && (
-                        <button
-                            className='px-3 bg-orange-600 rounded-l-md'
-                            onClick={resetSearch}
-                        >
-                            <MdReplay />
-                        </button>
-                    )}
-                    <button
-                        className='px-3 bg-slate-600 rounded-r-md'
-                        onClick={() => searchSupplier(searchValue)}
-                    >
-                        <MdOutlineSearch />
-                    </button>
-                </IconContext.Provider>
             </div>
             <table className='bg-slate-50 text-center min-w-fit'>
                 <thead className='bg-slate-500 text-slate-200'>
@@ -182,7 +109,7 @@ export const Suppliers = () => {
                             <th className='p-3'>
                                 <div className='flex items-center justify-center'>
                                     Nombre
-                                    <button onClick={ordenarPorNombre}>
+                                    <button onClick={() => sortColumn('nombre', true)}>
                                         <motion.div
                                             animate={
                                                 order === 'nombreAsc'
@@ -203,7 +130,7 @@ export const Suppliers = () => {
                             <th className='p-3'>
                                 <div className='flex items-center justify-center'>
                                     Email
-                                    <button onClick={ordenarPorEmail}>
+                                    <button onClick={() => sortColumn('email', true)}>
                                         <motion.div
                                             animate={
                                                 order === 'emailAsc'
@@ -224,7 +151,7 @@ export const Suppliers = () => {
                             <th className='p-3'>
                                 <div className='flex items-center justify-center'>
                                     Dirección
-                                    <button onClick={ordenarPorDireccion}>
+                                    <button onClick={() => sortColumn('direccion', true)}>
                                         <motion.div
                                             animate={
                                                 order === 'direccionAsc'
@@ -245,7 +172,7 @@ export const Suppliers = () => {
                             <th className='p-3'>
                                 <div className='flex items-center justify-center'>
                                     Teléfono
-                                    <button onClick={ordenarPorTelefono}>
+                                    <button onClick={() => sortColumn('telefono', true)}>
                                         <motion.div
                                             animate={
                                                 order === 'telefonoAsc'
@@ -295,7 +222,7 @@ export const Suppliers = () => {
             <AnimatePresence>
                 {newSupplierModalActive && (
                     <NewSupplierModal
-                    closeNewSupplierModal={closeNewSupplierModal}
+                        closeNewSupplierModal={closeNewSupplierModal}
                     />
                 )}
             </AnimatePresence>
