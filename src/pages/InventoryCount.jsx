@@ -19,7 +19,7 @@ export const InventoryCount = () => {
             style={{ maxHeight: 'calc(100vh - 64px)' }}
         >
             <div className='flex justify-between'>
-                <h2 className='text-xl my-5'>Inventory Count</h2>
+                <h2 className='text-xl my-5'>Conteo de Inventario</h2>
                 <button className='bg-slate-600 hover:bg-slate-500 text-slate-50 p-3 my-3 ml-3 rounded-md shadow-lg flex items-center'>
                     <IconContext.Provider
                         value={{ className: 'text-slate-200 w-7 h-7' }}
@@ -27,7 +27,7 @@ export const InventoryCount = () => {
                         <MdOutlinePrint />
                     </IconContext.Provider>
                     <span className='ml-3' onClick={printStockSheet}>
-                        Print Stock Sheet
+                        Imprimir Hoja de Conteo
                     </span>
                 </button>
             </div>

@@ -56,7 +56,7 @@ export const Sidebar = () => {
     return (
         <IconContext.Provider value={{ className: 'w-6 h-6' }}>
             <nav
-                className='bg-slate-600 text-slate-200 p-5 h-full w-56 overflow-y-auto'
+                className='bg-slate-600 text-slate-200 p-5 h-full w-64 overflow-y-auto'
                 style={{ maxHeight: 'calc(100vh - 64px)' }}
             >
                 <ul className='flex flex-col'>
@@ -88,13 +88,13 @@ export const Sidebar = () => {
                             className='ml-9 h-0 overflow-hidden'
                         >
                             <li className='mt-2 hover:text-sky-200'>
-                                <Link to='/products'>Productos</Link>
+                                <Link to='/products-management'>Gestion de Productos</Link>
                             </li>
                             <li className='mt-2 hover:text-sky-200'>
-                                <Link to='/inventory-count'>Conteo</Link>
+                                <Link to='/inventory-count'>Conteo de Inventario</Link>
                             </li>
                             <li className='mt-2 hover:text-sky-200'>
-                                <Link>Estado de stock</Link>
+                                <Link>Estado de Stock</Link>
                             </li>
                         </motion.ul>
                     </li>
@@ -120,13 +120,13 @@ export const Sidebar = () => {
                             className='ml-9 h-0 overflow-hidden'
                         >
                             <li className='mt-3 hover:text-sky-200'>
-                                <Link to='/registrar-ventas'>
+                                <Link to='/register-sale'>
                                     Registrar Ventas
                                 </Link>
                             </li>
 
                             <li className='mt-3 hover:text-sky-200'>
-                                <Link to='/historial-de-ventas'>Historial</Link>
+                                <Link to='/sales-history'>Historial de Ventas</Link>
                             </li>
                         </motion.ul>
                     </li>
@@ -152,10 +152,10 @@ export const Sidebar = () => {
                             className='ml-9 h-0 overflow-hidden'
                         >
                             <li className='mt-3 hover:text-sky-200'>
-                                <Link to='/suppliers'>Agenda</Link>
+                                <Link to='/vendor-management'>Gestión de Proveedores</Link>
                             </li>
                             <li className='mt-3 hover:text-sky-200'>
-                                <Link>Pedidos</Link>
+                                <Link to='/purchase-order'>Órdenes de Compra</Link>
                             </li>
                         </motion.ul>
                     </li>

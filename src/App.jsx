@@ -8,7 +8,7 @@ import { Sidebar } from './components/Sidebar'
 
 const sidebarVariants = {
     open: { marginLeft: 0 },
-    close: { marginLeft: '-224px' },
+    close: { marginLeft: '-256px' },
 }
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
                         <motion.div
                             variants={sidebarVariants}
                             animate={sidebarStatus ? 'open' : 'close'}
-                            style={{ marginLeft: '-224px' }}
+                            style={{ marginLeft: '-256px' }}
                         >
                             <Sidebar />
                         </motion.div>

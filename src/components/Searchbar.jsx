@@ -17,7 +17,7 @@ export const Searchbar = ({ startSearch, resetSearch }) => {
                 <input
                     className='p-3 flex-grow rounded-l-md outline-none'
                     type='text'
-                    placeholder='nombre del proveedor...'
+                    placeholder='Ingrese el nombre...'
                     value={searchValue}
                     onChange={(e) => setSearchValue(e.target.value)}
                 />

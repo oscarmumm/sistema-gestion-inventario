@@ -19,7 +19,7 @@ const arrowVariants = {
     des: { rotate: 0 },
 }
 
-export const Products = () => {
+export const ProductsManagement = () => {
     const { data, setData } = useContext(DataContext)
     const [productModalActive, setProductModalActive] = useState(false)
     const [newProductModalActive, setNewProductModalActive] = useState(false)
