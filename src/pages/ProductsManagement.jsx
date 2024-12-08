@@ -49,7 +49,9 @@ export const ProductsManagement = () => {
     const closeNewProductModal = () => {
         setNewProductModalActive(false)
     }
-
+    //-----------------------------------------------------------------//
+    //----------- REFACTORIZAR UTILIZANDO OPERADOR TERNARIO -----------//
+    //-----------------------------------------------------------------//
     const startSearch = (search) => {
         if (search.trim() === '') {
             setOrderedProducts(data.productos)

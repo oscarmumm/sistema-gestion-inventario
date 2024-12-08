@@ -64,6 +64,7 @@ export const AddProductOnSaleModal = ({ closeModal, selectProduct }) => {
                         <thead className='bg-slate-500 text-slate-200 border-solid border-slate-500 sticky top-0'>
                             <tr className='text-left'>
                                 <th className='p-2'>Nombre</th>
+                                <th className='p-2'>Color</th>
                                 <th className='p-2'>Proveedor</th>
                                 <th className='p-2'>Precio Unitario</th>
                             </tr>
@@ -76,6 +77,7 @@ export const AddProductOnSaleModal = ({ closeModal, selectProduct }) => {
                                     key={product.id}
                                 >
                                     <td className='p-3'>{product.nombre}</td>
+                                    <td className='p-3'>{product.color}</td>
                                     <td className='p-3'>{product.proveedor}</td>
                                     <td className='text-center'>
                                         ${product.precioUnitario}
