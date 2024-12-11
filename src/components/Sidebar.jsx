@@ -88,7 +88,7 @@ export const Sidebar = () => {
                             className='ml-9 h-0 overflow-hidden'
                         >
                             <li className='mt-2 hover:text-sky-200'>
-                                <Link to='/products-management'>Gestion de Productos</Link>
+                                <Link to='/product-list'>Lista de Productos</Link>
                             </li>
                             <li className='mt-2 hover:text-sky-200'>
                                 <Link to='/inventory-count'>Conteo de Inventario</Link>
@@ -152,7 +152,7 @@ export const Sidebar = () => {
                             className='ml-9 h-0 overflow-hidden'
                         >
                             <li className='mt-3 hover:text-sky-200'>
-                                <Link to='/vendor-management'>Gestión de Proveedores</Link>
+                                <Link to='/vendor-list'>Lista de Proveedores</Link>
                             </li>
                             <li className='mt-3 hover:text-sky-200'>
                                 <Link to='/purchase-order'>Órdenes de Compra</Link>
@@ -207,9 +207,6 @@ export const Sidebar = () => {
                             className='ml-9 h-0 overflow-hidden'
                         >
                             <li className='mt-3 hover:text-sky-200'>
-                                <Link>Lista de Productos</Link>
-                            </li>
-                            <li className='mt-3 hover:text-sky-200'>
                                 <Link>Ventas</Link>
                             </li>
                         </motion.ul>
@@ -235,6 +232,12 @@ export const Sidebar = () => {
                             variants={subGroupVariants}
                             className='ml-9 h-0 overflow-hidden'
                         >
+                            <li className='mt-3 hover:text-sky-200'>
+                                <Link to='/product-management'>Gestion de Productos</Link>
+                            </li>
+                            <li className='mt-3 hover:text-sky-200'>
+                                <Link to='/vendor-management'>Gestión de Proveedores</Link>
+                            </li>
                             <li className='mt-3 hover:text-sky-200'>
                                 <Link>Usuarios</Link>
                             </li>

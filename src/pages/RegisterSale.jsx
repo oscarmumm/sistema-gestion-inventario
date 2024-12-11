@@ -1,15 +1,15 @@
-import { useState, useContext, useEffect } from 'react'
-import { DataContext } from '../context/DataContext'
-import { AddProductOnSaleModal } from '../components/Modals/AddProductOnSaleModal'
-import { AnimatePresence } from 'framer-motion'
-import { motion } from 'framer-motion'
-import { IconContext } from 'react-icons'
-import { MdEdit } from 'react-icons/md'
-import { MdDelete } from 'react-icons/md'
-import { MdSave } from 'react-icons/md'
-import { WarningModal } from '../components/Modals/WarningModal'
-import { EditQuantityOnSaleModal } from '../components/Modals/EditQuantityOnSaleModal'
-import { roundTwoDecimals } from '../utils/Utils'
+import {useState, useContext, useEffect} from 'react'
+import {DataContext} from '../context/DataContext'
+import {AddProductOnSaleModal} from '../components/Modals/AddProductOnSaleModal'
+import {AnimatePresence} from 'framer-motion'
+import {motion} from 'framer-motion'
+import {IconContext} from 'react-icons'
+import {MdEdit} from 'react-icons/md'
+import {MdDelete} from 'react-icons/md'
+import {MdSave} from 'react-icons/md'
+import {WarningModal} from '../components/Modals/WarningModal'
+import {EditQuantityOnSaleModal} from '../components/Modals/EditQuantityOnSaleModal'
+import {roundTwoDecimals} from '../utils/Utils'
 
 const saleFormat = {
     cantidad: 0,
@@ -19,7 +19,7 @@ const saleFormat = {
 }
 
 export const RegisterSale = () => {
-    const { data, setData } = useContext(DataContext)
+    const {data, setData} = useContext(DataContext)
     const [sale, setSale] = useState([])
     const [AddProductModalActive, setAddProductModalActive] = useState(false)
     const [warningModalActive, setWarningModalActive] = useState(false)
@@ -130,118 +130,116 @@ export const RegisterSale = () => {
 
     return (
         <div
-            className='flex flex-col items-center h-full overflow-auto p-3'
-            style={{ maxHeight: 'calc(100vh - 64px)' }}
-        >
-            <h2 className='text-3xl my-5 text-center'>Registrar Venta</h2>
-            <div className='p-3 flex justify-center min-w-max w-full'>
-                <div className='p-5 mb-5 text-center flex flex-col text-slate-50 bg-slate-600 rounded-md'>
-                    <div className='flex items-center '>
-                        <h2 className='text-lg'>Agregar productos:</h2>
-                        <button
-                            className='p-2 ml-3 bg-sky-500 text-slate-50 rounded-md'
-                            onClick={buscarProducto}
-                        >
-                            Buscar Producto
-                        </button>
+            className="flex flex-col items-center h-full overflow-auto p-3"
+            style={{maxHeight: 'calc(100vh - 64px)'}}>
+            <h2 className="text-3xl mt-3 mb-5 text-center">Registrar Venta</h2>
+            <div className="p-3 flex justify-center min-w-max w-full">
+                <div className='flex flex-col'>
+                    <div className="p-5 mb-5 text-center flex flex-col text-slate-50 bg-slate-600 rounded-md max-h-min">
+                        <div className="flex items-center ">
+                            <h2 className="text-lg">Agregar productos:</h2>
+                            <button
+                                className="p-2 ml-3 bg-sky-500 text-slate-50 rounded-md"
+                                onClick={buscarProducto}>
+                                Buscar Producto
+                            </button>
+                        </div>
+                        <form className="my-3 flex flex-col ">
+                            <span className="text-lg">
+                                Producto Seleccionado:
+                            </span>
+                            <span className="p-2 bg-slate-300 rounded-md text-slate-800 min-h-10">
+                                {productToAdd.nombre}
+                            </span>
+                            <span className="mt-3 text-lg">Cantidad: </span>
+                            <input
+                                type="number"
+                                name="cantidad"
+                                className="outline-none p-2 rounded-md text-center text-slate-800"
+                                value={quantityToAdd}
+                                onChange={(e) =>
+                                    setQuantityToAdd(e.target.value)
+                                }
+                            />
+                            <button
+                                className="p-2 mt-10 bg-emerald-500 text-slate-50 rounded-md"
+                                onClick={addProductToSale}>
+                                Agregar
+                            </button>
+                        </form>
                     </div>
-                    <form className='my-3 flex flex-col items-center'>
-                        <span className='text-lg'>Producto Seleccionado:</span>
-                        <span className='p-2 ml-3 bg-slate-50 rounded-md w-72 h-full text-slate-800 min-h-12'>
-                            {productToAdd.nombre}
-                        </span>
-                        <span className='mt-3 text-lg'>Cantidad: </span>
-                        <input
-                            type='number'
-                            name='cantidad'
-                            className='outline-none p-2 w-24 rounded-md text-center text-slate-800'
-                            value={quantityToAdd}
-                            onChange={(e) => setQuantityToAdd(e.target.value)}
-                        />
-                        <button
-                            className='p-2 mt-3 bg-emerald-500 text-slate-50 rounded-md'
-                            onClick={addProductToSale}
-                        >
-                            Agregar
-                        </button>
-                    </form>
+                    <button className="p-2 mt-5 bg-yellow-500 text-slate-50 text-lg rounded-md">Procesar Compra</button>
                 </div>
-                <div className='px-5'>
-                    <h2 className='text-2xl my-2'>Detalle de la Venta:</h2>
-                    <table className='bg-slate-50 text-center min-w-fit max-w-screen-lg border-collapse'>
-                        <thead className='bg-slate-500 text-slate-200 border-solid border-slate-500 border-2'>
+                <div className="px-5">
+                    <h2 className="text-2xl my-2">Detalle de la Venta:</h2>
+                    <table className="bg-slate-50 text-center min-w-fit max-w-screen-lg border-collapse">
+                        <thead className="bg-slate-500 text-slate-200 border-solid border-slate-500 border-2">
                             <tr>
-                                <th className='w-24'>Cantidad</th>
-                                <th className='w-80'>Descripción</th>
-                                <th className='w-24'>Precio Unitario</th>
-                                <th className='w-24'>Importe</th>
-                                <th className='w-32'>Acciones</th>
+                                <th className="w-24">Cantidad</th>
+                                <th className="w-80">Descripción</th>
+                                <th className="w-24">Precio Unitario</th>
+                                <th className="w-24">Importe</th>
+                                <th className="w-32">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             {sale.map((saleEntry) => (
                                 <tr
-                                    initial={{ opacity: 0, y: 100 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: 100 }}
+                                    initial={{opacity: 0, y: 100}}
+                                    animate={{opacity: 1, y: 0}}
+                                    exit={{opacity: 0, y: 100}}
                                     key={saleEntry.id}
-                                    className='text-slate-900'
-                                >
-                                    <td className='p-3 border-solid border-slate-500 border-2'>
+                                    className="text-slate-900">
+                                    <td className="p-3 border-solid border-slate-500 border-2">
                                         {saleEntry.cantidad}
                                     </td>
-                                    <td className='p-3 border-solid border-slate-500 border-2'>
+                                    <td className="p-3 border-solid border-slate-500 border-2">
                                         {saleEntry.nombre}
                                     </td>
-                                    <td className='p-3 border-solid border-slate-500 border-2'>
+                                    <td className="p-3 border-solid border-slate-500 border-2">
                                         ${saleEntry.precioUnitario}
                                     </td>
-                                    <td className='p-3 border-solid border-slate-500 border-2'>
+                                    <td className="p-3 border-solid border-slate-500 border-2">
                                         ${saleEntry.importe}
                                     </td>
-                                    <td className='p-3 border-solid border-slate-500 border-2'>
+                                    <td className="p-3 border-solid border-slate-500 border-2">
                                         <IconContext.Provider
                                             value={{
                                                 className:
                                                     'text-slate-50 w-7 h-7',
-                                            }}
-                                        >
+                                            }}>
                                             <button
-                                                className='p-1 rounded-md bg-yellow-500'
+                                                className="p-1 rounded-md bg-yellow-500"
                                                 onClick={() =>
                                                     openEditQuantityModal(
                                                         saleEntry
                                                     )
-                                                }
-                                            >
+                                                }>
                                                 <MdEdit />
                                             </button>
                                             <button
-                                                className='p-1 ml-5 rounded-md bg-red-500'
+                                                className="p-1 ml-5 rounded-md bg-red-500"
                                                 onClick={() =>
                                                     deleteProductOnSale(
                                                         saleEntry.id
                                                     )
-                                                }
-                                            >
+                                                }>
                                                 <MdDelete />
                                             </button>
                                         </IconContext.Provider>
                                     </td>
                                 </tr>
                             ))}
-                            <tr>
+                            <tr className='border-slate-500 border-2'>
                                 <td
-                                    colSpan='3'
-                                    className='p-2 text-left font-bold text-lg text-slate-50 bg-slate-600'
-                                >
+                                    colSpan="3"
+                                    className="p-2 text-left font-bold text-lg text-slate-50 bg-slate-600">
                                     Total
                                 </td>
                                 <td
-                                    colSpan='2'
-                                    className='text-left font-bold text-lg text-slate-50 bg-slate-600'
-                                >
-                                    ${total || 0}
+                                    colSpan="2"
+                                    className="text-left font-bold text-lg text-slate-50 bg-slate-600">
+                                    ${roundTwoDecimals(total) || 0}
                                 </td>
                             </tr>
                         </tbody>

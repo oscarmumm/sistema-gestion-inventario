@@ -19,7 +19,7 @@ const arrowVariants = {
     des: { rotate: 0 },
 }
 
-export const Vendors = () => {
+export const VendorManagement   = () => {
     const { data, setData } = useContext(DataContext)
     const [supplierModalActive, setSupplierModalActive] = useState(false)
     const [newSupplierModalActive, setNewSupplierModalActive] = useState(false)
@@ -83,7 +83,7 @@ export const Vendors = () => {
             style={{ maxHeight: 'calc(100vh - 64px)' }}
         >
             <div className='flex items-center justify-between max-w-screen-sm'>
-                <h2 className='text-xl my-5'>Agenda de Proveedores</h2>
+                <h2 className='text-xl my-5'>Gestión de Proveedores</h2>
             </div>
             <div className='flex justify-between items-center w-full min-w-max'>
                 <div className='flex items-center'>

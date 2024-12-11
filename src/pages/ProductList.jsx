@@ -1,10 +1,7 @@
 import { IconContext } from 'react-icons'
 import { MdKeyboardArrowDown } from 'react-icons/md'
-import { ProductModal } from '../components/Modals/ProductModal'
 import { motion } from 'framer-motion'
-import { AnimatePresence } from 'framer-motion'
-import { useContext, useState, useEffect } from 'react'
-import { NewProductModal } from '../components/Modals/NewProductModal'
+import { useContext, useState } from 'react'
 import { DataContext } from '../context/DataContext'
 import { Searchbar } from '../components/Searchbar'
 import {
@@ -19,39 +16,12 @@ const arrowVariants = {
     des: { rotate: 0 },
 }
 
-export const ProductsManagement = () => {
-    const { data, setData } = useContext(DataContext)
-    const [productModalActive, setProductModalActive] = useState(false)
-    const [newProductModalActive, setNewProductModalActive] = useState(false)
-    const [selectedProduct, setSelectedProduct] = useState({})
+export const ProductList = () => {
+    const {data, setData } = useContext(DataContext)
     const [searchResults, setSearchResults] = useState(data.productos)
     const [orderedProducts, setOrderedProducts] = useState(data.productos)
     const [order, setOrder] = useState('')
 
-    // El valor predeterminado para mostrarse en la tabla es el de la lista ordenada (orderedProducts)
-    // que por defecto viene con el valor data, es decir, la DB original
-    // en caso de que se ingrese un termino de busqueda la lista que se utiliza proviene
-    // de los resultados de la busqueda
-
-    useEffect(() => {
-        setOrderedProducts(data.productos)
-        setSearchResults(data.productos)
-    }, [data.productos])
-
-    const closeProductModal = () => {
-        setProductModalActive(false)
-    }
-
-    const openNewProductModal = () => {
-        setNewProductModalActive(true)
-    }
-
-    const closeNewProductModal = () => {
-        setNewProductModalActive(false)
-    }
-    //-----------------------------------------------------------------//
-    //----------- REFACTORIZAR UTILIZANDO OPERADOR TERNARIO -----------//
-    //-----------------------------------------------------------------//
     const startSearch = (search) => {
         if (search.trim() === '') {
             setOrderedProducts(data.productos)
@@ -83,7 +53,7 @@ export const ProductsManagement = () => {
             className='flex flex-col h-full overflow-auto p-3'
             style={{ maxHeight: 'calc(100vh - 64px)' }}
         >
-                <h2 className='text-xl my-5'>Productos</h2>
+                <h2 className='text-xl my-5'>Lista de Productos</h2>
             <div className='flex justify-between items-center w-full min-w-max'>
                 <div className='flex items-center'>
                     <span className='mr-3'>Búsqueda de Productos:</span>
@@ -92,12 +62,6 @@ export const ProductsManagement = () => {
                         resetSearch={resetSearch}
                     />
                 </div>
-                <button
-                    className='bg-green-600 hover:bg-green-500 text-slate-50 p-3 my-3 ml-3 rounded-md shadow-lg'
-                    onClick={openNewProductModal}
-                >
-                    Agregar Producto
-                </button>
             </div>
             <table className='bg-slate-50 text-center min-w-fit'>
                 <thead className='bg-slate-500 text-slate-200'>
@@ -218,10 +182,6 @@ export const ProductsManagement = () => {
                         <tr
                             key={product.id}
                             className='hover:bg-slate-200 border-t-slate-200 border-t-2 cursor-pointer'
-                            onClick={() => {
-                                setSelectedProduct(product)
-                                setProductModalActive(true)
-                            }}
                         >
                             <td className='p-3'>{product.nombre}</td>
                             <td className='p-3'>{product.color}</td>
@@ -232,26 +192,6 @@ export const ProductsManagement = () => {
                     ))}
                 </tbody>
             </table>
-            {/* BUTTONS FOR PAGINATION */}
-            {/* <div className='my-3'>
-                <button> Atras </button>
-                <button> Adelante </button>
-            </div> */}
-            <AnimatePresence>
-                {productModalActive ? (
-                    <ProductModal
-                        producto={selectedProduct}
-                        closeProductModal={closeProductModal}
-                    />
-                ) : null}
-            </AnimatePresence>
-            <AnimatePresence>
-                {newProductModalActive && (
-                    <NewProductModal
-                        closeNewProductModal={closeNewProductModal}
-                    />
-                )}
-            </AnimatePresence>
         </div>
     )
 }
