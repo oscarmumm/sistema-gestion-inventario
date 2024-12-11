@@ -6,6 +6,10 @@ import { stringAscSort } from '../../utils/Utils'
 import { IconContext } from 'react-icons'
 import { MdClose } from 'react-icons/md'
 
+//-----------------------------------------------------------------
+// AGREGAR FUNCIONES DE ORDENAMIENTO
+//-----------------------------------------------------------------
+
 export const AddProductOnSaleModal = ({ closeModal, selectProduct }) => {
     const { data, setData } = useContext(DataContext)
     const [productList, setProductList] = useState(

@@ -11,3 +11,7 @@ export const numericAscSort = (arr, key) =>
 
 export const numericDesSort = (arr, key) =>
     arr.toSorted((a, b) => b[key] - a[key])
+
+export const roundTwoDecimals = (num) => {
+    return Math.round(num * 100) / 100
+}
