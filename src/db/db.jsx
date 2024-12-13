@@ -177,5 +177,5 @@ export const db = {
             telefono: '5156-8122'
         },
     ],
-    historialDeVentas: []
+    ventas: []
 }
