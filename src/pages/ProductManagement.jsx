@@ -19,6 +19,12 @@ const arrowVariants = {
     des: { rotate: 0 },
 }
 
+//-------------------------------------------------------------//
+//CORREGIR: AL PRESIONAR ELIMINAR, MIENTRAS EDITAS UN PRODUCTO
+//SE QUEDA EN EL MODAL, CUANDO DEBERÍA ELIMINAR EL PRODUCTO
+//SEGURAMENTE EL ERROR SE REPLICA EN VENDOR MANAGEMENT
+//-------------------------------------------------------------//
+
 export const ProductManagement = () => {
     const { data, setData } = useContext(DataContext)
     const [productModalActive, setProductModalActive] = useState(false)
