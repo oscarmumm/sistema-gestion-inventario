@@ -31,10 +31,10 @@ export const SalesHistory = () => {
                             key={venta.id}
                             className='hover:bg-slate-200 border-t-slate-200 border-t-2 cursor-pointer'
                         >
-                            <td>{(venta.fechaYHora).slice(0,10)}</td>
-                            <td>{(venta.fechaYHora).slice(-8, -3)}</td>
-                            <td>${venta.importe}</td>
-                            <td>{venta.metodoDePago}</td>
+                            <td className='p-3'>{(venta.fechaYHora).slice(0,10)}</td>
+                            <td className='p-3'>{(venta.fechaYHora).slice(-8, -3)}</td>
+                            <td className='p-3'>${venta.importe}</td>
+                            <td className='p-3'>{venta.metodoDePago}</td>
                         </tr>
                     ))}
                 </tbody>
