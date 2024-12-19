@@ -2,13 +2,12 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
 import { ConfirmationModal } from './ConfirmationModal'
 import { WarningModal } from './WarningModal'
-import { FaLess, FaLessThan } from 'react-icons/fa'
 
 export const SalePaymentModal = ({
     closeSalePaymentModal,
     sale,
     total,
-    consfirmSale,
+    confirmSale,
 }) => {
     const [paymentMethod, setPaymentMethod] = useState()
     const paymentMethodOptions = [
@@ -31,7 +30,7 @@ export const SalePaymentModal = ({
     }
 
     const agreeAction = () => {
-        consfirmSale(paymentMethod)
+        confirmSale(paymentMethod)
         setConfirmationModalActive(false)
     }
 
@@ -61,9 +60,9 @@ export const SalePaymentModal = ({
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 100 }}
             >
-                <h3>Pago</h3>
-                <span>Monto: ${total}</span>
-                <label>Método de pago</label>
+                <h3 className='text-3xl'>Registrar pago</h3>
+                <span className='my-10 text-2xl'>Monto: ${total}</span>
+                <label className='mb-3'>Método de pago</label>
                 <select
                     name='paymentMethod'
                     className='p-3 outline-none rounded-md shadow-lg'
@@ -77,15 +76,15 @@ export const SalePaymentModal = ({
                         </option>
                     ))}
                 </select>
-                <div>
+                <div className='mt-10 flex items-center justify-evenly w-full'>
                     <button
-                        className='mt-5 bg-slate-600 hover:bg-slate-500 text-slate-50 p-2 w-24 rounded-md shadow-lg'
+                        className='bg-slate-600 hover:bg-slate-500 text-slate-50 p-2 w-24 rounded-md shadow-lg'
                         onClick={clickToExit}
                     >
                         Volver
                     </button>
                     <button
-                        className='mt-5 bg-slate-600 hover:bg-slate-500 text-slate-50 p-2 w-24 rounded-md shadow-lg'
+                        className='bg-slate-600 hover:bg-slate-500 text-slate-50 p-2 w-24 rounded-md shadow-lg'
                         onClick={clickToRegister}
                     >
                         Registrar
@@ -95,7 +94,7 @@ export const SalePaymentModal = ({
             <AnimatePresence>
                 {confirmationModalActive && (
                     <ConfirmationModal
-                        message={`Confirma la venta? Monto: $${total} Método de pago: ${paymentMethod}`}
+                        message={[`Confirma la venta?`, `Monto: $${total}`,`Método de pago: ${paymentMethod}`]}
                         agreeAction={agreeAction}
                         cancelAction={cancelAction}
                     />

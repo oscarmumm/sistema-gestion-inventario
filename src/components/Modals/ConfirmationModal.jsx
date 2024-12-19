@@ -23,12 +23,15 @@ export const ConfirmationModal = ({
             transition={{ duration: 0.2 }}
         >
             <motion.div
-                className='relative flex flex-col bg-slate-100 py-5 px-10 rounded-md min-w-96 text-center'
+                className='relative flex flex-col justify-evenly bg-slate-100 py-5 px-10 rounded-md min-w-96 min-h-96 text-center'
                 initial={{ opacity: 0, y: 100 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 100 }}
             >
-                <span className='text-xl'>{message}</span>
+                {message.map((line) => (
+                    <span className='text-xl'>{line}</span>
+                ))}
+                {/* <span className='text-xl'>{message}</span> */}
                 {supplierInfo && (
                     <div className='text-xl font-bold flex flex-col my-5'>
                         <span>{supplierInfo.nombre}</span>

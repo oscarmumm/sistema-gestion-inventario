@@ -19,12 +19,6 @@ const arrowVariants = {
     des: { rotate: 0 },
 }
 
-//-------------------------------------------------------------//
-//CORREGIR: AL PRESIONAR ELIMINAR, MIENTRAS EDITAS UN PRODUCTO
-//SE QUEDA EN EL MODAL, CUANDO DEBERÍA ELIMINAR EL PRODUCTO
-//SEGURAMENTE EL ERROR SE REPLICA EN VENDOR MANAGEMENT
-//-------------------------------------------------------------//
-
 export const ProductManagement = () => {
     const { data, setData } = useContext(DataContext)
     const [productModalActive, setProductModalActive] = useState(false)
@@ -78,8 +72,12 @@ export const ProductManagement = () => {
     const sortColumn = (key, isString = false) => {
         const isAsc = order === `${key}Asc`
         const temp = isAsc
-            ? (isString ? stringDesSort(searchResults, key) : numericDesSort(searchResults, key))
-            : (isString ? stringAscSort(searchResults, key) : numericAscSort(searchResults, key))
+            ? isString
+                ? stringDesSort(searchResults, key)
+                : numericDesSort(searchResults, key)
+            : isString
+            ? stringAscSort(searchResults, key)
+            : numericAscSort(searchResults, key)
         setOrder(isAsc ? `${key}Desc` : `${key}Asc`)
         setOrderedProducts(temp)
     }
@@ -89,7 +87,7 @@ export const ProductManagement = () => {
             className='flex flex-col h-full overflow-auto p-3'
             style={{ maxHeight: 'calc(100vh - 64px)' }}
         >
-                <h2 className='text-xl my-5'>Gestión de Productos</h2>
+            <h2 className='text-xl my-5'>Gestión de Productos</h2>
             <div className='flex justify-between items-center w-full min-w-max'>
                 <div className='flex items-center'>
                     <span className='mr-3'>Búsqueda de Productos:</span>
@@ -114,7 +112,11 @@ export const ProductManagement = () => {
                             <th className='p-3'>
                                 <div className='flex items-center justify-center'>
                                     Nombre
-                                    <button onClick={() => sortColumn('nombre', true)}>
+                                    <button
+                                        onClick={() =>
+                                            sortColumn('nombre', true)
+                                        }
+                                    >
                                         <motion.div
                                             animate={
                                                 order === 'nombreAsc'
@@ -135,7 +137,11 @@ export const ProductManagement = () => {
                             <th className='p-3'>
                                 <div className='flex items-center justify-center'>
                                     Color
-                                    <button onClick={() => sortColumn('color', true)}>
+                                    <button
+                                        onClick={() =>
+                                            sortColumn('color', true)
+                                        }
+                                    >
                                         <motion.div
                                             animate={
                                                 order === 'colorAsc'
@@ -156,7 +162,11 @@ export const ProductManagement = () => {
                             <th className='p-3'>
                                 <div className='flex items-center justify-center'>
                                     Proveedor
-                                    <button onClick={() => sortColumn('proveedor', true)}>
+                                    <button
+                                        onClick={() =>
+                                            sortColumn('proveedor', true)
+                                        }
+                                    >
                                         <motion.div
                                             animate={
                                                 order === 'proveedorAsc'
@@ -177,7 +187,11 @@ export const ProductManagement = () => {
                             <th className='p-3'>
                                 <div className='flex items-center justify-center'>
                                     Precio unitario
-                                    <button onClick={() => sortColumn('precioUnitario')}>
+                                    <button
+                                        onClick={() =>
+                                            sortColumn('precioUnitario')
+                                        }
+                                    >
                                         <motion.div
                                             animate={
                                                 order === 'precioAsc'
@@ -198,7 +212,11 @@ export const ProductManagement = () => {
                             <th className='p-3'>
                                 <div className='flex items-center justify-center'>
                                     Cantidad por caja
-                                    <button onClick={() => sortColumn('cantidadPorCaja')}>
+                                    <button
+                                        onClick={() =>
+                                            sortColumn('cantidadPorCaja')
+                                        }
+                                    >
                                         <motion.div
                                             animate={
                                                 order === 'cantidadAsc'

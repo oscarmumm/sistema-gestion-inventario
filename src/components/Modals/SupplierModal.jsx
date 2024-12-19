@@ -60,14 +60,14 @@ export const SupplierModal = ({ supplier, closeSupplierModal }) => {
     }
 
     const agreeAction = () => {
-        let temp = data.proveedores.filter((el) => el.id !== supplier.id);
+        let temp = data.proveedores.filter((el) => el.id !== supplier.id)
         setData({
-            ...data,        
-            proveedores: temp
-        });
-        closeSupplierModal();
+            ...data,
+            proveedores: temp,
+        })
+        setConfirmationModalActive(false)
+        closeSupplierModal()
     }
-    
 
     const cancelAction = () => {
         setConfirmationModalActive(false)
@@ -167,17 +167,17 @@ export const SupplierModal = ({ supplier, closeSupplierModal }) => {
                         </button>
                     </div>
                 </div>
-                <AnimatePresence>
-                    {confirmationModalActive && (
-                        <ConfirmationModal
-                            message='¿Está seguro que desea eliminar el proveedor?'
-                            agreeAction={agreeAction}
-                            cancelAction={cancelAction}
-                            supplierInfo={supplier}
-                        />
-                    )}
-                </AnimatePresence>
             </motion.div>
+            <AnimatePresence>
+                {confirmationModalActive && (
+                    <ConfirmationModal
+                        message={['¿Está seguro que desea eliminar el proveedor?']}
+                        agreeAction={agreeAction}
+                        cancelAction={cancelAction}
+                        supplierInfo={supplier}
+                    />
+                )}
+            </AnimatePresence>
         </motion.div>
     )
 }

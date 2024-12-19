@@ -11,13 +11,7 @@ import { WarningModal } from '../components/Modals/WarningModal'
 import { EditQuantityOnSaleModal } from '../components/Modals/EditQuantityOnSaleModal'
 import { roundTwoDecimals } from '../utils/Utils'
 import { SalePaymentModal } from '../components/Modals/SalePaymentModal'
-
-const saleFormat = {
-    cantidad: 0,
-    nombre: '',
-    precioUnitario: 0,
-    importe: 0,
-}
+import { ToastNotification } from '../components/Modals/ToastNotification'
 
 export const RegisterSale = () => {
     const { data, setData } = useContext(DataContext)
@@ -32,6 +26,7 @@ export const RegisterSale = () => {
     const [entryToEdit, setEntryToEdit] = useState()
     const [total, setTotal] = useState()
     const [paymentModalActive, setPaymentModalActive] = useState(false)
+    const [toastNotificationAvtive, setToastNotificationActive] = useState(false)
 
     useEffect(() => {
         if (details.length >= 1) {
@@ -45,7 +40,7 @@ export const RegisterSale = () => {
         setAddProductModalActive(true)
     }
 
-    const closeModal = () => {
+    const closeAddProductOnSaleModal = () => {
         setAddProductModalActive(false)
     }
 
@@ -135,8 +130,8 @@ export const RegisterSale = () => {
     //-----------------------------------------
     // HACER ANIMACION INDICANDO QUE SE REGISTRÓ UNA VENTA
     //-----------------------------------------
-    
-    const consfirmSale = (paymentMethod) => {
+
+    const confirmSale = (paymentMethod) => {
         const dateObj = new Date()
         const date = dateObj.toLocaleString()
         const saleId = dateObj.getTime()
@@ -157,6 +152,10 @@ export const RegisterSale = () => {
         setTotal()
         setDetails([])
         closeSalePaymentModal()
+        setToastNotificationActive(true)
+        setTimeout(() => {
+            setToastNotificationActive(false)
+        }, 1500)
     }
 
     return (
@@ -295,7 +294,7 @@ export const RegisterSale = () => {
             <AnimatePresence>
                 {AddProductModalActive && (
                     <AddProductOnSaleModal
-                        closeModal={closeModal}
+                        closeModal={closeAddProductOnSaleModal}
                         selectProduct={selectProduct}
                     />
                 )}
@@ -323,8 +322,13 @@ export const RegisterSale = () => {
                         closeSalePaymentModal={closeSalePaymentModal}
                         details={details}
                         total={total}
-                        consfirmSale={consfirmSale}
+                        confirmSale={confirmSale}
                     />
+                )}
+            </AnimatePresence>
+            <AnimatePresence>
+                {toastNotificationAvtive && (
+                    <ToastNotification message='Venta registrada' notificationType='success' />
                 )}
             </AnimatePresence>
         </div>

@@ -5,15 +5,6 @@ import { useState, useContext } from 'react'
 import { ConfirmationModal } from './ConfirmationModal'
 import { DataContext } from '../../context/DataContext'
 
-const productFormat = {
-    id: '',
-    nombre: '',
-    color: '',
-    proveedor: '',
-    precioUnitario: '',
-    cantidadPorCaja: '',
-}
-
 export const ProductModal = ({ producto, closeProductModal }) => {
     const { data, setData } = useContext(DataContext)
     const [isDisabled, setIsDisabled] = useState(true)
@@ -34,6 +25,11 @@ export const ProductModal = ({ producto, closeProductModal }) => {
 
     const editProduct = () => {
         setIsDisabled(false)
+    }
+
+    const clickOnCancel = () => {
+        setIsDisabled(true)
+        handleClick()
     }
 
     const saveEditedData = (e) => {
@@ -66,9 +62,10 @@ export const ProductModal = ({ producto, closeProductModal }) => {
         let temp = data.productos.filter((el) => el.id !== producto.id)
         setData({
             ...data,
-            productos: temp
+            productos: temp,
         })
-        closeModal()
+        setConfirmationModalActive(false)
+        closeProductModal()
     }
 
     const cancelAction = () => {
@@ -156,41 +153,49 @@ export const ProductModal = ({ producto, closeProductModal }) => {
                             onChange={handleChange}
                         />
                     </form>
-                    <div className='flex justify-end mt-10'>
-                        {isDisabled ? (
+                    {isDisabled ? (
+                        <div className='flex justify-end mt-10'>
                             <button
                                 className='bg-slate-600 hover:bg-slate-500 text-slate-50 p-2 w-24 rounded-md shadow-lg'
                                 onClick={editProduct}
                             >
                                 Editar
                             </button>
-                        ) : (
+                            <button
+                                className='bg-slate-700 hover:bg-slate-600 text-slate-50 p-2 w-24 ml-3 rounded-md shadow-lg'
+                                onClick={deleteProduct}
+                            >
+                                Eliminar
+                            </button>
+                        </div>
+                    ) : (
+                        <div className='flex justify-end mt-10'>
                             <button
                                 className='bg-slate-600 hover:bg-slate-500 text-slate-50 p-2 w-24 rounded-md shadow-lg'
                                 onClick={saveEditedData}
                             >
                                 Guardar
                             </button>
-                        )}
-                        <button
-                            className='bg-slate-700 hover:bg-slate-600 text-slate-50 p-2 w-24 ml-3 rounded-md shadow-lg'
-                            onClick={deleteProduct}
-                        >
-                            Eliminar
-                        </button>
-                    </div>
-                </div>
-                <AnimatePresence>
-                    {confirmationModalActive && (
-                        <ConfirmationModal
-                            message='¿Está seguro que desea eliminar el producto?'
-                            agreeAction={agreeAction}
-                            cancelAction={cancelAction}
-                            productInfo={producto}
-                        />
+                            <button
+                                className='bg-slate-600 hover:bg-slate-500 text-slate-50 p-2 w-24 ml-3 rounded-md shadow-lg'
+                                onClick={clickOnCancel}
+                            >
+                                Cancelar
+                            </button>
+                        </div>
                     )}
-                </AnimatePresence>
+                </div>
             </motion.div>
+            <AnimatePresence>
+                {confirmationModalActive && (
+                    <ConfirmationModal
+                        message={['¿Está seguro que desea eliminar el producto?']}
+                        agreeAction={agreeAction}
+                        cancelAction={cancelAction}
+                        productInfo={producto}
+                    />
+                )}
+            </AnimatePresence>
         </motion.div>
     )
 }
