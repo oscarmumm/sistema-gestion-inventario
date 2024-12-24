@@ -138,7 +138,8 @@ export const RegisterSale = () => {
         let newSale = {
             id: saleId,
             detalles: details,
-            fechaYHora: date,
+            fecha: date.slice(0, 10),
+            hora: date.slice(-8, -3),
             importe: total,
             metodoDePago: paymentMethod,
         }

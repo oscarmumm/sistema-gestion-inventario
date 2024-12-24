@@ -29,7 +29,7 @@ export const ConfirmationModal = ({
                 exit={{ opacity: 0, y: 100 }}
             >
                 {message.map((line) => (
-                    <span className='text-xl'>{line}</span>
+                    <span key={line} className='text-xl'>{line}</span>
                 ))}
                 {/* <span className='text-xl'>{message}</span> */}
                 {supplierInfo && (

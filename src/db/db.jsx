@@ -167,15 +167,99 @@ export const db = {
             nombre: 'Pelikan',
             email: 'pelikan@pelikan.com',
             direccion: 'Av. Rivadavia 2651',
-            telefono: '4966-8365'
+            telefono: '4966-8365',
         },
         {
             id: 2,
             nombre: 'Rivadavia',
             email: 'contacto@rivadavia.com',
             direccion: 'Av. Alberdi 4618',
-            telefono: '5156-8122'
+            telefono: '5156-8122',
         },
     ],
-    ventas: []
+    ventas: [
+        {
+            detalles: [
+                {
+                    id: 16,
+                    cantidad: 1,
+                    nombre: 'Cuaderno Cuadriculado',
+                    precioUnitario: 2.5,
+                    importe: 2.5,
+                },
+                {
+                    id: 17,
+                    cantidad: 2,
+                    nombre: 'Cuaderno Rayado',
+                    precioUnitario: 2.5,
+                    importe: 5,
+                },
+                {
+                    id: 1,
+                    cantidad: 5,
+                    nombre: 'Lapicera',
+                    precioUnitario: 1.2,
+                    importe: 6,
+                },
+            ],
+            fecha: '19/12/2024',
+            hora: '13:55',
+            id: 1734677742863,
+            importe: 13.5,
+            metodoDePago: 'Efectivo',
+        },
+        {
+            detalles: [
+                {
+                    id: 4,
+                    cantidad: 1,
+                    nombre: 'Goma',
+                    precioUnitario: 0.5,
+                    importe: 0.5,
+                },
+                {
+                    id: 3,
+                    cantidad: 2,
+                    nombre: 'Lapiz hb',
+                    precioUnitario: 0.7,
+                    importe: 1.4,
+                },
+                {
+                    id: 15,
+                    cantidad: 1,
+                    nombre: 'Sacapuntas',
+                    precioUnitario: 0.5,
+                    importe: 0.5,
+                },
+            ],
+            fecha: '18/12/2024',
+            hora: '16:04',
+            id: 1734678272266,
+            importe: 2.4,
+            metodoDePago: 'QR',
+        },
+        {
+            detalles: [
+                {
+                    id: 4,
+                    cantidad: 3,
+                    nombre: 'Goma',
+                    precioUnitario: 0.5,
+                    importe: 1.5,
+                },
+                {
+                    id: 15,
+                    cantidad: 6,
+                    nombre: 'Sacapuntas',
+                    precioUnitario: 0.5,
+                    importe: 3,
+                },
+            ],
+            fecha: '20/12/2024',
+            hora: '13:16',
+            id: 1734678272267,
+            importe: 4.5,
+            metodoDePago: 'Maestro',
+        },
+    ],
 }
