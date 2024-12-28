@@ -2,163 +2,163 @@ export const db = {
     productos: [
         {
             id: 1,
-            nombre: 'Lapicera',
-            color: 'azul',
+            descripcion: 'Lapicera Azul',
             proveedor: 'Pelikan',
             precioUnitario: 1.2,
             cantidadPorCaja: 50,
+            stockActual: 5
         },
         {
             id: 2,
-            nombre: 'Lapicera',
-            color: 'negro',
+            descripcion: 'Lapicera Negra',
             proveedor: 'Pelikan',
             precioUnitario: 1.2,
             cantidadPorCaja: 50,
+            stockActual: 10
         },
         {
             id: 3,
-            nombre: 'Lapiz hb',
-            color: 'negro',
+            descripcion: 'Lapiz hb',
             proveedor: 'Pelikan',
             precioUnitario: 0.7,
             cantidadPorCaja: 50,
+            stockActual: 5
         },
         {
             id: 4,
-            nombre: 'Goma',
-            color: 'blanca',
+            descripcion: 'Goma',
             proveedor: 'Pelikan',
             precioUnitario: 0.5,
             cantidadPorCaja: 40,
+            stockActual: 10
         },
         {
             id: 5,
-            nombre: 'Regla',
-            color: 'n/a',
+            descripcion: 'Regla',
             proveedor: 'Pizzini',
             precioUnitario: 1.5,
             cantidadPorCaja: 20,
+            stockActual: 10
         },
         {
             id: 6,
-            nombre: 'Transportador',
-            color: 'n/a',
+            descripcion: 'Transportador',
             proveedor: 'Pizzini',
             precioUnitario: 1.5,
             cantidadPorCaja: 20,
+            stockActual: 10
         },
         {
             id: 7,
-            nombre: 'Marcador permanente',
-            color: 'rojo',
+            descripcion: 'Marcador permanente rojo',
             proveedor: 'Sharpie',
             precioUnitario: 2.5,
             cantidadPorCaja: 10,
+            stockActual: 10
         },
         {
             id: 8,
-            nombre: 'Marcador permanente',
-            color: 'negro',
+            descripcion: 'Marcador permanente azul',
             proveedor: 'Sharpie',
             precioUnitario: 2.4,
             cantidadPorCaja: 10,
+            stockActual: 10
         },
         {
             id: 9,
-            nombre: 'Marcador permanente',
-            color: 'azul',
+            descripcion: 'Marcador permanente negro',
             proveedor: 'Sharpie',
             precioUnitario: 2.2,
             cantidadPorCaja: 10,
+            stockActual: 10
         },
         {
             id: 10,
-            nombre: 'Cartulina',
-            color: 'blanca',
+            descripcion: 'Cartulina verde',
             proveedor: 'Papelart',
             precioUnitario: 1,
             cantidadPorCaja: 10,
+            stockActual: 10
         },
         {
             id: 11,
-            nombre: 'Cartulina',
-            color: 'varios',
+            descripcion: 'Cartulina amarilla',
             proveedor: 'Papelart',
             precioUnitario: 1.2,
             cantidadPorCaja: 10,
+            stockActual: 10
         },
         {
             id: 12,
-            nombre: 'Lapices de Colores',
-            color: 'varios',
+            descripcion: 'Pack Lapices de Colores',
             proveedor: 'Faber Castell',
-            precioUnitario: 0.9,
-            cantidadPorCaja: 40,
+            precioUnitario: 5,
+            cantidadPorCaja: 20,
+            stockActual: 10
         },
         {
             id: 13,
-            nombre: 'Mapa Arg Político',
-            color: 'n/a',
+            descripcion: 'Mapa Arg Político',
             proveedor: 'Map',
             precioUnitario: 0.4,
             cantidadPorCaja: 50,
+            stockActual: 10
         },
         {
             id: 14,
-            nombre: 'Mapa Arg Relieve',
-            color: 'n/a',
+            descripcion: 'Mapa Arg Relieve',
             proveedor: 'Map',
             precioUnitario: 0.4,
             cantidadPorCaja: 40,
+            stockActual: 10
         },
         {
             id: 15,
-            nombre: 'Sacapuntas',
-            color: 'n/a',
+            descripcion: 'Sacapuntas',
             proveedor: 'Pizzini',
             precioUnitario: 0.5,
             cantidadPorCaja: 30,
+            stockActual: 10
         },
         {
             id: 16,
-            nombre: 'Cuaderno Cuadriculado',
-            color: 'n/a',
+            descripcion: 'Cuaderno Cuadriculado',
             proveedor: 'Gloria',
             precioUnitario: 2.5,
             cantidadPorCaja: 10,
+            stockActual: 10
         },
         {
             id: 17,
-            nombre: 'Cuaderno Rayado',
-            color: 'n/a',
+            descripcion: 'Cuaderno Rayado',
             proveedor: 'Gloria',
             precioUnitario: 2.5,
             cantidadPorCaja: 10,
+            stockActual: 10
         },
         {
             id: 18,
-            nombre: 'Resma A4',
-            color: 'n/a',
+            descripcion: 'Resma A4',
             proveedor: 'Ledesma',
             precioUnitario: 4,
             cantidadPorCaja: 5,
+            stockActual: 10
         },
         {
             id: 19,
-            nombre: 'Hojas x100 Rayadas',
-            color: 'n/a',
+            descripcion: 'Hojas x100 Rayadas',
             proveedor: 'Rivadavia',
             precioUnitario: 3,
             cantidadPorCaja: 20,
+            stockActual: 10
         },
         {
             id: 20,
-            nombre: 'Hojas x100 Cuadriculadas',
-            color: 'n/a',
+            descripcion: 'Hojas x100 Cuadriculadas',
             proveedor: 'Rivadavia',
             precioUnitario: 3,
             cantidadPorCaja: 20,
+            stockActual: 10
         },
     ],
     proveedores: [
@@ -183,21 +183,21 @@ export const db = {
                 {
                     id: 16,
                     cantidad: 1,
-                    nombre: 'Cuaderno Cuadriculado',
+                    descripcion: 'Cuaderno Cuadriculado',
                     precioUnitario: 2.5,
                     importe: 2.5,
                 },
                 {
                     id: 17,
                     cantidad: 2,
-                    nombre: 'Cuaderno Rayado',
+                    descripcion: 'Cuaderno Rayado',
                     precioUnitario: 2.5,
                     importe: 5,
                 },
                 {
                     id: 1,
                     cantidad: 5,
-                    nombre: 'Lapicera',
+                    descripcion: 'Lapicera',
                     precioUnitario: 1.2,
                     importe: 6,
                 },
@@ -213,21 +213,21 @@ export const db = {
                 {
                     id: 4,
                     cantidad: 1,
-                    nombre: 'Goma',
+                    descripcion: 'Goma',
                     precioUnitario: 0.5,
                     importe: 0.5,
                 },
                 {
                     id: 3,
                     cantidad: 2,
-                    nombre: 'Lapiz hb',
+                    descripcion: 'Lapiz hb',
                     precioUnitario: 0.7,
                     importe: 1.4,
                 },
                 {
                     id: 15,
                     cantidad: 1,
-                    nombre: 'Sacapuntas',
+                    descripcion: 'Sacapuntas',
                     precioUnitario: 0.5,
                     importe: 0.5,
                 },
@@ -243,14 +243,14 @@ export const db = {
                 {
                     id: 4,
                     cantidad: 3,
-                    nombre: 'Goma',
+                    descripcion: 'Goma',
                     precioUnitario: 0.5,
                     importe: 1.5,
                 },
                 {
                     id: 15,
                     cantidad: 6,
-                    nombre: 'Sacapuntas',
+                    descripcion: 'Sacapuntas',
                     precioUnitario: 0.5,
                     importe: 3,
                 },

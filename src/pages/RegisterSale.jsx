@@ -26,7 +26,8 @@ export const RegisterSale = () => {
     const [entryToEdit, setEntryToEdit] = useState()
     const [total, setTotal] = useState()
     const [paymentModalActive, setPaymentModalActive] = useState(false)
-    const [toastNotificationAvtive, setToastNotificationActive] = useState(false)
+    const [toastNotificationAvtive, setToastNotificationActive] =
+        useState(false)
 
     useEffect(() => {
         if (details.length >= 1) {
@@ -59,7 +60,7 @@ export const RegisterSale = () => {
                 'El producto ya está en la transacción, puede editar la cantidad desde el detalle de la venta'
             )
             setWarningModalActive(true)
-        } else if (!productToAdd.nombre) {
+        } else if (!productToAdd.descripcion) {
             setWarningModalMessage('No ha seleccionado ningún producto')
             setWarningModalActive(true)
         } else if (!quantityToAdd) {
@@ -69,7 +70,7 @@ export const RegisterSale = () => {
             let detailsEntry = {
                 id: productToAdd.id,
                 cantidad: parseInt(quantityToAdd),
-                nombre: productToAdd.nombre,
+                descripcion: productToAdd.descripcion,
                 precioUnitario: productToAdd.precioUnitario,
                 importe: roundTwoDecimals(
                     quantityToAdd * productToAdd.precioUnitario
@@ -90,7 +91,7 @@ export const RegisterSale = () => {
     const openEditQuantityModal = (entry) => {
         setEntryToEdit({
             id: entry.id,
-            nombre: entry.nombre,
+            descripcion: entry.descripcion,
             cantidad: entry.cantidad,
         })
         setEditQuantityModalActive(true)
@@ -128,8 +129,29 @@ export const RegisterSale = () => {
     }
 
     //-----------------------------------------
-    // HACER ANIMACION INDICANDO QUE SE REGISTRÓ UNA VENTA
+    // ESTA FUNCION DEBE RESTAR LAS UNIDADES VENDIDAS DEL STOCK DE LOS PRODUCTOS
     //-----------------------------------------
+
+    const modifyStock = (saleDetails) => {
+        console.log(saleDetails)
+        let extract = []
+        saleDetails.forEach((entry) => {
+            let newData = data.productos.filter((product) => product.id === entry.id)
+            extract.push(newData)
+        })
+        console.log(extract)
+        extract.forEach((entry) => {
+            console.log(entry)
+            saleDetails.forEach((detail) => {
+               if(entry.id === detail.id) {
+                console.log('entry.stockActual', entry.stockActual)
+                console.log('detail.cantidad', detail.cantidad)
+                entry.stockActual = entry.stockActual - detail.cantidad
+               } 
+            })
+        })
+        console.log(extract)
+    }
 
     const confirmSale = (paymentMethod) => {
         const dateObj = new Date()
@@ -143,11 +165,11 @@ export const RegisterSale = () => {
             importe: total,
             metodoDePago: paymentMethod,
         }
-        console.log(newSale)
         //-----------------------------------------
         // REVISAR ESTE SET DATA
         //-----------------------------------------
         setData({ ...data, ventas: [...data.ventas, newSale] })
+        modifyStock(details)
         setQuantityToAdd('')
         setProductToAdd('')
         setTotal()
@@ -182,7 +204,7 @@ export const RegisterSale = () => {
                                 Producto Seleccionado:
                             </span>
                             <span className='p-2 bg-slate-300 rounded-md text-slate-800 min-h-10'>
-                                {productToAdd.nombre}
+                                {productToAdd.descripcion}
                             </span>
                             <span className='mt-3 text-lg'>Cantidad: </span>
                             <input
@@ -234,7 +256,7 @@ export const RegisterSale = () => {
                                         {detailsEntry.cantidad}
                                     </td>
                                     <td className='p-3 border-solid border-slate-500 border-2'>
-                                        {detailsEntry.nombre}
+                                        {detailsEntry.descripcion}
                                     </td>
                                     <td className='p-3 border-solid border-slate-500 border-2'>
                                         ${detailsEntry.precioUnitario}
@@ -329,7 +351,10 @@ export const RegisterSale = () => {
             </AnimatePresence>
             <AnimatePresence>
                 {toastNotificationAvtive && (
-                    <ToastNotification message='Venta registrada' notificationType='success' />
+                    <ToastNotification
+                        message='Venta registrada'
+                        notificationType='success'
+                    />
                 )}
             </AnimatePresence>
         </div>

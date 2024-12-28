@@ -13,7 +13,7 @@ import { MdClose } from 'react-icons/md'
 export const AddProductOnSaleModal = ({ closeModal, selectProduct }) => {
     const { data, setData } = useContext(DataContext)
     const [productList, setProductList] = useState(
-        stringAscSort(data.productos, 'nombre')
+        stringAscSort(data.productos, 'descripcion')
     )
     const handleClick = () => {
         closeModal()
@@ -24,12 +24,12 @@ export const AddProductOnSaleModal = ({ closeModal, selectProduct }) => {
         search.trim() === ''
             ? setProductList(data.productos)
             : setProductList(
-                  data.productos.filter((el) => regex.test(el.nombre))
+                  data.productos.filter((el) => regex.test(el.descripcion))
               )
     }
 
     const resetSearch = () => {
-        setProductList(stringAscSort(data.productos, 'nombre'))
+        setProductList(stringAscSort(data.productos, 'descripcion'))
     }
 
     const chooseProduct = (product) => {
@@ -67,8 +67,7 @@ export const AddProductOnSaleModal = ({ closeModal, selectProduct }) => {
                     <table className='bg-slate-50 min-w-96 max-w-screen-lg border-collapse '>
                         <thead className='bg-slate-500 text-slate-200 border-solid border-slate-500 sticky top-0'>
                             <tr className='text-left'>
-                                <th className='p-2'>Nombre</th>
-                                <th className='p-2'>Color</th>
+                                <th className='p-2'>Descripcion</th>
                                 <th className='p-2'>Proveedor</th>
                                 <th className='p-2'>Precio Unitario</th>
                             </tr>
@@ -80,8 +79,7 @@ export const AddProductOnSaleModal = ({ closeModal, selectProduct }) => {
                                     className='hover:bg-slate-300 cursor-pointer'
                                     key={product.id}
                                 >
-                                    <td className='p-3'>{product.nombre}</td>
-                                    <td className='p-3'>{product.color}</td>
+                                    <td className='p-3'>{product.descripcion}</td>
                                     <td className='p-3'>{product.proveedor}</td>
                                     <td className='text-center'>
                                         ${product.precioUnitario}

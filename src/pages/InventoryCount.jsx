@@ -39,7 +39,6 @@ export const InventoryCount = () => {
                         <th className='p-3'>Nombre</th>
                         <th>Cant. x Caja</th>
                         <th>Cajas</th>
-                        <th>Sub-unidades</th>
                         <th>Unidades</th>
                     </tr>
                 </thead>
@@ -47,27 +46,21 @@ export const InventoryCount = () => {
                     {products.map((product) => (
                         <tr className='hover:bg-slate-300' key={product.id}>
                             <td className='p-5 text-slate-900 font-semibold'>
-                                {product.nombre}
+                                {product.descripcion}
                             </td>
                             <td className='p-5 text-slate-900 font-semibold'>
                                 {product.cantidadPorCaja}
                             </td>
                             <td className='min-w-32'>
                                 <input
-                                    className='w-20 outline-none p-1 rounded-md'
-                                    type='text'
+                                    className='w-24 outline-none px-3 py-2 text-center rounded-md'
+                                    type='number'
                                 />
                             </td>
                             <td className='min-w-32'>
                                 <input
-                                    className='w-20 outline-none p-1 rounded-md'
-                                    type='text'
-                                />
-                            </td>
-                            <td className='min-w-32'>
-                                <input
-                                    className='w-20 outline-none p-1 rounded-md'
-                                    type='text'
+                                    className='w-24 outline-none px-3 py-2 text-center rounded-md'
+                                    type='number'
                                 />
                             </td>
                         </tr>

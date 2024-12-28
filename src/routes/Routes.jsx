@@ -8,6 +8,7 @@ import { SalesHistory } from '../pages/SalesHistory'
 import { PurchaseOrder } from '../pages/PurchaseOrder'
 import { ProductList } from '../pages/ProductList'
 import { VendorList } from '../pages/VendorList'
+import { SalesReport } from '../pages/SalesReport'
 
 export const AppRoutes = () => {
     return (
@@ -21,6 +22,7 @@ export const AppRoutes = () => {
             <Route path='/purchase-order' element={<PurchaseOrder />} />
             <Route path='/product-list' element={<ProductList />} />
             <Route path='/vendor-list' element={<VendorList />} />
+            <Route path='/sales-report' element={<SalesReport />} />
         </Routes>
     )
 }

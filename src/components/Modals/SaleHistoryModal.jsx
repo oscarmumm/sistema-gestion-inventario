@@ -62,11 +62,11 @@ export const SaleHistoryModal = ({ sale, closeSaleHistoryModal }) => {
                         </thead>
                         <tbody>
                             {sale.detalles.map((entry) => (
-                                <tr key={entry.nombre}>
+                                <tr key={entry.descripcion}>
                                     <td className='p-2 text-center'>
                                         {entry.cantidad}
                                     </td>
-                                    <td className='p-2'>{entry.nombre}</td>
+                                    <td className='p-2'>{entry.descripcion}</td>
                                 </tr>
                             ))}
                         </tbody>

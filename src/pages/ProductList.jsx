@@ -71,32 +71,11 @@ export const ProductList = () => {
                         <tr>
                             <th className='p-3'>
                                 <div className='flex items-center justify-center'>
-                                    Nombre
-                                    <button onClick={() => sortColumn('nombre', true)}>
+                                    Descripción
+                                    <button onClick={() => sortColumn('descripcion', true)}>
                                         <motion.div
                                             animate={
-                                                order === 'nombreAsc'
-                                                    ? 'asc'
-                                                    : 'desc'
-                                            }
-                                            variants={arrowVariants}
-                                            transition={{
-                                                type: 'tween',
-                                                duration: 0.2,
-                                            }}
-                                        >
-                                            <MdKeyboardArrowDown />
-                                        </motion.div>
-                                    </button>
-                                </div>
-                            </th>
-                            <th className='p-3'>
-                                <div className='flex items-center justify-center'>
-                                    Color
-                                    <button onClick={() => sortColumn('color', true)}>
-                                        <motion.div
-                                            animate={
-                                                order === 'colorAsc'
+                                                order === 'descripcionAsc'
                                                     ? 'asc'
                                                     : 'desc'
                                             }
@@ -155,6 +134,27 @@ export const ProductList = () => {
                             </th>
                             <th className='p-3'>
                                 <div className='flex items-center justify-center'>
+                                    Stock Actual
+                                    <button onClick={() => sortColumn('stockActual')}>
+                                        <motion.div
+                                            animate={
+                                                order === 'stockActualAsc'
+                                                    ? 'asc'
+                                                    : 'desc'
+                                            }
+                                            variants={arrowVariants}
+                                            transition={{
+                                                type: 'tween',
+                                                duration: 0.2,
+                                            }}
+                                        >
+                                            <MdKeyboardArrowDown />
+                                        </motion.div>
+                                    </button>
+                                </div>
+                            </th>
+                            <th className='p-3'>
+                                <div className='flex items-center justify-center'>
                                     Cantidad por caja
                                     <button onClick={() => sortColumn('cantidadPorCaja')}>
                                         <motion.div
@@ -183,10 +183,10 @@ export const ProductList = () => {
                             key={product.id}
                             className='hover:bg-slate-200 border-t-slate-200 border-t-2 cursor-pointer'
                         >
-                            <td className='p-3'>{product.nombre}</td>
-                            <td className='p-3'>{product.color}</td>
+                            <td className='p-3'>{product.descripcion}</td>
                             <td className='p-3'>{product.proveedor}</td>
                             <td className='p-3'>$ {product.precioUnitario}</td>
+                            <td className='p-3'>{product.stockActual}</td>
                             <td className='p-3'>{product.cantidadPorCaja}</td>
                         </tr>
                     ))}
