@@ -155,7 +155,7 @@ export const Sidebar = () => {
                                 <Link to='/vendor-list'>Lista de Proveedores</Link>
                             </li>
                             <li className='mt-3 hover:text-sky-200'>
-                                <Link to='/purchase-order'>Órdenes de Compra</Link>
+                                <Link to='/purchase-order'>Pedido a Proveedores</Link>
                             </li>
                         </motion.ul>
                     </li>

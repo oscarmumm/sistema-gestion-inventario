@@ -32,11 +32,11 @@ export const InventoryCount = () => {
                 </button>
             </div>
             <table
-                className='bg-slate-400 text-center min-w-fit max-w-screen-lg'
+                className='bg-slate-400 text-center min-w-fit max-w-screen-lg shadow-lg'
             >
                 <thead className='bg-slate-500 text-slate-200'>
                     <tr>
-                        <th className='p-3'>Nombre</th>
+                        <th className='p-3'>Descripcion</th>
                         <th>Cant. x Caja</th>
                         <th>Cajas</th>
                         <th>Unidades</th>
