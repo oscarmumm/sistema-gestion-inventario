@@ -111,40 +111,15 @@ export const ProductManagement = () => {
                         <tr>
                             <th className='p-3'>
                                 <div className='flex items-center justify-center'>
-                                    Nombre
+                                    Descripción
                                     <button
                                         onClick={() =>
-                                            sortColumn('nombre', true)
+                                            sortColumn('descripcion', true)
                                         }
                                     >
                                         <motion.div
                                             animate={
-                                                order === 'nombreAsc'
-                                                    ? 'asc'
-                                                    : 'desc'
-                                            }
-                                            variants={arrowVariants}
-                                            transition={{
-                                                type: 'tween',
-                                                duration: 0.2,
-                                            }}
-                                        >
-                                            <MdKeyboardArrowDown />
-                                        </motion.div>
-                                    </button>
-                                </div>
-                            </th>
-                            <th className='p-3'>
-                                <div className='flex items-center justify-center'>
-                                    Color
-                                    <button
-                                        onClick={() =>
-                                            sortColumn('color', true)
-                                        }
-                                    >
-                                        <motion.div
-                                            animate={
-                                                order === 'colorAsc'
+                                                order === 'descripcionAsc'
                                                     ? 'asc'
                                                     : 'desc'
                                             }
@@ -247,8 +222,7 @@ export const ProductManagement = () => {
                                 setProductModalActive(true)
                             }}
                         >
-                            <td className='p-3'>{product.nombre}</td>
-                            <td className='p-3'>{product.color}</td>
+                            <td className='p-3'>{product.descripcion}</td>
                             <td className='p-3'>{product.proveedor}</td>
                             <td className='p-3'>$ {product.precioUnitario}</td>
                             <td className='p-3'>{product.cantidadPorCaja}</td>
