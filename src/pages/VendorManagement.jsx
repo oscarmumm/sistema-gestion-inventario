@@ -79,13 +79,13 @@ export const VendorManagement   = () => {
 
     return (
         <div
-            className='flex flex-col h-full overflow-auto p-3'
+            className='flex flex-col items-center h-full overflow-auto p-3'
             style={{ maxHeight: 'calc(100vh - 64px)' }}
         >
             <div className='flex items-center justify-between max-w-screen-sm'>
                 <h2 className='text-xl my-5'>Gestión de Proveedores</h2>
             </div>
-            <div className='flex justify-between items-center w-full min-w-max'>
+            <div className='flex justify-between items-center min-w-max'>
                 <div className='flex items-center'>
                     <span className='mr-3'>Búsqueda de Proveedor</span>
                     <Searchbar

@@ -24,6 +24,11 @@ export const SupplierModal = ({ supplier, closeSupplierModal }) => {
         closeSupplierModal()
     }
 
+    const clickOnCancel = () => {
+        setIsDisabled(true)
+        handleClick()
+    }
+    
     const handleChange = (e) => {
         setEditedSupplier({
             ...editedSupplier,
@@ -95,7 +100,7 @@ export const SupplierModal = ({ supplier, closeSupplierModal }) => {
                         <MdClose />
                     </IconContext.Provider>
                 </button>
-                <h3 className='text-2xl my-5'>Detalles del producto:</h3>
+                <h3 className='text-2xl my-5'>Detalles del proveedor:</h3>
                 <div>
                     <form className='flex flex-col'>
                         <label className='mb-1' htmlFor=''>
@@ -143,7 +148,34 @@ export const SupplierModal = ({ supplier, closeSupplierModal }) => {
                             onChange={handleChange}
                         />
                     </form>
-                    <div className='flex justify-end mt-10'>
+                    {isDisabled ? (
+                        <div className="flex justify-end mt-10">
+                            <button
+                                className="bg-slate-600 hover:bg-slate-500 text-slate-50 p-2 w-24 rounded-md shadow-lg"
+                                onClick={editSupplier}>
+                                Editar
+                            </button>
+                            <button
+                                className="bg-slate-700 hover:bg-slate-600 text-slate-50 p-2 w-24 ml-3 rounded-md shadow-lg"
+                                onClick={deleteSupplier}>
+                                Eliminar
+                            </button>
+                        </div>
+                    ) : (
+                        <div className="flex justify-end mt-10">
+                            <button
+                                className="bg-slate-600 hover:bg-slate-500 text-slate-50 p-2 w-24 rounded-md shadow-lg"
+                                onClick={clickOnCancel}>
+                                Cancelar
+                            </button>
+                            <button
+                                className="bg-slate-600 hover:bg-slate-500 text-slate-50 p-2 w-24 ml-3 rounded-md shadow-lg"
+                                onClick={saveEditedData}>
+                                Guardar
+                            </button>
+                        </div>
+                    )}
+                    {/* <div className='flex justify-end mt-10'>
                         {isDisabled ? (
                             <button
                                 className='bg-slate-600 hover:bg-slate-500 text-slate-50 p-2 w-24 rounded-md shadow-lg'
@@ -165,7 +197,7 @@ export const SupplierModal = ({ supplier, closeSupplierModal }) => {
                         >
                             Eliminar
                         </button>
-                    </div>
+                    </div> */}
                 </div>
             </motion.div>
             <AnimatePresence>
