@@ -58,7 +58,7 @@ export const ProductManagement = () => {
             setSearchResults(data.productos)
         } else {
             const regex = new RegExp(search.trim(), 'i')
-            let temp = data.productos.filter((el) => regex.test(el.nombre))
+            let temp = data.productos.filter((el) => regex.test(el.descripcion))
             setSearchResults(temp)
             setOrderedProducts(temp)
         }
