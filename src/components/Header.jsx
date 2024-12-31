@@ -15,7 +15,7 @@ export const Header = ({ toggleSidebar }) => {
                         <MdMenu />
                     </button>
                     <img className='w-10 mx-8' src={headerLogo} />
-                    <h1 className='text-xl'>Librería</h1>
+                    <h1 className='text-xl'>Gestión de Comercio</h1>
                 </div>
                 <div>
                     <button>

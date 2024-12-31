@@ -155,13 +155,13 @@ export const ProductModal = ({producto, closeProductModal}) => {
                         <div className="flex justify-end mt-10">
                             <button
                                 className="bg-slate-600 hover:bg-slate-500 text-slate-50 p-2 w-24 rounded-md shadow-lg"
-                                onClick={saveEditedData}>
-                                Guardar
+                                onClick={clickOnCancel}>
+                                Cancelar
                             </button>
                             <button
                                 className="bg-slate-600 hover:bg-slate-500 text-slate-50 p-2 w-24 ml-3 rounded-md shadow-lg"
-                                onClick={clickOnCancel}>
-                                Cancelar
+                                onClick={saveEditedData}>
+                                Guardar
                             </button>
                         </div>
                     )}

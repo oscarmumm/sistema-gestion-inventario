@@ -84,11 +84,11 @@ export const ProductManagement = () => {
 
     return (
         <div
-            className='flex flex-col h-full overflow-auto p-3'
+            className='flex flex-col items-center h-full overflow-auto p-3'
             style={{ maxHeight: 'calc(100vh - 64px)' }}
         >
             <h2 className='text-xl my-5'>Gestión de Productos</h2>
-            <div className='flex justify-between items-center w-full min-w-max'>
+            <div className='flex justify-between items-center  min-w-max'>
                 <div className='flex items-center'>
                     <span className='mr-3'>Búsqueda de Productos:</span>
                     <Searchbar

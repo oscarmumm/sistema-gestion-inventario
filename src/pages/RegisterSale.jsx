@@ -129,28 +129,26 @@ export const RegisterSale = () => {
     }
 
     //-----------------------------------------
-    // ESTA FUNCION DEBE RESTAR LAS UNIDADES VENDIDAS DEL STOCK DE LOS PRODUCTOS
+    // ESTA FUNCION RESTA LAS UNIDADES VENDIDAS DEL STOCK DE LOS PRODUCTOS
+    //new data será el nuevo array mapeado teniendo en cuenta el método find
+    //donde devuelve el producto con el stock restado si este está en los detalles de la venta
+    //y si no devuelve el producto original del array
     //-----------------------------------------
+    //IMPORTANTE: MODIFICAR COMPONENTE REGISTER SALE PARA QUE ADMITA COMO MÁXIMO LA VENTA DEL STOCK DISPONIBLE
+    //DE UN DETERMINADO PRODUCTO
 
     const modifyStock = (saleDetails) => {
-        console.log(saleDetails)
-        let extract = []
-        saleDetails.forEach((entry) => {
-            let newData = data.productos.filter((product) => product.id === entry.id)
-            extract.push(newData)
+        const newProductData = data.productos.map((product) => {
+            const sale = saleDetails.find((detail) => detail.id === product.id)
+            if (sale) {
+                return {
+                    ...product,
+                    stockActual: product.stockActual - sale.cantidad,
+                }
+            }
+            return product
         })
-        console.log(extract)
-        extract.forEach((entry) => {
-            console.log(entry)
-            saleDetails.forEach((detail) => {
-               if(entry.id === detail.id) {
-                console.log('entry.stockActual', entry.stockActual)
-                console.log('detail.cantidad', detail.cantidad)
-                entry.stockActual = entry.stockActual - detail.cantidad
-               } 
-            })
-        })
-        console.log(extract)
+        setData({ ...data, productos: newProductData })
     }
 
     const confirmSale = (paymentMethod) => {
@@ -225,7 +223,7 @@ export const RegisterSale = () => {
                         </form>
                     </div>
                     <button
-                        className='p-2 mt-5 bg-yellow-500 text-slate-50 text-lg rounded-md shadow-lg'
+                        className='p-2 mt-5 bg-yellow-500 text-slate-600 text-lg rounded-md shadow-lg font-bold'
                         onClick={openPaymentModal}
                     >
                         Procesar Compra
