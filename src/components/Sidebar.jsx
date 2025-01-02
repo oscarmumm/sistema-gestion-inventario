@@ -239,7 +239,7 @@ export const Sidebar = () => {
                                 <Link to='/vendor-management'>Gestión de Proveedores</Link>
                             </li>
                             <li className='mt-3 hover:text-sky-200'>
-                                <Link>Usuarios</Link>
+                                <Link to='/user-management'>Usuarios</Link>
                             </li>
                             <li className='mt-3 hover:text-sky-200'>
                                 <Link>General</Link>

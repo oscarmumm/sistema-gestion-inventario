@@ -6,6 +6,7 @@ export const ConfirmationModal = ({
     cancelAction,
     productInfo,
     supplierInfo,
+    userInfo,
 }) => {
     const clickOnAgree = () => {
         agreeAction()
@@ -41,7 +42,11 @@ export const ConfirmationModal = ({
                     <div className='text-xl font-bold flex flex-col my-5'>
                         <span>{productInfo.nombre}</span>
                         <span>Proveedor: {productInfo.proveedor}</span>
-                        <span>Color {productInfo.color}</span>
+                    </div>
+                )}
+                {userInfo && (
+                    <div className='text-xl font-bold flex flex-col my-5'>
+                        <span>{userInfo.nombreUsuario}</span>
                     </div>
                 )}
                 <div className='flex justify-around mt-10'>
@@ -53,7 +58,7 @@ export const ConfirmationModal = ({
                     </button>
                     <button
                         onClick={clickOnAgree}
-                        className='bg-slate-700 hover:bg-slate-600 text-slate-50 p-2 w-24 ml-3 rounded-md shadow-lg'
+                        className='bg-red-600 hover:bg-slate-600 text-slate-50 p-2 w-24 ml-3 rounded-md shadow-lg'
                     >
                         Aceptar
                     </button>

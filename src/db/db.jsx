@@ -262,4 +262,15 @@ export const db = {
             metodoDePago: 'Maestro',
         },
     ],
+    usuarios: [
+        {
+            id: 1,
+            nombreUsuario: 'admin',
+            nombre: 'Oscar',
+            apellido: 'Rodriguez',
+            fechaCreacion: 1734678272267,
+            role: 'admin',
+            password: 'Hola1234'
+        }
+    ]
 }

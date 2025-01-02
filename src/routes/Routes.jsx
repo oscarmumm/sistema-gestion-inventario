@@ -9,6 +9,7 @@ import { PurchaseOrder } from '../pages/PurchaseOrder'
 import { ProductList } from '../pages/ProductList'
 import { VendorList } from '../pages/VendorList'
 import { SalesReport } from '../pages/SalesReport'
+import { UserManagement } from '../pages/UserManagement'
 
 export const AppRoutes = () => {
     return (
@@ -23,6 +24,7 @@ export const AppRoutes = () => {
             <Route path='/product-list' element={<ProductList />} />
             <Route path='/vendor-list' element={<VendorList />} />
             <Route path='/sales-report' element={<SalesReport />} />
+            <Route path='/user-management' element={<UserManagement />} />
         </Routes>
     )
 }
