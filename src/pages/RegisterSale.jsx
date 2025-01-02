@@ -137,6 +137,10 @@ export const RegisterSale = () => {
     //IMPORTANTE: MODIFICAR COMPONENTE REGISTER SALE PARA QUE ADMITA COMO MÁXIMO LA VENTA DEL STOCK DISPONIBLE
     //DE UN DETERMINADO PRODUCTO
 
+    //-------------------------------
+    //el setData dentro de esta funcion genera conflicto con el de confirm sale y las ventas no se registran en el historial
+    //-------------------------------
+
     const modifyStock = (saleDetails) => {
         const newProductData = data.productos.map((product) => {
             const sale = saleDetails.find((detail) => detail.id === product.id)
@@ -149,6 +153,7 @@ export const RegisterSale = () => {
             return product
         })
         setData({ ...data, productos: newProductData })
+        return newProductData
     }
 
     const confirmSale = (paymentMethod) => {
@@ -166,8 +171,8 @@ export const RegisterSale = () => {
         //-----------------------------------------
         // REVISAR ESTE SET DATA
         //-----------------------------------------
-        setData({ ...data, ventas: [...data.ventas, newSale] })
         modifyStock(details)
+        setData({ ...data, ventas: [...data.ventas, newSale] })
         setQuantityToAdd('')
         setProductToAdd('')
         setTotal()
