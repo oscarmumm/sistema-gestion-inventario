@@ -128,34 +128,6 @@ export const RegisterSale = () => {
         setPaymentModalActive(false)
     }
 
-    //-----------------------------------------
-    // ESTA FUNCION RESTA LAS UNIDADES VENDIDAS DEL STOCK DE LOS PRODUCTOS
-    //new data será el nuevo array mapeado teniendo en cuenta el método find
-    //donde devuelve el producto con el stock restado si este está en los detalles de la venta
-    //y si no devuelve el producto original del array
-    //-----------------------------------------
-    //IMPORTANTE: MODIFICAR COMPONENTE REGISTER SALE PARA QUE ADMITA COMO MÁXIMO LA VENTA DEL STOCK DISPONIBLE
-    //DE UN DETERMINADO PRODUCTO
-
-    //-------------------------------
-    //el setData dentro de esta funcion genera conflicto con el de confirm sale y las ventas no se registran en el historial
-    //-------------------------------
-
-    const modifyStock = (saleDetails) => {
-        const newProductData = data.productos.map((product) => {
-            const sale = saleDetails.find((detail) => detail.id === product.id)
-            if (sale) {
-                return {
-                    ...product,
-                    stockActual: product.stockActual - sale.cantidad,
-                }
-            }
-            return product
-        })
-        setData({ ...data, productos: newProductData })
-        return newProductData
-    }
-
     const confirmSale = (paymentMethod) => {
         const dateObj = new Date()
         const date = dateObj.toLocaleString()
@@ -168,11 +140,24 @@ export const RegisterSale = () => {
             importe: total,
             metodoDePago: paymentMethod,
         }
-        //-----------------------------------------
-        // REVISAR ESTE SET DATA
-        //-----------------------------------------
-        modifyStock(details)
-        setData({ ...data, ventas: [...data.ventas, newSale] })
+
+        //esta parte de la función se encarga de restar el stock vendido de los productos
+        const newProductData = data.productos.map((product) => {
+            const sale = details.find((detail) => detail.id === product.id)
+            if (sale) {
+                return {
+                    ...product,
+                    stockActual: product.stockActual - sale.cantidad,
+                }
+            }
+            return product
+        })
+        setData({
+            ...data,
+            productos: newProductData,
+            ventas: [...data.ventas, newSale]
+        })
+
         setQuantityToAdd('')
         setProductToAdd('')
         setTotal()
