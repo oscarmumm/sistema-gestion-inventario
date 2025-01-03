@@ -12,6 +12,7 @@ import { EditQuantityOnSaleModal } from '../components/Modals/EditQuantityOnSale
 import { roundTwoDecimals } from '../utils/Utils'
 import { SalePaymentModal } from '../components/Modals/SalePaymentModal'
 import { ToastNotification } from '../components/Modals/ToastNotification'
+import { timeGetter } from '../utils/Utils'
 
 export const RegisterSale = () => {
     const { data, setData } = useContext(DataContext)
@@ -129,14 +130,14 @@ export const RegisterSale = () => {
     }
 
     const confirmSale = (paymentMethod) => {
-        const dateObj = new Date()
-        const date = dateObj.toLocaleString()
-        const saleId = dateObj.getTime()
+        const date = timeGetter().date
+        const time = timeGetter().time
+        const saleId = timeGetter().timestamp
         let newSale = {
             id: saleId,
             detalles: details,
-            fecha: date.slice(0, 10),
-            hora: date.slice(-8, -3),
+            fecha: date,
+            hora: time,
             importe: total,
             metodoDePago: paymentMethod,
         }

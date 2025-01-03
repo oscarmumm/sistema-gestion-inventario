@@ -58,7 +58,7 @@ export const ConfirmationModal = ({
                     </button>
                     <button
                         onClick={clickOnAgree}
-                        className='bg-red-600 hover:bg-slate-600 text-slate-50 p-2 w-24 ml-3 rounded-md shadow-lg'
+                        className='bg-red-600 hover:bg-red-500 text-slate-50 p-2 w-24 ml-3 rounded-md shadow-lg'
                     >
                         Aceptar
                     </button>

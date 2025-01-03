@@ -15,3 +15,13 @@ export const numericDesSort = (arr, key) =>
 export const roundTwoDecimals = (num) => {
     return Math.round(num * 100) / 100
 }
+
+export const timeGetter = () => {
+    const dateObj = new Date()
+    const dateInfo = {
+        date: `${dateObj.getDate()}/${dateObj.getMonth() + 1}/${dateObj.getFullYear()}`,
+        time: `${dateObj.getHours()}:${dateObj.getMinutes()}`,
+        timestamp: `${dateObj.getTime()}`
+    }
+    return dateInfo
+}

@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import { DataContext } from '../context/DataContext'
 import { timeGetter } from '../utils/Utils'
 
-export const Home = () => {
+export const Dashboard = () => {
     const { data, setData } = useContext(DataContext)
     const [sales, setSales] = useState(data.ventas)
     const [todaySales, setTodaySales] = useState({})
@@ -38,9 +38,20 @@ export const Home = () => {
                 <p className='p-3 text-xl font-bold text-slate-800'>Dia de Negocio Actual: </p>
                 <p className='p-3 text-xl'>{timeGetter().date}</p>
             </div>
+            <div className='min-w-72 bg-slate-50 p-3 rounded-md shadow-lg mb-5'>
+                <p className='mb-5 text-xl font-bold text-slate-800 text-center'>
+                    Ventas de Hoy
+                </p>
+                {Object.entries(todaySales).map(([key, value]) => (
+                    <div key={key} className='flex justify-between'>
+                        <span className='text-xl p-3'>{key}</span>
+                        <span className='text-xl p-3'>${value}</span>
+                    </div>
+                ))}
+            </div>
             <div className='min-w-72 bg-slate-50 p-3 rounded-md shadow-lg'>
                 <p className='mb-5 text-xl font-bold text-slate-800 text-center'>
-                    Ventas Totales
+                    Acumulado Mensual
                 </p>
                 {Object.entries(todaySales).map(([key, value]) => (
                     <div key={key} className='flex justify-between'>
