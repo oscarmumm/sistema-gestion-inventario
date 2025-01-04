@@ -48,9 +48,9 @@ export const InventoryCount = () => {
                 <thead className="bg-slate-500 text-slate-200">
                     <tr>
                         <th className="p-3">Descripcion</th>
-                        <th>Cant. x Caja</th>
-                        <th>Cajas</th>
-                        <th>Unidades</th>
+                        <th className='p-3'>Cant. x Caja</th>
+                        <th className='p-3'>Cajas</th>
+                        <th className='p-3'>Unidades</th>
                     </tr>
                 </thead>
                 <tbody>
