@@ -181,7 +181,7 @@ export const ProductList = () => {
                     {orderedProducts.map((product) => (
                         <tr
                             key={product.id}
-                            className='hover:bg-slate-200 border-t-slate-200 border-t-2 cursor-pointer'
+                            className='hover:bg-slate-200 border-t-slate-200 border-t-2'
                         >
                             <td className='p-3'>{product.descripcion}</td>
                             <td className='p-3'>{product.proveedor}</td>

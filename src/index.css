@@ -27,13 +27,25 @@
 }
 
 /* Eliminar flechas en navegadores basados en WebKit (Chrome, Edge, Safari) */
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 /* Eliminar flechas en Firefox */
-input[type="number"] {
-  -moz-appearance: textfield;
+input[type='number'] {
+    -moz-appearance: textfield;
+}
+
+/* Evitar cortar filas en la impresión de las tablas */
+tbody tr {
+    page-break-inside: avoid;
+}
+
+/*estilos agregados en la tabla de conteo de stock para ajustarla a la impresión de una hojaA4*/
+.printable-table {
+    width: 210mm; /* Ancho estándar de una página A4 */
+    max-height: 297mm; /* Alto estándar de una página A4 */
+    overflow: hidden; /* Evitar que desborde */
 }
