@@ -272,5 +272,6 @@ export const db = {
             role: 'admin',
             password: 'Hola1234'
         }
-    ]
+    ],
+    pedidosAProveedores: []
 }
