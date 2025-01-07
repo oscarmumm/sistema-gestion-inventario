@@ -7,6 +7,10 @@ import html2pdf from 'html2pdf.js'
 import {AnimatePresence} from 'framer-motion'
 import {ConfirmationModal} from '../components/Modals/ConfirmationModal'
 
+//------------COSAS A MEJORAR:
+// el ingreso del conteo debería guardarse al moverse entre otras partes de la aplicación
+// de este modo el conteo podría corregirse antes de dar por cerrado el día de negocio en curso
+
 export const InventoryCount = () => {
     const {data, setData} = useContext(DataContext)
     const [products, setProducts] = useState(data.productos)
@@ -69,16 +73,12 @@ export const InventoryCount = () => {
         console.log(inputValues)
     }
 
-    const testClick = () => {
-        console.log(data)
-    }
-
     return (
         <div
             className="flex flex-col h-full overflow-auto p-3 items-center"
             style={{maxHeight: 'calc(100vh - 64px)'}}>
             <div className="flex justify-between">
-                <h2 className="text-xl my-5">Conteo de Inventario</h2>
+                <h2 className="text-2xl font-bold my-5">Conteo de Inventario</h2>
                 <button
                     className="bg-slate-600 hover:bg-slate-500 text-slate-50 p-3 my-3 ml-3 rounded-md shadow-lg flex items-center"
                     onClick={handlePrint}>
@@ -89,7 +89,6 @@ export const InventoryCount = () => {
                     <span className="ml-3">Imprimir Hoja de Conteo</span>
                 </button>
             </div>
-            <button onClick={testClick}>TEST</button>
             <table
                 ref={ref}
                 className="printable-table bg-white text-center min-w-fit max-w-screen-lg shadow-lg">
@@ -117,6 +116,7 @@ export const InventoryCount = () => {
                                     className="w-24 outline-none border-2 border-slate-400 px-3 py-1 text-center rounded-md"
                                     type="number"
                                     name={`${product.id}-cajas`}
+                                    value={inputValues[`${product.id}-cajas`]}
                                     onChange={(e) => handleChangeCajas(e, product)}
                                     
                                 />
@@ -126,6 +126,7 @@ export const InventoryCount = () => {
                                     className="w-24 outline-none border-2 border-slate-400 px-3 py-1 text-center rounded-md"
                                     type="number"
                                     name={`${product.id}-unidades`}
+                                    value={inputValues[`${product.id}-unidades`]}
                                     onChange={(e) => handleChangeUnidades(e, product)}
                                 />
                             </td>

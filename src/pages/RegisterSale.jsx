@@ -14,6 +14,9 @@ import { SalePaymentModal } from '../components/Modals/SalePaymentModal'
 import { ToastNotification } from '../components/Modals/ToastNotification'
 import { timeGetter } from '../utils/Utils'
 
+//------------------CORREGIR
+//no debe permitir ingresar una venta en cero
+
 export const RegisterSale = () => {
     const { data, setData } = useContext(DataContext)
     const [details, setDetails] = useState([])
@@ -103,9 +106,6 @@ export const RegisterSale = () => {
         setEditQuantityModalActive(false)
     }
 
-    //------------------------------------------
-    // REVISAR ESTA FUNCION
-    //------------------------------------------
     const saveEditedQuantity = (qua) => {
         setEditQuantityModalActive(false)
         let temp = details.map((el) => {
@@ -176,7 +176,7 @@ export const RegisterSale = () => {
             className='flex flex-col items-center h-full overflow-auto p-3'
             style={{ maxHeight: 'calc(100vh - 64px)' }}
         >
-            <h2 className='text-3xl mt-3 mb-5 text-center'>Registrar Venta</h2>
+            <h2 className='text-slate-800 text-3xl font-bold mt-3 mb-5 text-center'>Registrar Venta</h2>
             <div className='p-3 flex justify-center min-w-max w-full'>
                 <div className='flex flex-col'>
                     <div className='p-5 mb-5 text-center flex flex-col text-slate-50 bg-slate-600 rounded-md max-h-min shadow-lg'>

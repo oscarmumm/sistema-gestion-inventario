@@ -56,7 +56,7 @@ export const VendorList = () => {
             className="flex flex-col items-center h-full overflow-auto p-3"
             style={{maxHeight: 'calc(100vh - 64px)'}}>
             <div className="flex items-center justify-between max-w-screen-sm">
-                <h2 className="text-xl my-5">Lista de Proveedores</h2>
+                <h2 className="text-2xl font-bold my-5">Lista de Proveedores</h2>
             </div>
             <div className="flex items-center">
                 <span className="mr-3">Búsqueda de Proveedor</span>

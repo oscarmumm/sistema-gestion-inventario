@@ -30,3 +30,7 @@ export const timeGetter = () => {
     }
     return dateInfo
 }
+
+export const toRounded = (num) => {
+    return Math.round(num * 100) / 100
+}

@@ -104,7 +104,7 @@ export const NewProductModal = ({closeNewProductModal}) => {
                     onChange={handleChange}
                     name="precioUnitarioCompra"
                     value={newProduct.precioUnitarioCompra}
-                    type="text"
+                    type="number"
                     className="mb-3 p-2 rounded-md outline-none shadow-lg"
                 />
                 <label className="mb-1" htmlFor="">
@@ -115,7 +115,7 @@ export const NewProductModal = ({closeNewProductModal}) => {
                     onChange={handleChange}
                     name="precioUnitarioVenta"
                     value={newProduct.precioUnitarioVenta}
-                    type="text"
+                    type="number"
                     className="mb-3 p-2 rounded-md outline-none shadow-lg"
                 />
                 <label className="mb-1" htmlFor="">
@@ -126,7 +126,7 @@ export const NewProductModal = ({closeNewProductModal}) => {
                     onChange={handleChange}
                     name="cantidadPorCaja"
                     value={newProduct.cantidadPorCaja}
-                    type="text"
+                    type="number"
                     className="mb-3 p-2 rounded-md outline-none shadow-lg"
                 />
                 <div className="flex justify-end mt-10">
