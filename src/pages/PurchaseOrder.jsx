@@ -6,18 +6,19 @@ import {ConfirmationModal} from '../components/Modals/ConfirmationModal'
 import {AnimatePresence} from 'framer-motion'
 import { timeGetter } from '../utils/Utils'
 
-const PO = [
-    {
-        fechaPedido: '',
-        generadoPor: '',
-        detallesPedido: {
-            id: '',
-            descripcion: '',
-            proveedor: '',
-            cantidadAPedir: '',
-        }
-    }
-]
+// -------------FORMATO DE PEDIDO
+// const pedido = [
+//     {
+//         fechaPedido: '',
+//         generadoPor: '',
+//         detallesPedido: {
+//             id: '',
+//             descripcion: '',
+//             proveedor: '',
+//             cantidadAPedir: '',
+//         }
+//     }
+// ]
 
 export const PurchaseOrder = () => {
     const {data, setData} = useContext(DataContext)
@@ -44,12 +45,12 @@ export const PurchaseOrder = () => {
             proveedor: product.proveedor,
             cantidadAPedir: inputValues[product.id],
         }))
-        const date = timeGetter().date
+        const fullDate = timeGetter().fullDate
         const time = timeGetter().time
         const newPurchaseOrder = {
-            fechaPedido: date,
+            fechaPedido: fullDate,
             horaPedido: time,
-            detallesPedido: purchaseOrderDetails
+            detallesPedido: purchaseOrderDetails.filter((el) => el.cantidadAPedir > 0)
         }
         setData({
             ...data,

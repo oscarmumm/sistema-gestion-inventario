@@ -130,13 +130,13 @@ export const RegisterSale = () => {
     }
 
     const confirmSale = (paymentMethod) => {
-        const date = timeGetter().date
+        const fullDate = timeGetter().fullDate
         const time = timeGetter().time
         const saleId = timeGetter().timestamp
         let newSale = {
             id: saleId,
             detalles: details,
-            fecha: date,
+            fecha: fullDate,
             hora: time,
             importe: total,
             metodoDePago: paymentMethod,

@@ -7,7 +7,7 @@ export const Dashboard = () => {
     const [todaySales, setTodaySales] = useState([])
     const [todaySalesPerPaymentMethod, setTodaySalesPerPaymentMethod] =
         useState()
-    const [businessDay, setBusinessDay] = useState(timeGetter().date)
+    const [businessDay, setBusinessDay] = useState(timeGetter().fullDate)
 
     useEffect(() => {
         // Filtrar las ventas del día

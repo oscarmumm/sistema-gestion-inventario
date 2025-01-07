@@ -154,6 +154,11 @@ export const Sidebar = () => {
                                     Pedido a Proveedores
                                 </Link>
                             </li>
+                            <li className="mt-3 hover:text-sky-200">
+                                <Link to="/orders-history">
+                                    Historial de Pedidos
+                                </Link>
+                            </li>
                         </motion.ul>
                     </li>
                     <li className="mb-5">

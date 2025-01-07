@@ -10,6 +10,7 @@ import { ProductList } from '../pages/ProductList'
 import { VendorList } from '../pages/VendorList'
 import { UserManagement } from '../pages/UserManagement'
 import { Dashboard } from '../pages/Dashboard'
+import { OrdersHistory } from '../pages/OrdersHistory'
 
 export const AppRoutes = () => {
     return (
@@ -25,6 +26,7 @@ export const AppRoutes = () => {
             <Route path='/vendor-list' element={<VendorList />} />
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/user-management' element={<UserManagement />} />
+            <Route path='/orders-history' element={<OrdersHistory />} />
         </Routes>
     )
 }

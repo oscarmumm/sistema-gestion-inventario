@@ -18,9 +18,14 @@ export const roundTwoDecimals = (num) => {
 
 export const timeGetter = () => {
     const dateObj = new Date()
+    const hours = dateObj.getHours() > 10 ? dateObj.getHours() : `0${dateObj.getHours()}`
+    const minutes = dateObj.getMinutes() > 10 ? dateObj.getMinutes() : `0${dateObj.getMinutes()}`
+    const date = dateObj.getDate() > 10 ? dateObj.getDate() : `0${dateObj.getDate()}`
+    const month = dateObj.getMonth() > 10 ? (dateObj.getMonth() + 1) : `0${(dateObj.getMonth() + 1)}`
     const dateInfo = {
-        date: `${dateObj.getDate()}/${dateObj.getMonth() + 1}/${dateObj.getFullYear()}`,
-        time: `${dateObj.getHours()}:${dateObj.getMinutes()}`,
+        fullDate: `${date}/${month}/${dateObj.getFullYear()}`,
+        time: `${hours}:${minutes}`,
+        //time: `${dateObj.getHours()}:${dateObj.getMinutes()}`,
         timestamp: `${dateObj.getTime()}`
     }
     return dateInfo

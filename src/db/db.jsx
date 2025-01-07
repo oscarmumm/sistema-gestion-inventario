@@ -273,5 +273,19 @@ export const db = {
             password: 'Hola1234'
         }
     ],
-    pedidosAProveedores: []
+    pedidosAProveedores: [
+        {
+            fechaPedido: "7/1/2025",
+            horaPedido: "15:04",
+            detallesPedido: 
+                [
+                    {
+                    cantidadAPedir: "3",
+                    descripcion: "Lapicera Azul",
+                    id: 1 ,
+                    proveedor: "Pelikan"
+                    }
+                ]
+        }
+    ]
 }
