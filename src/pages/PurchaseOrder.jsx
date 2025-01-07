@@ -33,9 +33,6 @@ export const PurchaseOrder = () => {
             ...inputValues,
             [e.target.name]: parseInt(e.target.value),
         })
-        //-----------------------------------------
-        //AGREGAR FUNCION QUE CALCULA EL TOTAL ACÁ
-        //-----------------------------------------
     }
 
     const chackValues = () => {
@@ -74,7 +71,8 @@ export const PurchaseOrder = () => {
 
     useEffect(() => {
         setProducts(data.productos)
-    }, [data])
+        // ACA VA EL setTotal
+    }, [data, inputValues])
 
     return (
         <div
@@ -107,26 +105,26 @@ export const PurchaseOrder = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {products.map((entry) => (
-                        <tr key={entry.id} className="hover:bg-slate-100">
-                            <td className="p-3 ">{entry.descripcion}</td>
-                            <td className="p-3">{entry.cantidadPorCaja}</td>
-                            <td className="p-3">{entry.stockActual}</td>
+                    {products.map((product) => (
+                        <tr key={product.id} className="hover:bg-slate-100">
+                            <td className="p-3 ">{product.descripcion}</td>
+                            <td className="p-3">{product.cantidadPorCaja}</td>
+                            <td className="p-3">{product.stockActual}</td>
                             <td className="p-3">
                                 <input
                                     type="number"
-                                    name={entry.id}
+                                    name={product.id}
                                     className="w-24 outline-none px-3 py-2 text-center rounded-md"
                                     onChange={handleChange}
                                 />
                             </td>
-                            <td className='p-3'>${entry.precioUnitarioCompra * entry.cantidadPorCaja}</td>
-                            <td className='p-3'>${(inputValues[entry.id] || 0) * (entry.precioUnitarioCompra * entry.cantidadPorCaja)}</td>
+                            <td className='p-3'>${product.precioUnitarioCompra * product.cantidadPorCaja}</td>
+                            <td className='p-3'>${(inputValues[product.id] || 0) * (product.precioUnitarioCompra * product.cantidadPorCaja)}</td>
                         </tr>
                     ))}
                     <tr className='bg-slate-500 text-slate-200'>
-                        <td>TOTAL PEDIDO</td>
-                        <td></td>
+                        <td colSpan={5} className='p-3 text-lg text-right font-bold'>TOTAL PEDIDO</td>
+                        <td className='text-lg font-bold'>${total || 0}</td>
                     </tr>
                 </tbody>
             </table>
