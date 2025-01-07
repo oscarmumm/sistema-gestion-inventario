@@ -26,16 +26,20 @@ export const PurchaseOrder = () => {
     const [inputValues, setInputValues] = useState({})
     const [confirmationModalActive, setConfirmationModalActive] =
         useState(false)
+    const [total, setTotal] = useState()
 
     const handleChange = (e) => {
         setInputValues({
             ...inputValues,
-            [e.target.name]: e.target.value,
+            [e.target.name]: parseInt(e.target.value),
         })
+        //-----------------------------------------
+        //AGREGAR FUNCION QUE CALCULA EL TOTAL ACÁ
+        //-----------------------------------------
     }
 
     const chackValues = () => {
-        console.log(data.pedidosAProveedores)
+        console.log(inputValues)
     }
 
     const agreeAction = () => {
@@ -98,6 +102,8 @@ export const PurchaseOrder = () => {
                         <th className="p-3">Cant x caja</th>
                         <th className="p-3">Stock actual</th>
                         <th className="p-3">Pedido</th>
+                        <th className="p-3">Precio Por Caja</th>
+                        <th className="p-3">Costo Total Producto</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -110,13 +116,18 @@ export const PurchaseOrder = () => {
                                 <input
                                     type="number"
                                     name={entry.id}
-                                    //name={`prod${entry.id}-cantAPedir`}
                                     className="w-24 outline-none px-3 py-2 text-center rounded-md"
                                     onChange={handleChange}
                                 />
                             </td>
+                            <td className='p-3'>${entry.precioUnitarioCompra * entry.cantidadPorCaja}</td>
+                            <td className='p-3'>${(inputValues[entry.id] || 0) * (entry.precioUnitarioCompra * entry.cantidadPorCaja)}</td>
                         </tr>
                     ))}
+                    <tr className='bg-slate-500 text-slate-200'>
+                        <td>TOTAL PEDIDO</td>
+                        <td></td>
+                    </tr>
                 </tbody>
             </table>
             <AnimatePresence>

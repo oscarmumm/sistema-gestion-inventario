@@ -103,7 +103,7 @@ export const ProductManagement = () => {
                     Agregar Producto
                 </button>
             </div>
-            <table className='bg-slate-50 text-center min-w-fit'>
+            <table className='bg-slate-50 text-center min-w-max'>
                 <thead className='bg-slate-500 text-slate-200'>
                     <IconContext.Provider
                         value={{ className: 'text-slate-200 w-7 h-7' }}
@@ -161,15 +161,40 @@ export const ProductManagement = () => {
                             </th>
                             <th className='p-3'>
                                 <div className='flex items-center justify-center'>
-                                    Precio unitario
+                                    Precio unit. Compra
                                     <button
                                         onClick={() =>
-                                            sortColumn('precioUnitario')
+                                            sortColumn('precioUnitarioCompra')
                                         }
                                     >
                                         <motion.div
                                             animate={
-                                                order === 'precioAsc'
+                                                order === 'precioUnitarioCompraAsc'
+                                                    ? 'asc'
+                                                    : 'desc'
+                                            }
+                                            variants={arrowVariants}
+                                            transition={{
+                                                type: 'tween',
+                                                duration: 0.2,
+                                            }}
+                                        >
+                                            <MdKeyboardArrowDown />
+                                        </motion.div>
+                                    </button>
+                                </div>
+                            </th>
+                            <th className='p-3'>
+                                <div className='flex items-center justify-center'>
+                                    Precio unit. Venta
+                                    <button
+                                        onClick={() =>
+                                            sortColumn('precioUnitarioVenta')
+                                        }
+                                    >
+                                        <motion.div
+                                            animate={
+                                                order === 'precioUnitarioVentaAsc'
                                                     ? 'asc'
                                                     : 'desc'
                                             }
@@ -194,7 +219,7 @@ export const ProductManagement = () => {
                                     >
                                         <motion.div
                                             animate={
-                                                order === 'cantidadAsc'
+                                                order === 'cantidadPorCajaAsc'
                                                     ? 'asc'
                                                     : 'desc'
                                             }
@@ -224,7 +249,8 @@ export const ProductManagement = () => {
                         >
                             <td className='p-3'>{product.descripcion}</td>
                             <td className='p-3'>{product.proveedor}</td>
-                            <td className='p-3'>$ {product.precioUnitario}</td>
+                            <td className='p-3'>$ {product.precioUnitarioCompra}</td>
+                            <td className='p-3'>$ {product.precioUnitarioVenta}</td>
                             <td className='p-3'>{product.cantidadPorCaja}</td>
                         </tr>
                     ))}

@@ -93,6 +93,11 @@ export const Sidebar = () => {
                                     Conteo de Inventario
                                 </Link>
                             </li>
+                            <li className="mt-2 hover:text-sky-200">
+                                <Link to="/stock-difference">
+                                    Diferencias de Stock
+                                </Link>
+                            </li>
                         </motion.ul>
                     </li>
                     <li className="mb-5">

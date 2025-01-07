@@ -4,7 +4,8 @@ export const db = {
             id: 1,
             descripcion: 'Lapicera Azul',
             proveedor: 'Pelikan',
-            precioUnitario: 1.2,
+            precioUnitarioCompra: 1.2,
+            precioUnitarioVenta: 2,
             cantidadPorCaja: 50,
             stockActual: 5
         },
@@ -12,7 +13,8 @@ export const db = {
             id: 2,
             descripcion: 'Lapicera Negra',
             proveedor: 'Pelikan',
-            precioUnitario: 1.2,
+            precioUnitarioCompra: 1.2,
+            precioUnitarioVenta: 2,
             cantidadPorCaja: 50,
             stockActual: 10
         },
@@ -20,7 +22,8 @@ export const db = {
             id: 3,
             descripcion: 'Lapiz hb',
             proveedor: 'Pelikan',
-            precioUnitario: 0.7,
+            precioUnitarioCompra: 0.7,
+            precioUnitarioVenta: 1.5,
             cantidadPorCaja: 50,
             stockActual: 5
         },
@@ -28,7 +31,8 @@ export const db = {
             id: 4,
             descripcion: 'Goma',
             proveedor: 'Pelikan',
-            precioUnitario: 0.5,
+            precioUnitarioCompra: 0.5,
+            precioUnitarioVenta: 0.9,
             cantidadPorCaja: 40,
             stockActual: 10
         },
@@ -36,7 +40,8 @@ export const db = {
             id: 5,
             descripcion: 'Regla',
             proveedor: 'Pizzini',
-            precioUnitario: 1.5,
+            precioUnitarioCompra: 1.5,
+            precioUnitarioVenta: 2.3,
             cantidadPorCaja: 20,
             stockActual: 10
         },
@@ -44,7 +49,8 @@ export const db = {
             id: 6,
             descripcion: 'Transportador',
             proveedor: 'Pizzini',
-            precioUnitario: 1.5,
+            precioUnitarioCompra: 1.5,
+            precioUnitarioVenta: 2.3,
             cantidadPorCaja: 20,
             stockActual: 10
         },
@@ -52,7 +58,8 @@ export const db = {
             id: 7,
             descripcion: 'Marcador permanente rojo',
             proveedor: 'Sharpie',
-            precioUnitario: 2.5,
+            precioUnitarioCompra: 2.5,
+            precioUnitarioVenta: 4,
             cantidadPorCaja: 10,
             stockActual: 10
         },
@@ -60,7 +67,8 @@ export const db = {
             id: 8,
             descripcion: 'Marcador permanente azul',
             proveedor: 'Sharpie',
-            precioUnitario: 2.4,
+            precioUnitarioCompra: 2.4,
+            precioUnitarioVenta: 3.9,
             cantidadPorCaja: 10,
             stockActual: 10
         },
@@ -68,7 +76,8 @@ export const db = {
             id: 9,
             descripcion: 'Marcador permanente negro',
             proveedor: 'Sharpie',
-            precioUnitario: 2.2,
+            precioUnitarioCompra: 2.2,
+            precioUnitarioVenta: 3.8,
             cantidadPorCaja: 10,
             stockActual: 10
         },
@@ -76,7 +85,8 @@ export const db = {
             id: 10,
             descripcion: 'Cartulina verde',
             proveedor: 'Papelart',
-            precioUnitario: 1,
+            precioUnitarioCompra: 1,
+            precioUnitarioVenta: 1.8,
             cantidadPorCaja: 10,
             stockActual: 10
         },
@@ -84,7 +94,8 @@ export const db = {
             id: 11,
             descripcion: 'Cartulina amarilla',
             proveedor: 'Papelart',
-            precioUnitario: 1.2,
+            precioUnitarioCompra: 1.2,
+            precioUnitarioVenta: 2,
             cantidadPorCaja: 10,
             stockActual: 10
         },
@@ -92,7 +103,8 @@ export const db = {
             id: 12,
             descripcion: 'Pack Lapices de Colores',
             proveedor: 'Faber Castell',
-            precioUnitario: 5,
+            precioUnitarioCompra: 5,
+            precioUnitarioVenta: 9,
             cantidadPorCaja: 20,
             stockActual: 10
         },
@@ -100,7 +112,8 @@ export const db = {
             id: 13,
             descripcion: 'Mapa Arg Político',
             proveedor: 'Map',
-            precioUnitario: 0.4,
+            precioUnitarioCompra: 0.4,
+            precioUnitarioVenta: 1.2,
             cantidadPorCaja: 50,
             stockActual: 10
         },
@@ -108,7 +121,8 @@ export const db = {
             id: 14,
             descripcion: 'Mapa Arg Relieve',
             proveedor: 'Map',
-            precioUnitario: 0.4,
+            precioUnitarioCompra: 0.4,
+            precioUnitarioVenta: 1.1,
             cantidadPorCaja: 40,
             stockActual: 10
         },
@@ -116,7 +130,8 @@ export const db = {
             id: 15,
             descripcion: 'Sacapuntas',
             proveedor: 'Pizzini',
-            precioUnitario: 0.5,
+            precioUnitarioCompra: 0.5,
+            precioUnitarioVenta: 1.2,
             cantidadPorCaja: 30,
             stockActual: 10
         },
@@ -124,7 +139,8 @@ export const db = {
             id: 16,
             descripcion: 'Cuaderno Cuadriculado',
             proveedor: 'Gloria',
-            precioUnitario: 2.5,
+            precioUnitarioCompra: 2.5,
+            precioUnitarioVenta: 4.8,
             cantidadPorCaja: 10,
             stockActual: 10
         },
@@ -132,7 +148,8 @@ export const db = {
             id: 17,
             descripcion: 'Cuaderno Rayado',
             proveedor: 'Gloria',
-            precioUnitario: 2.5,
+            precioUnitarioCompra: 2.5,
+            precioUnitarioVenta: 4.8,
             cantidadPorCaja: 10,
             stockActual: 10
         },
@@ -140,7 +157,8 @@ export const db = {
             id: 18,
             descripcion: 'Resma A4',
             proveedor: 'Ledesma',
-            precioUnitario: 4,
+            precioUnitarioCompra: 4,
+            precioUnitarioVenta: 10,
             cantidadPorCaja: 5,
             stockActual: 10
         },
@@ -148,7 +166,8 @@ export const db = {
             id: 19,
             descripcion: 'Hojas x100 Rayadas',
             proveedor: 'Rivadavia',
-            precioUnitario: 3,
+            precioUnitarioCompra: 3,
+            precioUnitarioVenta: 5.8,
             cantidadPorCaja: 20,
             stockActual: 10
         },
@@ -156,7 +175,8 @@ export const db = {
             id: 20,
             descripcion: 'Hojas x100 Cuadriculadas',
             proveedor: 'Rivadavia',
-            precioUnitario: 3,
+            precioUnitarioCompra: 3,
+            precioUnitarioVenta: 5.7,
             cantidadPorCaja: 20,
             stockActual: 10
         },

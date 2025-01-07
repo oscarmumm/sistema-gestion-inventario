@@ -40,7 +40,8 @@ export const ProductModal = ({producto, closeProductModal}) => {
                     id: producto.id,
                     descripcion: productEdited.descripcion,
                     proveedor: productEdited.proveedor,
-                    precioUnitario: productEdited.precioUnitario,
+                    precioUnitarioCompra: productEdited.precioUnitarioCompra,
+                    precioUnitarioVenta: productEdited.precioUnitarioVenta,
                     cantidadPorCaja: productEdited.cantidadPorCaja,
                 }
                 : el
@@ -116,14 +117,25 @@ export const ProductModal = ({producto, closeProductModal}) => {
                             onChange={handleChange}
                         />
                         <label className="mb-1" htmlFor="">
-                            Precio Unitario
+                            Precio Unitario Compra
                         </label>
                         <input
                             className="mb-3 p-2 rounded-md outline-none shadow-lg"
                             disabled={isDisabled}
                             type="text"
-                            name="precioUnitario"
-                            value={productEdited.precioUnitario}
+                            name="precioUnitarioCompra"
+                            value={productEdited.precioUnitarioCompra}
+                            onChange={handleChange}
+                        />
+                        <label className="mb-1" htmlFor="">
+                            Precio Unitario Venta
+                        </label>
+                        <input
+                            className="mb-3 p-2 rounded-md outline-none shadow-lg"
+                            disabled={isDisabled}
+                            type="text"
+                            name="precioUnitarioVenta"
+                            value={productEdited.precioUnitarioVenta}
                             onChange={handleChange}
                         />
                         <label className="mb-1" htmlFor="">

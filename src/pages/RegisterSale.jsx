@@ -72,9 +72,10 @@ export const RegisterSale = () => {
                 id: productToAdd.id,
                 cantidad: parseInt(quantityToAdd),
                 descripcion: productToAdd.descripcion,
-                precioUnitario: productToAdd.precioUnitario,
+                precioUnitarioCompra: productToAdd.precioUnitarioCompra,
+                precioUnitarioVenta: productToAdd.precioUnitarioVenta,
                 importe: roundTwoDecimals(
-                    quantityToAdd * productToAdd.precioUnitario
+                    quantityToAdd * productToAdd.precioUnitarioVenta
                 ),
             }
             setDetails([...details, detailsEntry])
@@ -112,7 +113,7 @@ export const RegisterSale = () => {
                 return {
                     ...el,
                     cantidad: qua,
-                    importe: el.precioUnitario * qua,
+                    importe: el.precioUnitarioVenta * qua,
                 }
             }
             return el
@@ -248,7 +249,7 @@ export const RegisterSale = () => {
                                         {detailsEntry.descripcion}
                                     </td>
                                     <td className='p-3 border-solid border-slate-500 border-2'>
-                                        ${detailsEntry.precioUnitario}
+                                        ${detailsEntry.precioUnitarioVenta}
                                     </td>
                                     <td className='p-3 border-solid border-slate-500 border-2'>
                                         ${detailsEntry.importe}

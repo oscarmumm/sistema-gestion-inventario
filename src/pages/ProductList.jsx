@@ -63,7 +63,7 @@ export const ProductList = () => {
                     />
                 </div>
             </div>
-            <table className='bg-slate-50 text-center min-w-fit max-w-screen-lg'>
+            <table className='bg-slate-50 text-center min-w-max max-w-screen-lg'>
                 <thead className='bg-slate-500 text-slate-200'>
                     <IconContext.Provider
                         value={{ className: 'text-slate-200 w-7 h-7' }}
@@ -113,11 +113,32 @@ export const ProductList = () => {
                             </th>
                             <th className='p-3'>
                                 <div className='flex items-center justify-center'>
-                                    Precio unitario
-                                    <button onClick={() => sortColumn('precioUnitario')}>
+                                    Precio unit. Compra
+                                    <button onClick={() => sortColumn('precioUnitarioCompra')}>
                                         <motion.div
                                             animate={
-                                                order === 'precioAsc'
+                                                order === 'precioUnitarioCompraAsc'
+                                                    ? 'asc'
+                                                    : 'desc'
+                                            }
+                                            variants={arrowVariants}
+                                            transition={{
+                                                type: 'tween',
+                                                duration: 0.2,
+                                            }}
+                                        >
+                                            <MdKeyboardArrowDown />
+                                        </motion.div>
+                                    </button>
+                                </div>
+                            </th>
+                            <th className='p-3'>
+                                <div className='flex items-center justify-center'>
+                                    Precio unit. Venta
+                                    <button onClick={() => sortColumn('precioUnitarioVenta')}>
+                                        <motion.div
+                                            animate={
+                                                order === 'precioUnitarioVentaAsc'
                                                     ? 'asc'
                                                     : 'desc'
                                             }
@@ -159,7 +180,7 @@ export const ProductList = () => {
                                     <button onClick={() => sortColumn('cantidadPorCaja')}>
                                         <motion.div
                                             animate={
-                                                order === 'cantidadAsc'
+                                                order === 'cantidadPorCajaAsc'
                                                     ? 'asc'
                                                     : 'desc'
                                             }
@@ -185,7 +206,8 @@ export const ProductList = () => {
                         >
                             <td className='p-3'>{product.descripcion}</td>
                             <td className='p-3'>{product.proveedor}</td>
-                            <td className='p-3'>$ {product.precioUnitario}</td>
+                            <td className='p-3'>$ {product.precioUnitarioCompra}</td>
+                            <td className='p-3'>$ {product.precioUnitarioVenta}</td>
                             <td className='p-3'>{product.stockActual}</td>
                             <td className='p-3'>{product.cantidadPorCaja}</td>
                         </tr>

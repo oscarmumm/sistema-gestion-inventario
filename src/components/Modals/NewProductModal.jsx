@@ -9,7 +9,8 @@ const newProductFormat = {
     id: '',
     descripcion: '',
     proveedor: '',
-    precioUnitario: '',
+    precioUnitarioCompra: '',
+    precioUnitarioVenta: '',
     cantidadPorCaja: '',
 }
 
@@ -41,7 +42,8 @@ export const NewProductModal = ({closeNewProductModal}) => {
             newProduct.descripcion === '' ||
             newProduct.proveedor === '' ||
             newProduct.cantidadPorCaja === '' ||
-            newProduct.precioUnitario === ''
+            newProduct.precioUnitarioCompra === '' ||
+            newProduct.precioUnitarioVenta === ''
         ) {
             setWarningModalMessage('Debe completar todos los campos')
             setWarningModalActive(true)
@@ -95,13 +97,24 @@ export const NewProductModal = ({closeNewProductModal}) => {
                     className="mb-3 p-2 rounded-md outline-none shadow-lg"
                 />
                 <label className="mb-1" htmlFor="">
-                    Precio unitario
+                    Precio unitario Compra
                 </label>
                 <input
                     autoComplete="off"
                     onChange={handleChange}
-                    name="precioUnitario"
-                    value={newProduct.precioUnitario}
+                    name="precioUnitarioCompra"
+                    value={newProduct.precioUnitarioCompra}
+                    type="text"
+                    className="mb-3 p-2 rounded-md outline-none shadow-lg"
+                />
+                <label className="mb-1" htmlFor="">
+                    Precio unitario Venta
+                </label>
+                <input
+                    autoComplete="off"
+                    onChange={handleChange}
+                    name="precioUnitarioVenta"
+                    value={newProduct.precioUnitarioVenta}
                     type="text"
                     className="mb-3 p-2 rounded-md outline-none shadow-lg"
                 />

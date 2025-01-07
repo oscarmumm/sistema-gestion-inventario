@@ -69,7 +69,7 @@ export const AddProductOnSaleModal = ({ closeModal, selectProduct }) => {
                             <tr className='text-left'>
                                 <th className='p-2'>Descripcion</th>
                                 <th className='p-2'>Proveedor</th>
-                                <th className='p-2'>Precio Unitario</th>
+                                <th className='p-2'>Precio Unitario Venta</th>
                             </tr>
                         </thead>
                         <tbody className='overflow-y-auto'>
@@ -82,7 +82,7 @@ export const AddProductOnSaleModal = ({ closeModal, selectProduct }) => {
                                     <td className='p-3'>{product.descripcion}</td>
                                     <td className='p-3'>{product.proveedor}</td>
                                     <td className='text-center'>
-                                        ${product.precioUnitario}
+                                        ${product.precioUnitarioVenta}
                                     </td>
                                 </tr>
                             ))}

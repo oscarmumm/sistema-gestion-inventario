@@ -11,6 +11,7 @@ import { VendorList } from '../pages/VendorList'
 import { UserManagement } from '../pages/UserManagement'
 import { Dashboard } from '../pages/Dashboard'
 import { OrdersHistory } from '../pages/OrdersHistory'
+import { StockDifference } from '../pages/StockDifference'
 
 export const AppRoutes = () => {
     return (
@@ -27,6 +28,7 @@ export const AppRoutes = () => {
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/user-management' element={<UserManagement />} />
             <Route path='/orders-history' element={<OrdersHistory />} />
+            <Route path='/stock-difference' element={<StockDifference />} />
         </Routes>
     )
 }
