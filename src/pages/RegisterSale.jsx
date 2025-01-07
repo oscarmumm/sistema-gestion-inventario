@@ -14,9 +14,6 @@ import { SalePaymentModal } from '../components/Modals/SalePaymentModal'
 import { ToastNotification } from '../components/Modals/ToastNotification'
 import { timeGetter } from '../utils/Utils'
 
-//------------------CORREGIR
-//no debe permitir ingresar una venta en cero
-
 export const RegisterSale = () => {
     const { data, setData } = useContext(DataContext)
     const [details, setDetails] = useState([])
@@ -122,8 +119,13 @@ export const RegisterSale = () => {
         setEntryToEdit()
     }
 
-    const openPaymentModal = () => {
-        setPaymentModalActive(true)
+    const clickOnProccessSale = () => {
+        if(details.length > 0) {
+            setPaymentModalActive(true)
+        } else {
+            setWarningModalMessage('Debe agregar productos para procesar la compra')
+            setWarningModalActive(true)
+        }
     }
 
     const closeSalePaymentModal = () => {
@@ -216,7 +218,7 @@ export const RegisterSale = () => {
                     </div>
                     <button
                         className='p-2 mt-5 bg-yellow-500 text-slate-600 text-lg rounded-md shadow-lg font-bold'
-                        onClick={openPaymentModal}
+                        onClick={clickOnProccessSale}
                     >
                         Procesar Compra
                     </button>

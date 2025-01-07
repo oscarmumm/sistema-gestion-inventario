@@ -14,7 +14,9 @@ export const StockDifference = () => {
         <div
             className="flex flex-col items-center h-full overflow-auto p-3"
             style={{maxHeight: 'calc(100vh - 64px)'}}>
-            <h2 className="text-2xl font-bold my-3">Chequeo de Diferencias de Stock</h2>
+            <h2 className="text-2xl font-bold my-3">
+                Chequeo de Diferencias de Stock
+            </h2>
             <p className="mb-3">
                 Ingresa datos al conteo para ver si hay diferencias de stock
             </p>
@@ -40,7 +42,14 @@ export const StockDifference = () => {
                             <td className="p-1">
                                 {product.stockPorConteo || 0}
                             </td>
-                            <td className="p-1">
+                            <td
+                                className={`p-1 ${
+                                    product.stockActual -
+                                        (product.stockPorConteo || 0) <
+                                    0
+                                        ? 'text-emerald-600'
+                                        : 'text-red-600'
+                                }`}>
                                 {
                                     -(
                                         product.stockActual -
@@ -56,10 +65,12 @@ export const StockDifference = () => {
                                         ? 'text-emerald-600'
                                         : 'text-red-600'
                                 }`}>
-                                {toRounded(-(
-                                    product.stockActual -
-                                    (product.stockPorConteo || 0)
-                                ) * product.precioUnitarioCompra)}
+                                {toRounded(
+                                    -(
+                                        product.stockActual -
+                                        (product.stockPorConteo || 0)
+                                    ) * product.precioUnitarioCompra
+                                )}
                                 $
                             </td>
                         </tr>
