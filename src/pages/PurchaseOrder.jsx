@@ -1,12 +1,13 @@
 import {DataContext} from '../context/DataContext'
-import {useContext, useEffect, useState} from 'react'
+import {useContext, useEffect, useRef, useState} from 'react'
 import {MdSave} from 'react-icons/md'
 import {IconContext} from 'react-icons'
 import {ConfirmationModal} from '../components/Modals/ConfirmationModal'
 import {WarningModal} from '../components/Modals/WarningModal'
 import {AnimatePresence} from 'framer-motion'
 import {timeGetter, toRounded} from '../utils/Utils'
-import { ToastNotification } from '../components/Modals/ToastNotification'
+import {ToastNotification} from '../components/Modals/ToastNotification'
+import html2pdf from 'html2pdf.js'
 
 export const PurchaseOrder = () => {
     const {data, setData} = useContext(DataContext)
@@ -20,6 +21,7 @@ export const PurchaseOrder = () => {
     const [order, setOrder] = useState()
     const [toastNotificationAvtive, setToastNotificationActive] =
         useState(false)
+    const ref = useRef()
 
     const handleChange = (e) => {
         setInputValues({
@@ -37,6 +39,7 @@ export const PurchaseOrder = () => {
         setTimeout(() => {
             setToastNotificationActive(false)
         }, 1500)
+        handlePrint()
         setConfirmationModalActive(false)
     }
 
@@ -79,11 +82,22 @@ export const PurchaseOrder = () => {
         }
     }
 
+    const handlePrint = () => {
+        const element = ref.current
+        const options = {
+            margin: 0,
+            filename: `pedido_a_provedores_${order.fechaPedido}.pdf`,
+            html2canvas: {scale: 2},
+            jsPDF: {unit: 'in', format: 'A4', orientation: 'portrait'},
+        }
+        html2pdf().set(options).from(element).save()
+    }
+
     useEffect(() => {
         setProducts(data.productos)
         let temp = Object.entries(inputValues).reduce(
             (acumulador, [id, cantidad]) => {
-                if(cantidad === undefined || isNaN(cantidad)) {
+                if (cantidad === undefined || isNaN(cantidad)) {
                     return acumulador
                 }
                 const product = products.find(
@@ -118,7 +132,9 @@ export const PurchaseOrder = () => {
                 </IconContext.Provider>
                 Guardar pedido
             </button>
-            <div className='text-slate-50 bg-slate-600 rounded-md absolute top-20 right-10 p-3 shadow-lg'>Total del pedido: $ {total}</div>
+            <div className="text-slate-50 bg-slate-600 rounded-md absolute top-20 right-10 p-3 shadow-lg">
+                Total del pedido: $ {total}
+            </div>
             <table className="bg-slate-200 text-center min-w-fit max-w-screen-lg shadow-lg">
                 <thead className="bg-slate-500 text-slate-200">
                     <tr>
@@ -167,6 +183,49 @@ export const PurchaseOrder = () => {
                     </tr>
                 </tbody>
             </table>
+            <div className="hidden">
+                <div ref={ref}>
+                    <h3 className="text-xl mb-5">Pedido a Proveedores</h3>
+                    <table className="printable-table bg-white text-center min-w-fit max-w-screen-lg shadow-lg">
+                        <thead className="bg-slate-500 text-slate-200">
+                            <tr>
+                                <th className="p-3">Cajas</th>
+                                <th className="p-3">Descripción</th>
+                                <th className="p-3">Proveedor</th>
+                                <th className="p-3">Importe</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {order?.detallesPedido.map((entry) => (
+                                <tr key={entry.id} className="text-center">
+                                    <td className="text-center p-3 border border-slate-500">
+                                        {entry.cantidadAPedir}
+                                    </td>
+                                    <td className="p-3 border border-slate-500">
+                                        {entry.descripcion}
+                                    </td>
+                                    <td className="p-3 border border-slate-500">
+                                        {entry.proveedor}
+                                    </td>
+                                    <td className="p-3 border border-slate-500">
+                                        ${entry.importe}
+                                    </td>
+                                </tr>
+                            ))}
+                            <tr>
+                                <td
+                                    colSpan="3"
+                                    className="bg-slate-500 text-slate-50 p-3 font-bold text-right">
+                                    TOTAL DEL PEDIDO
+                                </td>
+                                <td className="bg-slate-500 text-slate-50 font-bold">
+                                    ${total}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
             <AnimatePresence>
                 {confirmationModalActive && (
                     <ConfirmationModal
@@ -186,7 +245,12 @@ export const PurchaseOrder = () => {
                 )}
             </AnimatePresence>
             <AnimatePresence>
-                    {toastNotificationAvtive && <ToastNotification message={'El pedido se ha guardado'} notificationType={'success'} />}
+                {toastNotificationAvtive && (
+                    <ToastNotification
+                        message={'El pedido se ha guardado'}
+                        notificationType={'success'}
+                    />
+                )}
             </AnimatePresence>
         </div>
     )
