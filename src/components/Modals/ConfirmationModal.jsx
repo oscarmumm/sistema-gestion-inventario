@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import {motion} from 'framer-motion'
 
 export const ConfirmationModal = ({
     message,
@@ -6,6 +6,7 @@ export const ConfirmationModal = ({
     cancelAction,
     productInfo,
     supplierInfo,
+    purchaseOrderInfo,
     userInfo,
 }) => {
     const clickOnAgree = () => {
@@ -17,49 +18,52 @@ export const ConfirmationModal = ({
 
     return (
         <motion.div
-            className='fixed top-0 left-0 h-screen w-screen flex items-center justify-center modal-main-bg'
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-        >
+            className="fixed top-0 left-0 h-screen w-screen flex items-center justify-center modal-main-bg"
+            initial={{opacity: 0}}
+            animate={{opacity: 1}}
+            exit={{opacity: 0}}
+            transition={{duration: 0.2}}>
             <motion.div
-                className='relative flex flex-col justify-evenly bg-slate-100 py-5 px-10 rounded-md min-w-96 min-h-96 text-center'
-                initial={{ opacity: 0, y: 100 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 100 }}
-            >
+                className="relative flex flex-col justify-evenly bg-slate-100 py-5 px-10 rounded-md min-w-96 min-h-96 text-center"
+                initial={{opacity: 0, y: 100}}
+                animate={{opacity: 1, y: 0}}
+                exit={{opacity: 0, y: 100}}>
                 {message.map((line) => (
-                    <span key={line} className='text-xl'>{line}</span>
+                    <span key={line} className="text-xl">
+                        {line}
+                    </span>
                 ))}
                 {/* <span className='text-xl'>{message}</span> */}
                 {supplierInfo && (
-                    <div className='text-xl font-bold flex flex-col my-5'>
+                    <div className="text-xl font-bold flex flex-col my-5">
                         <span>{supplierInfo.nombre}</span>
                     </div>
                 )}
                 {productInfo && (
-                    <div className='text-xl font-bold flex flex-col my-5'>
+                    <div className="text-xl font-bold flex flex-col my-5">
                         <span>{productInfo.nombre}</span>
                         <span>Proveedor: {productInfo.proveedor}</span>
                     </div>
                 )}
+                {purchaseOrderInfo && (
+                    <div className="text-xl font-bold flex flex-col my-5">
+                        <span>Importe Total: ${purchaseOrderInfo.importeTotal}</span>
+                    </div>
+                )}
                 {userInfo && (
-                    <div className='text-xl font-bold flex flex-col my-5'>
+                    <div className="text-xl font-bold flex flex-col my-5">
                         <span>{userInfo.nombreUsuario}</span>
                     </div>
                 )}
-                <div className='flex justify-around mt-10'>
+                <div className="flex justify-around mt-10">
                     <button
                         onClick={clickOnCancel}
-                        className='bg-slate-600 hover:bg-slate-500 text-slate-50 p-2 w-24 rounded-md shadow-lg'
-                    >
+                        className="bg-slate-600 hover:bg-slate-500 text-slate-50 p-2 w-24 rounded-md shadow-lg">
                         Cancelar
                     </button>
                     <button
                         onClick={clickOnAgree}
-                        className='bg-red-600 hover:bg-red-500 text-slate-50 p-2 w-24 ml-3 rounded-md shadow-lg'
-                    >
+                        className="bg-red-600 hover:bg-red-500 text-slate-50 p-2 w-24 ml-3 rounded-md shadow-lg">
                         Aceptar
                     </button>
                 </div>

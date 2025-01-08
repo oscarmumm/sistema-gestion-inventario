@@ -35,7 +35,7 @@ export const StockDifference = () => {
                     {products.map((product) => (
                         <tr
                             key={product.id}
-                            className="border-b-2 border-slate-400">
+                            className="border-t-2 border-slate-300">
                             <td className="p-1">{product.descripcion}</td>
                             <td className="p-1">{product.cantidadPorCaja}</td>
                             <td className="p-1">{product.stockActual}</td>

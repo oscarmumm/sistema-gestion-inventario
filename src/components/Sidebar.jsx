@@ -151,12 +151,12 @@ export const Sidebar = () => {
                             className="ml-9 h-0 overflow-hidden">
                             <li className="mt-3 hover:text-sky-200">
                                 <Link to="/vendor-list">
-                                    Lista de Proveedores
+                                    Agenda
                                 </Link>
                             </li>
                             <li className="mt-3 hover:text-sky-200">
                                 <Link to="/purchase-order">
-                                    Pedido a Proveedores
+                                    Realizar pedido
                                 </Link>
                             </li>
                             <li className="mt-3 hover:text-sky-200">

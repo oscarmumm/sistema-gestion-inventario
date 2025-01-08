@@ -295,15 +295,18 @@ export const db = {
     ],
     pedidosAProveedores: [
         {
-            fechaPedido: "7/1/2025",
+            id: 1,
+            fechaPedido: "07/01/2025",
             horaPedido: "15:04",
+            importeTotal: 60,
             detallesPedido: 
                 [
                     {
-                    cantidadAPedir: "3",
-                    descripcion: "Lapicera Azul",
-                    id: 1 ,
-                    proveedor: "Pelikan"
+                        id: 1 ,
+                        cantidadAPedir: 1,
+                        descripcion: "Lapicera Azul",
+                        proveedor: "Pelikan",
+                        importe: 60
                     }
                 ]
         }

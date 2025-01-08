@@ -3,22 +3,10 @@ import {useContext, useEffect, useState} from 'react'
 import {MdSave} from 'react-icons/md'
 import {IconContext} from 'react-icons'
 import {ConfirmationModal} from '../components/Modals/ConfirmationModal'
+import {WarningModal} from '../components/Modals/WarningModal'
 import {AnimatePresence} from 'framer-motion'
-import { timeGetter, toRounded } from '../utils/Utils'
-
-// -------------FORMATO DE PEDIDO
-// const pedido = [
-//     {
-//         fechaPedido: '',
-//         generadoPor: '',
-//         detallesPedido: {
-//             id: '',
-//             descripcion: '',
-//             proveedor: '',
-//             cantidadAPedir: '',
-//         }
-//     }
-// ]
+import {timeGetter, toRounded} from '../utils/Utils'
+import { ToastNotification } from '../components/Modals/ToastNotification'
 
 export const PurchaseOrder = () => {
     const {data, setData} = useContext(DataContext)
@@ -27,6 +15,11 @@ export const PurchaseOrder = () => {
     const [confirmationModalActive, setConfirmationModalActive] =
         useState(false)
     const [total, setTotal] = useState()
+    const [warningModalActive, setWarningModalActive] = useState(false)
+    const [warningModalMessage, setWarningModalMessage] = useState()
+    const [order, setOrder] = useState()
+    const [toastNotificationAvtive, setToastNotificationActive] =
+        useState(false)
 
     const handleChange = (e) => {
         setInputValues({
@@ -36,23 +29,14 @@ export const PurchaseOrder = () => {
     }
 
     const agreeAction = () => {
-        const purchaseOrderDetails = products.map((product) => ({
-            id: product.id,
-            descripcion: product.descripcion,
-            proveedor: product.proveedor,
-            cantidadAPedir: inputValues[product.id],
-        }))
-        const fullDate = timeGetter().fullDate
-        const time = timeGetter().time
-        const newPurchaseOrder = {
-            fechaPedido: fullDate,
-            horaPedido: time,
-            detallesPedido: purchaseOrderDetails.filter((el) => el.cantidadAPedir > 0)
-        }
         setData({
             ...data,
-            pedidosAProveedores: [...data.pedidosAProveedores, newPurchaseOrder]
+            pedidosAProveedores: [...data.pedidosAProveedores, order],
         })
+        setToastNotificationActive(true)
+        setTimeout(() => {
+            setToastNotificationActive(false)
+        }, 1500)
         setConfirmationModalActive(false)
     }
 
@@ -60,26 +44,65 @@ export const PurchaseOrder = () => {
         setConfirmationModalActive(false)
     }
 
-    const clickOnSave = () => {
-        setConfirmationModalActive(true)
+    const closeWarningModal = () => {
+        setWarningModalActive(false)
     }
 
+    const clickOnSave = () => {
+        if (Object.keys(inputValues).length === 0) {
+            setWarningModalMessage('No puede guardar un pedido vacío')
+            setWarningModalActive(true)
+        } else {
+            const purchaseOrderDetails = products.map((product) => ({
+                id: product.id,
+                descripcion: product.descripcion,
+                proveedor: product.proveedor,
+                cantidadAPedir: inputValues[product.id],
+                importe:
+                    product.precioUnitarioCompra *
+                    product.cantidadPorCaja *
+                    inputValues[product.id],
+            }))
+            const fullDate = timeGetter().fullDate
+            const time = timeGetter().time
+            const newPurchaseOrder = {
+                id: Date.now(),
+                fechaPedido: fullDate,
+                horaPedido: time,
+                importeTotal: total,
+                detallesPedido: purchaseOrderDetails.filter(
+                    (el) => el.cantidadAPedir > 0
+                ),
+            }
+            setOrder(newPurchaseOrder)
+            setConfirmationModalActive(true)
+        }
+    }
 
     useEffect(() => {
         setProducts(data.productos)
-        let temp = Object.entries(inputValues).reduce((acumulador, [id, cantidad]) => {
-            const product = products.find(prod => prod.id === parseInt(id))
-            if(product) {
-                return acumulador + product.precioUnitarioCompra * product.cantidadPorCaja * cantidad
-            }
-            return acumulador
-        }, 0)
+        let temp = Object.entries(inputValues).reduce(
+            (acumulador, [id, cantidad]) => {
+                if(cantidad === undefined || isNaN(cantidad)) {
+                    return acumulador
+                }
+                const product = products.find(
+                    (prod) => prod.id === parseInt(id)
+                )
+                if (product) {
+                    return (
+                        acumulador +
+                        product.precioUnitarioCompra *
+                            product.cantidadPorCaja *
+                            cantidad
+                    )
+                }
+                return acumulador
+            },
+            0
+        )
         setTotal(toRounded(temp))
     }, [data, inputValues])
-
-    const chackValues = () => {
-        console.log(inputValues)
-    }
 
     return (
         <div
@@ -95,11 +118,7 @@ export const PurchaseOrder = () => {
                 </IconContext.Provider>
                 Guardar pedido
             </button>
-            <button
-                className="bg-red-500 text-slate-50 p-3 rounded-lg m-5"
-                onClick={chackValues}>
-                TEST
-            </button>
+            <div className='text-slate-50 bg-slate-600 rounded-md absolute top-20 right-10 p-3 shadow-lg'>Total del pedido: $ {total}</div>
             <table className="bg-slate-200 text-center min-w-fit max-w-screen-lg shadow-lg">
                 <thead className="bg-slate-500 text-slate-200">
                     <tr>
@@ -125,13 +144,26 @@ export const PurchaseOrder = () => {
                                     onChange={handleChange}
                                 />
                             </td>
-                            <td className='p-3'>${product.precioUnitarioCompra * product.cantidadPorCaja}</td>
-                            <td className='p-3'>${(inputValues[product.id] || 0) * (product.precioUnitarioCompra * product.cantidadPorCaja)}</td>
+                            <td className="p-3">
+                                $
+                                {product.precioUnitarioCompra *
+                                    product.cantidadPorCaja}
+                            </td>
+                            <td className="p-3">
+                                $
+                                {(inputValues[product.id] || 0) *
+                                    (product.precioUnitarioCompra *
+                                        product.cantidadPorCaja)}
+                            </td>
                         </tr>
                     ))}
-                    <tr className='bg-slate-500 text-slate-200'>
-                        <td colSpan='5' className='p-3 text-lg text-right font-bold'>TOTAL PEDIDO</td>
-                        <td className='text-lg font-bold'>${total || 0}</td>
+                    <tr className="bg-slate-500 text-slate-200">
+                        <td
+                            colSpan="5"
+                            className="p-3 text-lg text-right font-bold">
+                            TOTAL PEDIDO
+                        </td>
+                        <td className="text-lg font-bold">${total || 0}</td>
                     </tr>
                 </tbody>
             </table>
@@ -141,8 +173,20 @@ export const PurchaseOrder = () => {
                         message={['Desea confirmar este pedido?']}
                         agreeAction={agreeAction}
                         cancelAction={cancelAction}
+                        purchaseOrderInfo={order}
                     />
                 )}
+            </AnimatePresence>
+            <AnimatePresence>
+                {warningModalActive && (
+                    <WarningModal
+                        closeModal={closeWarningModal}
+                        message={warningModalMessage}
+                    />
+                )}
+            </AnimatePresence>
+            <AnimatePresence>
+                    {toastNotificationAvtive && <ToastNotification message={'El pedido se ha guardado'} notificationType={'success'} />}
             </AnimatePresence>
         </div>
     )

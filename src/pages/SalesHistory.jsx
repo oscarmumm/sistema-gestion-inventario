@@ -126,8 +126,8 @@ export const SalesHistory = () => {
                         </button>
                     </div>
                 </div>
-                <div className='p-3 felx flex-col'>
-                    <table className=' bg-slate-50 text-center min-w-max max-w-screen-md'>
+                <div className='p-3 flex flex-col'>
+                    <table className=' bg-slate-50 text-center min-w-max max-w-screen-md shadow-lg'>
                         <thead className='bg-slate-500 text-slate-200'>
                             <tr>
                                 <th className='p-3 min-w-40'>Fecha</th>
