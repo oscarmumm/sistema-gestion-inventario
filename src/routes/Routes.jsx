@@ -21,20 +21,97 @@ const publicRoutes = [
 ]
 
 const userRoutes = [
-    {path: '/inventory-count', element: <InventoryCount />},
-    {path: '/register-sale', element: <RegisterSale />},
-    {path: '/product-list', element: <ProductList />},
-    {path: '/vendor-list', element: <VendorList />},
-    {path: '/sales-history', element: <SalesHistory />},
-    {path: '/purchase-order', element: <PurchaseOrder />},
-    {path: '/stock-difference', element: <StockDifference />},
-    {path: '/orders-history', element: <OrdersHistory />},
+    {
+        path: '/inventory-count',
+        element: (
+            <ProtectedRoute allowedRoles={['admin', 'manager', 'user']}>
+                <InventoryCount />
+            </ProtectedRoute>
+        ),
+    },
+    {
+        path: '/register-sale',
+        element: (
+            <ProtectedRoute allowedRoles={['admin', 'manager', 'user']}>
+                <RegisterSale />
+            </ProtectedRoute>
+        ),
+    },
+    {
+        path: '/product-list',
+        element: (
+            <ProtectedRoute allowedRoles={['admin', 'manager', 'user']}>
+                <ProductList />
+            </ProtectedRoute>
+        ),
+    },
+    {
+        path: '/vendor-list',
+        element: (
+            <ProtectedRoute allowedRoles={['admin', 'manager', 'user']}>
+                <VendorList />
+            </ProtectedRoute>
+        ),
+    },
+    {
+        path: '/sales-history',
+        element: (
+            <ProtectedRoute allowedRoles={['admin', 'manager', 'user']}>
+                <SalesHistory />
+            </ProtectedRoute>
+        ),
+    },
+    {
+        path: '/purchase-order',
+        element: (
+            <ProtectedRoute allowedRoles={['admin', 'manager', 'user']}>
+                <PurchaseOrder />
+            </ProtectedRoute>
+        ),
+    },
+    {
+        path: '/stock-difference',
+        element: (
+            <ProtectedRoute allowedRoles={['admin', 'manager', 'user']}>
+                <StockDifference />
+            </ProtectedRoute>
+        ),
+    },
+    {
+        path: '/orders-history',
+        element: (
+            <ProtectedRoute allowedRoles={['admin', 'manager', 'user']}>
+                <OrdersHistory />
+            </ProtectedRoute>
+        ),
+    },
 ]
 
 const managerRoutes = [
-    {path: '/product-management', element: <ProductManagement />},
-    {path: '/vendor-management', element: <VendorManagement />},
-    {path: '/dashboard', element: <Dashboard />},
+    {
+        path: '/product-management',
+        element: (
+            <ProtectedRoute allowedRoles={['admin', 'manager']}>
+                <ProductManagement />
+            </ProtectedRoute>
+        ),
+    },
+    {
+        path: '/vendor-management',
+        element: (
+            <ProtectedRoute allowedRoles={['admin', 'manager']}>
+                <VendorManagement />
+            </ProtectedRoute>
+        ),
+    },
+    {
+        path: '/dashboard',
+        element: (
+            <ProtectedRoute allowedRoles={['admin', 'manager']}>
+                <Dashboard />
+            </ProtectedRoute>
+        ),
+    },
 ]
 
 const adminRoutes = [
