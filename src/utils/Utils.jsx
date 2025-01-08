@@ -16,6 +16,7 @@ export const roundTwoDecimals = (num) => {
     return Math.round(num * 100) / 100
 }
 
+// date management helper
 export const timeGetter = () => {
     const dateObj = new Date()
     const hours = dateObj.getHours() > 10 ? dateObj.getHours() : `0${dateObj.getHours()}`
@@ -25,12 +26,12 @@ export const timeGetter = () => {
     const dateInfo = {
         fullDate: `${date}/${month}/${dateObj.getFullYear()}`,
         time: `${hours}:${minutes}`,
-        //time: `${dateObj.getHours()}:${dateObj.getMinutes()}`,
         timestamp: `${dateObj.getTime()}`
     }
     return dateInfo
 }
 
+// decimal digits helper
 export const toRounded = (num) => {
     return Math.round(num * 100) / 100
 }

@@ -4,7 +4,7 @@ import {MdSave} from 'react-icons/md'
 import {IconContext} from 'react-icons'
 import {ConfirmationModal} from '../components/Modals/ConfirmationModal'
 import {AnimatePresence} from 'framer-motion'
-import { timeGetter } from '../utils/Utils'
+import { timeGetter, toRounded } from '../utils/Utils'
 
 // -------------FORMATO DE PEDIDO
 // const pedido = [
@@ -33,10 +33,6 @@ export const PurchaseOrder = () => {
             ...inputValues,
             [e.target.name]: parseInt(e.target.value),
         })
-    }
-
-    const chackValues = () => {
-        console.log(inputValues)
     }
 
     const agreeAction = () => {
@@ -71,8 +67,19 @@ export const PurchaseOrder = () => {
 
     useEffect(() => {
         setProducts(data.productos)
-        // ACA VA EL setTotal
+        let temp = Object.entries(inputValues).reduce((acumulador, [id, cantidad]) => {
+            const product = products.find(prod => prod.id === parseInt(id))
+            if(product) {
+                return acumulador + product.precioUnitarioCompra * product.cantidadPorCaja * cantidad
+            }
+            return acumulador
+        }, 0)
+        setTotal(toRounded(temp))
     }, [data, inputValues])
+
+    const chackValues = () => {
+        console.log(inputValues)
+    }
 
     return (
         <div
@@ -123,7 +130,7 @@ export const PurchaseOrder = () => {
                         </tr>
                     ))}
                     <tr className='bg-slate-500 text-slate-200'>
-                        <td colSpan={5} className='p-3 text-lg text-right font-bold'>TOTAL PEDIDO</td>
+                        <td colSpan='5' className='p-3 text-lg text-right font-bold'>TOTAL PEDIDO</td>
                         <td className='text-lg font-bold'>${total || 0}</td>
                     </tr>
                 </tbody>

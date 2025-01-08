@@ -7,7 +7,7 @@ export const db = {
             precioUnitarioCompra: 1.2,
             precioUnitarioVenta: 2,
             cantidadPorCaja: 50,
-            stockActual: 5
+            stockActual: 55
         },
         {
             id: 2,
@@ -16,7 +16,7 @@ export const db = {
             precioUnitarioCompra: 1.2,
             precioUnitarioVenta: 2,
             cantidadPorCaja: 50,
-            stockActual: 10
+            stockActual: 110
         },
         {
             id: 3,
@@ -25,7 +25,7 @@ export const db = {
             precioUnitarioCompra: 0.7,
             precioUnitarioVenta: 1.5,
             cantidadPorCaja: 50,
-            stockActual: 5
+            stockActual: 75
         },
         {
             id: 4,
@@ -34,7 +34,7 @@ export const db = {
             precioUnitarioCompra: 0.5,
             precioUnitarioVenta: 0.9,
             cantidadPorCaja: 40,
-            stockActual: 10
+            stockActual: 130
         },
         {
             id: 5,
@@ -43,7 +43,7 @@ export const db = {
             precioUnitarioCompra: 1.5,
             precioUnitarioVenta: 2.3,
             cantidadPorCaja: 20,
-            stockActual: 10
+            stockActual: 105
         },
         {
             id: 6,
@@ -52,7 +52,7 @@ export const db = {
             precioUnitarioCompra: 1.5,
             precioUnitarioVenta: 2.3,
             cantidadPorCaja: 20,
-            stockActual: 10
+            stockActual: 100
         },
         {
             id: 7,
@@ -61,7 +61,7 @@ export const db = {
             precioUnitarioCompra: 2.5,
             precioUnitarioVenta: 4,
             cantidadPorCaja: 10,
-            stockActual: 10
+            stockActual: 110
         },
         {
             id: 8,
@@ -70,7 +70,7 @@ export const db = {
             precioUnitarioCompra: 2.4,
             precioUnitarioVenta: 3.9,
             cantidadPorCaja: 10,
-            stockActual: 10
+            stockActual: 110
         },
         {
             id: 9,
@@ -79,7 +79,7 @@ export const db = {
             precioUnitarioCompra: 2.2,
             precioUnitarioVenta: 3.8,
             cantidadPorCaja: 10,
-            stockActual: 10
+            stockActual: 100
         },
         {
             id: 10,
@@ -88,7 +88,7 @@ export const db = {
             precioUnitarioCompra: 1,
             precioUnitarioVenta: 1.8,
             cantidadPorCaja: 10,
-            stockActual: 10
+            stockActual: 80
         },
         {
             id: 11,
@@ -97,7 +97,7 @@ export const db = {
             precioUnitarioCompra: 1.2,
             precioUnitarioVenta: 2,
             cantidadPorCaja: 10,
-            stockActual: 10
+            stockActual: 80
         },
         {
             id: 12,
@@ -106,7 +106,7 @@ export const db = {
             precioUnitarioCompra: 5,
             precioUnitarioVenta: 9,
             cantidadPorCaja: 20,
-            stockActual: 10
+            stockActual: 210
         },
         {
             id: 13,
@@ -115,7 +115,7 @@ export const db = {
             precioUnitarioCompra: 0.4,
             precioUnitarioVenta: 1.2,
             cantidadPorCaja: 50,
-            stockActual: 10
+            stockActual: 60
         },
         {
             id: 14,
@@ -124,7 +124,7 @@ export const db = {
             precioUnitarioCompra: 0.4,
             precioUnitarioVenta: 1.1,
             cantidadPorCaja: 40,
-            stockActual: 10
+            stockActual: 60
         },
         {
             id: 15,
@@ -133,7 +133,7 @@ export const db = {
             precioUnitarioCompra: 0.5,
             precioUnitarioVenta: 1.2,
             cantidadPorCaja: 30,
-            stockActual: 10
+            stockActual: 110
         },
         {
             id: 16,
@@ -142,7 +142,7 @@ export const db = {
             precioUnitarioCompra: 2.5,
             precioUnitarioVenta: 4.8,
             cantidadPorCaja: 10,
-            stockActual: 10
+            stockActual: 60
         },
         {
             id: 17,
@@ -151,7 +151,7 @@ export const db = {
             precioUnitarioCompra: 2.5,
             precioUnitarioVenta: 4.8,
             cantidadPorCaja: 10,
-            stockActual: 10
+            stockActual: 60
         },
         {
             id: 18,
@@ -160,7 +160,7 @@ export const db = {
             precioUnitarioCompra: 4,
             precioUnitarioVenta: 10,
             cantidadPorCaja: 5,
-            stockActual: 10
+            stockActual: 100
         },
         {
             id: 19,
@@ -169,7 +169,7 @@ export const db = {
             precioUnitarioCompra: 3,
             precioUnitarioVenta: 5.8,
             cantidadPorCaja: 20,
-            stockActual: 10
+            stockActual: 120
         },
         {
             id: 20,
@@ -178,7 +178,7 @@ export const db = {
             precioUnitarioCompra: 3,
             precioUnitarioVenta: 5.7,
             cantidadPorCaja: 20,
-            stockActual: 10
+            stockActual: 120
         },
     ],
     proveedores: [
