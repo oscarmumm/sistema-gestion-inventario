@@ -288,10 +288,28 @@ export const db = {
             nombreUsuario: 'admin',
             nombre: 'Oscar',
             apellido: 'Rodriguez',
-            fechaCreacion: 1734678272267,
+            fechaCreacion: 1734678272367,
             role: 'admin',
-            password: 'Hola1234'
-        }
+            password: 'admin'
+        },
+        {
+            id: 2,
+            nombreUsuario: 'josegarcia',
+            nombre: 'José',
+            apellido: 'García',
+            fechaCreacion: 1734678272767,
+            role: 'manager',
+            password: '1234'
+        },
+        {
+            id: 2,
+            nombreUsuario: 'carlosperez',
+            nombre: 'Carlos',
+            apellido: 'Perez',
+            fechaCreacion: 1734678273267,
+            role: 'user',
+            password: '1234'
+        },
     ],
     pedidosAProveedores: [
         {
