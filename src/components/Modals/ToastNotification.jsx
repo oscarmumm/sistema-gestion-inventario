@@ -12,7 +12,7 @@ export const ToastNotification = ({ message, notificationType }) => {
     }, [notificationType])
     return (
         <motion.div
-            className='fixed top-0 left-0 h-screen w-screen flex items-center justify-center modal-main-bg'
+            className='fixed top-0 left-0 h-screen w-screen flex items-center justify-center modal-main-bg z-50'
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
