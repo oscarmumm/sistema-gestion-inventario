@@ -4,7 +4,6 @@ import { UserContext } from "../context/UserContext";
 
 export const ProtectedRoute = ({children, allowedRoles}) => {
     const {user} = useContext(UserContext)
-    console.log("User Context:", user);
     if(!user) {
         return <Navigate to='/' replace />
     }

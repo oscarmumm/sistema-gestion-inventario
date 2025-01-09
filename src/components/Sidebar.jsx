@@ -125,6 +125,11 @@ export const Sidebar = () => {
                             </li>
 
                             <li className="mt-3 hover:text-sky-200">
+                                <Link to="/today-sales-history">
+                                    Ventas de Hoy
+                                </Link>
+                            </li>
+                            <li className="mt-3 hover:text-sky-200">
                                 <Link to="/sales-history">
                                     Historial de Ventas
                                 </Link>

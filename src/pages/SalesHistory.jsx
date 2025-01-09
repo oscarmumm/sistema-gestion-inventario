@@ -2,10 +2,11 @@ import { useContext, useEffect, useState } from 'react'
 import { DataContext } from '../context/DataContext'
 import { SaleHistoryModal } from '../components/Modals/SaleHistoryModal'
 import { AnimatePresence } from 'framer-motion'
+import { SalesHistoryBoxLine } from '../components/SalesHistoryBoxLine'
 
 export const SalesHistory = () => {
     const { data, setData } = useContext(DataContext)
-    const [ventas, setVentas] = useState(data.ventas)
+    const [ventas, setVentas] = useState(data.historialVentas)
     const [saleHistoryModalActive, setSaleHistoryModalActive] = useState(false)
     const [selectedSale, setSelectedSale] = useState()
     const [paymentMethod, setPaymentMethod] = useState('')
@@ -22,9 +23,12 @@ export const SalesHistory = () => {
     const [endDate, setEndDate] = useState('')
     const [filteredSales, setFilteredSales] = useState(ventas)
 
+    //--------------------------------IMPORTANT!!-------------------------------------
+    //filter logic should be remade after logic changes on sales history render method
+
     useEffect(() => {
-        setVentas(data.ventas)
-    }, [data])
+        setVentas(data.historialVentas)
+    }, [data.historialVentas])
 
     const closeSaleHistoryModal = () => {
         setSaleHistoryModalActive(false)
@@ -66,6 +70,10 @@ export const SalesHistory = () => {
         setEndDate('')
         setPaymentMethod('')
         setFilteredSales(ventas)
+    }
+
+    const testClick = () => {
+        console.log(filteredSales)
     }
 
     return (
@@ -126,34 +134,22 @@ export const SalesHistory = () => {
                         </button>
                     </div>
                 </div>
+                    <button className='absolute top-24 left-96 text-white bg-red-500 p-3 rounded-md shadow-lg' onClick={testClick}>TEST</button>
                 <div className='p-3 flex flex-col'>
-                    <table className=' bg-slate-50 text-center min-w-max max-w-screen-md shadow-lg'>
-                        <thead className='bg-slate-500 text-slate-200'>
-                            <tr>
-                                <th className='p-3 min-w-40'>Fecha</th>
-                                <th className='p-3 min-w-40'>Hora</th>
-                                <th className='p-3 min-w-40'>Monto</th>
-                                <th className='p-3 min-w-40'>Método de Pago</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {filteredSales.map((sale) => (
-                                <tr
-                                    key={sale.id}
-                                    className='hover:bg-slate-200 border-t-slate-200 border-t-2 cursor-pointer'
-                                    onClick={() => {
-                                        setSelectedSale(sale)
-                                        setSaleHistoryModalActive(true)
-                                    }}
-                                >
-                                    <td className='p-3'>{sale.fecha}</td>
-                                    <td className='p-3'>{sale.hora}</td>
-                                    <td className='p-3'>${sale.importe}</td>
-                                    <td className='p-3'>{sale.metodoDePago}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                    <div className='bg-slate-500 text-slate-200 text-center font-semibold p-3 mb-3 flex rounded-lg shadow-xl'>
+                        <span className='w-40'>Fecha</span>
+                        <span className='w-40'>Hora</span>
+                        <span className='w-40'>Monto</span>
+                        <span className='w-40'>Método de pago</span>
+                    </div>
+                    
+                    {
+                        filteredSales.map((date) => (
+                            Object.entries(date).map(([fecha, ventas]) => (
+                                <SalesHistoryBoxLine fecha={fecha} ventas={ventas} />
+                            ))
+                        ))
+                    }
 
                     {filteredSales.length === 0 && (
                         <p className='text-xl text-center p-3'>

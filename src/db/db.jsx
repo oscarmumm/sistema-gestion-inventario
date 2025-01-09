@@ -7,7 +7,7 @@ export const db = {
             precioUnitarioCompra: 1.2,
             precioUnitarioVenta: 2,
             cantidadPorCaja: 50,
-            stockActual: 55
+            stockActual: 55,
         },
         {
             id: 2,
@@ -16,7 +16,7 @@ export const db = {
             precioUnitarioCompra: 1.2,
             precioUnitarioVenta: 2,
             cantidadPorCaja: 50,
-            stockActual: 110
+            stockActual: 110,
         },
         {
             id: 3,
@@ -25,7 +25,7 @@ export const db = {
             precioUnitarioCompra: 0.7,
             precioUnitarioVenta: 1.5,
             cantidadPorCaja: 50,
-            stockActual: 75
+            stockActual: 75,
         },
         {
             id: 4,
@@ -34,7 +34,7 @@ export const db = {
             precioUnitarioCompra: 0.5,
             precioUnitarioVenta: 0.9,
             cantidadPorCaja: 40,
-            stockActual: 130
+            stockActual: 130,
         },
         {
             id: 5,
@@ -43,7 +43,7 @@ export const db = {
             precioUnitarioCompra: 1.5,
             precioUnitarioVenta: 2.3,
             cantidadPorCaja: 20,
-            stockActual: 105
+            stockActual: 105,
         },
         {
             id: 6,
@@ -52,7 +52,7 @@ export const db = {
             precioUnitarioCompra: 1.5,
             precioUnitarioVenta: 2.3,
             cantidadPorCaja: 20,
-            stockActual: 100
+            stockActual: 100,
         },
         {
             id: 7,
@@ -61,7 +61,7 @@ export const db = {
             precioUnitarioCompra: 2.5,
             precioUnitarioVenta: 4,
             cantidadPorCaja: 10,
-            stockActual: 110
+            stockActual: 110,
         },
         {
             id: 8,
@@ -70,7 +70,7 @@ export const db = {
             precioUnitarioCompra: 2.4,
             precioUnitarioVenta: 3.9,
             cantidadPorCaja: 10,
-            stockActual: 110
+            stockActual: 110,
         },
         {
             id: 9,
@@ -79,7 +79,7 @@ export const db = {
             precioUnitarioCompra: 2.2,
             precioUnitarioVenta: 3.8,
             cantidadPorCaja: 10,
-            stockActual: 100
+            stockActual: 100,
         },
         {
             id: 10,
@@ -88,7 +88,7 @@ export const db = {
             precioUnitarioCompra: 1,
             precioUnitarioVenta: 1.8,
             cantidadPorCaja: 10,
-            stockActual: 80
+            stockActual: 80,
         },
         {
             id: 11,
@@ -97,7 +97,7 @@ export const db = {
             precioUnitarioCompra: 1.2,
             precioUnitarioVenta: 2,
             cantidadPorCaja: 10,
-            stockActual: 80
+            stockActual: 80,
         },
         {
             id: 12,
@@ -106,7 +106,7 @@ export const db = {
             precioUnitarioCompra: 5,
             precioUnitarioVenta: 9,
             cantidadPorCaja: 20,
-            stockActual: 210
+            stockActual: 210,
         },
         {
             id: 13,
@@ -115,7 +115,7 @@ export const db = {
             precioUnitarioCompra: 0.4,
             precioUnitarioVenta: 1.2,
             cantidadPorCaja: 50,
-            stockActual: 60
+            stockActual: 60,
         },
         {
             id: 14,
@@ -124,7 +124,7 @@ export const db = {
             precioUnitarioCompra: 0.4,
             precioUnitarioVenta: 1.1,
             cantidadPorCaja: 40,
-            stockActual: 60
+            stockActual: 60,
         },
         {
             id: 15,
@@ -133,7 +133,7 @@ export const db = {
             precioUnitarioCompra: 0.5,
             precioUnitarioVenta: 1.2,
             cantidadPorCaja: 30,
-            stockActual: 110
+            stockActual: 110,
         },
         {
             id: 16,
@@ -142,7 +142,7 @@ export const db = {
             precioUnitarioCompra: 2.5,
             precioUnitarioVenta: 4.8,
             cantidadPorCaja: 10,
-            stockActual: 60
+            stockActual: 60,
         },
         {
             id: 17,
@@ -151,7 +151,7 @@ export const db = {
             precioUnitarioCompra: 2.5,
             precioUnitarioVenta: 4.8,
             cantidadPorCaja: 10,
-            stockActual: 60
+            stockActual: 60,
         },
         {
             id: 18,
@@ -160,7 +160,7 @@ export const db = {
             precioUnitarioCompra: 4,
             precioUnitarioVenta: 10,
             cantidadPorCaja: 5,
-            stockActual: 100
+            stockActual: 100,
         },
         {
             id: 19,
@@ -169,7 +169,7 @@ export const db = {
             precioUnitarioCompra: 3,
             precioUnitarioVenta: 5.8,
             cantidadPorCaja: 20,
-            stockActual: 120
+            stockActual: 120,
         },
         {
             id: 20,
@@ -178,7 +178,7 @@ export const db = {
             precioUnitarioCompra: 3,
             precioUnitarioVenta: 5.7,
             cantidadPorCaja: 20,
-            stockActual: 120
+            stockActual: 120,
         },
     ],
     proveedores: [
@@ -290,7 +290,7 @@ export const db = {
             apellido: 'Rodriguez',
             fechaCreacion: 1734678272367,
             role: 'admin',
-            password: 'admin'
+            password: 'admin',
         },
         {
             id: 2,
@@ -299,7 +299,7 @@ export const db = {
             apellido: 'García',
             fechaCreacion: 1734678272767,
             role: 'manager',
-            password: '1234'
+            password: '1234',
         },
         {
             id: 2,
@@ -308,25 +308,121 @@ export const db = {
             apellido: 'Perez',
             fechaCreacion: 1734678273267,
             role: 'user',
-            password: '1234'
+            password: '1234',
         },
     ],
     pedidosAProveedores: [
         {
             id: 1,
-            fechaPedido: "07/01/2025",
-            horaPedido: "15:04",
+            fechaPedido: '07/01/2025',
+            horaPedido: '15:04',
             importeTotal: 60,
-            detallesPedido: 
-                [
-                    {
-                        id: 1 ,
-                        cantidadAPedir: 1,
-                        descripcion: "Lapicera Azul",
-                        proveedor: "Pelikan",
-                        importe: 60
-                    }
-                ]
-        }
-    ]
+            detallesPedido: [
+                {
+                    id: 1,
+                    cantidadAPedir: 1,
+                    descripcion: 'Lapicera Azul',
+                    proveedor: 'Pelikan',
+                    importe: 60,
+                },
+            ],
+        },
+    ],
+    historialVentas: [
+        {
+            '18/12/2024': [
+                {
+                    fecha: '18/12/2024',
+                    hora: '16:04',
+                    id: 1734678272266,
+                    importe: 2.4,
+                    metodoDePago: 'QR',
+                    detalles: [
+                        {
+                            id: 4,
+                            cantidad: 1,
+                            descripcion: 'Goma',
+                            precioUnitario: 0.5,
+                            importe: 0.5,
+                        },
+                        {
+                            id: 3,
+                            cantidad: 2,
+                            descripcion: 'Lapiz hb',
+                            precioUnitario: 0.7,
+                            importe: 1.4,
+                        },
+                        {
+                            id: 15,
+                            cantidad: 1,
+                            descripcion: 'Sacapuntas',
+                            precioUnitario: 0.5,
+                            importe: 0.5,
+                        },
+                    ],
+                },
+            ],
+        },
+        {
+            '19/12/2024': [
+                {
+                    fecha: '19/12/2024',
+                    hora: '13:55',
+                    id: 1734677742863,
+                    importe: 13.5,
+                    metodoDePago: 'Efectivo',
+                    detalles: [
+                        {
+                            id: 16,
+                            cantidad: 1,
+                            descripcion: 'Cuaderno Cuadriculado',
+                            precioUnitario: 2.5,
+                            importe: 2.5,
+                        },
+                        {
+                            id: 17,
+                            cantidad: 2,
+                            descripcion: 'Cuaderno Rayado',
+                            precioUnitario: 2.5,
+                            importe: 5,
+                        },
+                        {
+                            id: 1,
+                            cantidad: 5,
+                            descripcion: 'Lapicera',
+                            precioUnitario: 1.2,
+                            importe: 6,
+                        },
+                    ],
+                },
+            ],
+        },
+        {
+            '20/12/2024': [
+                {
+                    fecha: '20/12/2024',
+                    hora: '13:16',
+                    id: 1734678272267,
+                    importe: 4.5,
+                    metodoDePago: 'Maestro',
+                    detalles: [
+                        {
+                            id: 4,
+                            cantidad: 3,
+                            descripcion: 'Goma',
+                            precioUnitario: 0.5,
+                            importe: 1.5,
+                        },
+                        {
+                            id: 15,
+                            cantidad: 6,
+                            descripcion: 'Sacapuntas',
+                            precioUnitario: 0.5,
+                            importe: 3,
+                        },
+                    ],
+                },
+            ],
+        },
+    ],
 }
