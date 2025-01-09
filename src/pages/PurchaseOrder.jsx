@@ -122,7 +122,7 @@ export const PurchaseOrder = () => {
         <div
             className="flex flex-col items-center h-full overflow-auto p-3"
             style={{maxHeight: 'calc(100vh - 64px)'}}>
-            <h2 className="text-2xl font-bold my-5">Pedido a Proveedores</h2>
+            <h2 className="text-2xl font-semibold my-5 text-slate-800">Pedido a Proveedores</h2>
             <button
                 className="bg-slate-600 hover:bg-slate-500 text-slate-50 p-3 my-3 ml-3 rounded-md shadow-lg flex items-center"
                 onClick={clickOnSave}>
@@ -132,7 +132,7 @@ export const PurchaseOrder = () => {
                 </IconContext.Provider>
                 Guardar pedido
             </button>
-            <div className="text-slate-50 bg-slate-600 rounded-md absolute top-20 right-10 p-3 shadow-lg">
+            <div className="text-slate-50 bg-slate-600 rounded-md absolute top-20 right-10 p-3 shadow-lg z-10">
                 Total del pedido: $ {total}
             </div>
             <table className="bg-slate-200 text-center min-w-fit max-w-screen-lg shadow-lg">

@@ -73,7 +73,7 @@ export const SalesHistory = () => {
             className='flex flex-col items-center h-full overflow-auto p-3'
             style={{ maxHeight: 'calc(100vh - 64px)' }}
         >
-            <h2 className='text-2xl font-bold my-6'>Historial de Ventas</h2>
+            <h2 className='text-2xl font-semibold my-6 text-slate-800'>Historial de Ventas</h2>
             <div className='p-3 flex justify-center min-w-max w-full'>
                 <div className='flex flex-col'>
                     <span className=' text-xl my-3'>Filtros:</span>

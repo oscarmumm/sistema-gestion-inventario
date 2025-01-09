@@ -14,7 +14,7 @@ export const StockDifference = () => {
         <div
             className="flex flex-col items-center h-full overflow-auto p-3"
             style={{maxHeight: 'calc(100vh - 64px)'}}>
-            <h2 className="text-2xl font-bold my-3">
+            <h2 className="text-2xl font-semibold my-3 text-slate-800">
                 Chequeo de Diferencias de Stock
             </h2>
             <p className="mb-3">

@@ -36,7 +36,7 @@ export const UserManagement = () => {
         <div
             className="flex flex-col h-full overflow-auto p-3 items-center"
             style={{maxHeight: 'calc(100vh - 64px)'}}>
-            <h2 className='text-2xl font-bold my-3'>Gestión de Usuarios</h2>
+            <h2 className='text-2xl font-semibold my-3 text-slate-800'>Gestión de Usuarios</h2>
             <button
                 className="bg-green-600 hover:bg-green-500 text-slate-50 p-3 my-3 ml-3 rounded-md shadow-lg"
                 onClick={openNewUserModal}>

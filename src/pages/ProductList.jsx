@@ -53,7 +53,7 @@ export const ProductList = () => {
             className='flex flex-col items-center h-full overflow-auto p-3'
             style={{ maxHeight: 'calc(100vh - 64px)' }}
         >
-                <h2 className='text-2xl font-bold my-5'>Lista de Productos</h2>
+                <h2 className='text-2xl font-semibold my-5 text-slate-800'>Lista de Productos</h2>
             <div className='flex justify-between items-center min-w-max'>
                 <div className='flex items-center'>
                     <span className='mr-3'>Búsqueda de Productos:</span>

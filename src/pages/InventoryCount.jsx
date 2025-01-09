@@ -78,7 +78,7 @@ export const InventoryCount = () => {
             className="flex flex-col h-full overflow-auto p-3 items-center"
             style={{maxHeight: 'calc(100vh - 64px)'}}>
             <div className="flex justify-between">
-                <h2 className="text-2xl font-bold my-5">Conteo de Inventario</h2>
+                <h2 className="text-2xl font-semibold my-5">Conteo de Inventario</h2>
                 <button
                     className="bg-slate-600 hover:bg-slate-500 text-slate-50 p-3 my-3 ml-3 rounded-md shadow-lg flex items-center"
                     onClick={handlePrint}>
