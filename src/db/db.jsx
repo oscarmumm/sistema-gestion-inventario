@@ -431,6 +431,8 @@ export const db = {
                     metodoDePago: 'Efectivo',
                 },
             ],
+        },
+        {
             '10/01/2025': [
                 {
                     id: '1736496830937',

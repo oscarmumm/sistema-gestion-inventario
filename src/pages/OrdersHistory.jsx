@@ -3,6 +3,9 @@ import {DataContext} from '../context/DataContext'
 import {AnimatePresence} from 'framer-motion'
 import {PurchaseOrderModal} from '../components/Modals/PurchaseOrderModal'
 
+//--------------------------IMPORTANTE!
+//arreglae el funcionamiento de los filtros
+
 export const OrdersHistory = () => {
     const {data, setData} = useContext(DataContext)
     const [orders, setOrders] = useState(data.pedidosAProveedores)
@@ -53,38 +56,38 @@ export const OrdersHistory = () => {
             className="flex flex-col items-center h-full overflow-auto p-3"
             style={{maxHeight: 'calc(100vh - 64px)'}}>
             <h2 className="text-2xl font-semibold my-5 text-slate-800">Historial de Órdenes</h2>
-            <div className="p-3 flex justify-center min-w-max w-full">
-                <div className="flex flex-col">
+            <div className="p-3 flex flex-col items-center justify-center min-w-max w-full">
+                <div className="flex flex-col max-w-fit">
                     <span className=" text-xl my-3">Filtros:</span>
-                    <div className="flex flex-col items-start mb-5 p-3 rounded-md shadow-lg bg-slate-500 text-slate-50 min-w-max">
-                        <label>Desde</label>
+                    <div className="flex items-center justify-center mb-5 p-3 rounded-md shadow-lg bg-slate-500 text-slate-50 min-w-max">
+                        <label className='mx-1'>Desde</label>
                         <input
-                            className="p-2 rounded-md shadow-lg text-slate-900 outline-none"
+                            className="p-2 rounded-md shadow-lg text-slate-900 outline-none mx-1"
                             type="date"
                             value={startDate}
                             onChange={(e) => setStartDate(e.target.value)}
                         />
-                        <label>Hasta</label>
+                        <label className='mx-1'>Hasta</label>
                         <input
-                            className="p-2 rounded-md shadow-lg text-slate-900 outline-none"
+                            className="p-2 rounded-md shadow-lg text-slate-900 outline-none mx-1"
                             type="date"
                             value={endDate}
                             onChange={(e) => setEndDate(e.target.value)}
                         />
                         <button
-                            className="bg-emerald-500 hover:bg-emerald-400 text-slate-50 font-bold mt-3 p-2 w-24 rounded-md shadow-lg"
+                            className="bg-emerald-500 hover:bg-emerald-400 text-slate-50 font-bold p-2 mx-1 w-24 rounded-md shadow-lg"
                             onClick={applyFilters}>
                             Aplicar
                         </button>
                         <button
-                            className="bg-yellow-500 hover:bg-yellow-400 text-slate-50 font-bold mt-3 p-2 w-32 rounded-md shadow-lg"
+                            className="bg-yellow-500 hover:bg-yellow-400 text-slate-50 font-bold p-2 mx-1 w-32 rounded-md shadow-lg"
                             onClick={quitFilters}>
                             Quitar filtros
                         </button>
                     </div>
                 </div>
                 <div className="p-3 flex flex-col">
-                    <table className="bg-slate-50 text-center min-w-max max-w-screen-md shadow-lg">
+                    <table className="bg-slate-50 text-center min-w-max max-w-screen-md shadow-xl rounded-lg overflow-hidden">
                         <thead className="bg-slate-500 text-slate-200">
                             <tr>
                                 <th className="p-3 min-w-40">Fecha</th>

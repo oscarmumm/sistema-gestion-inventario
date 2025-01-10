@@ -58,14 +58,14 @@ export const VendorList = () => {
             <div className="flex items-center justify-between max-w-screen-sm">
                 <h2 className="text-2xl font-semibold my-5 text-slate-800">Agenda de Proveedores</h2>
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center my-5">
                 <span className="mr-3">Búsqueda de Proveedor</span>
                 <Searchbar
                     startSearch={startSearch}
                     resetSearch={resetSearch}
                 />
             </div>
-            <table className="bg-slate-50 text-center min-w-fit">
+            <table className="bg-slate-50 text-center min-w-fit overflow-hidden rounded-lg shadow-xl">
             <thead className='bg-slate-500 text-slate-200'>
                     <IconContext.Provider
                         value={{ className: 'text-slate-200 w-7 h-7' }}

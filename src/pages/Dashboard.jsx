@@ -11,7 +11,7 @@ export const Dashboard = () => {
 
     useEffect(() => {
         // Filtrar las ventas del día
-        const filteredSales = data.ventas.filter((entry) => entry.fecha === businessDay);
+        const filteredSales = data.ventasDeHoy.filter((entry) => entry.fecha === businessDay);
         // Función para calcular ventas por método de pago
         const calculateSalesByPaymentMethod = (filteredSales) => {
             return filteredSales.reduce((acumulador, transaccion) => {
@@ -28,7 +28,7 @@ export const Dashboard = () => {
     
         setTodaySalesPerPaymentMethod(salesPerMethod);
     
-    }, [data.ventas, businessDay]);
+    }, [data.ventasDeHoy, businessDay]);
     
     return (
         <div

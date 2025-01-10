@@ -85,7 +85,7 @@ export const VendorManagement   = () => {
             <div className='flex items-center justify-between max-w-screen-sm'>
                 <h2 className='text-2xl font-semibold my-5 text-slate-800'>Gestión de Proveedores</h2>
             </div>
-            <div className='flex justify-between items-center min-w-max'>
+            <div className='flex justify-between items-center min-w-max my-5'>
                 <div className='flex items-center'>
                     <span className='mr-3'>Búsqueda de Proveedor</span>
                     <Searchbar
@@ -100,7 +100,7 @@ export const VendorManagement   = () => {
                     Nuevo Proveedor
                 </button>
             </div>
-            <table className='bg-slate-50 text-center min-w-fit'>
+            <table className='bg-slate-50 text-center min-w-fit rounded-lg shadow-xl overflow-hidden'>
                 <thead className='bg-slate-500 text-slate-200'>
                     <IconContext.Provider
                         value={{ className: 'text-slate-200 w-7 h-7' }}

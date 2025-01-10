@@ -38,12 +38,11 @@ export const UserManagement = () => {
             style={{maxHeight: 'calc(100vh - 64px)'}}>
             <h2 className='text-2xl font-semibold my-3 text-slate-800'>Gestión de Usuarios</h2>
             <button
-                className="bg-green-600 hover:bg-green-500 text-slate-50 p-3 my-3 ml-3 rounded-md shadow-lg"
+                className="bg-green-600 hover:bg-green-500 text-slate-50 p-3 my-5 ml-3 rounded-md shadow-lg"
                 onClick={openNewUserModal}>
                 Nuevo Usuario
             </button>
-            <h3>Lista de Usuarios</h3>
-            <table className="bg-slate-50 text-center min-w-fit max-w-screen-lg">
+            <table className="bg-slate-50 text-center min-w-fit max-w-screen-lg rounded-lg shadow-xl overflow-hidden">
                 <thead className="bg-slate-500 text-slate-200">
                     <tr>
                         <th className="p-3">Usuario</th>

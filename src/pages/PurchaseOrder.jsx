@@ -135,7 +135,7 @@ export const PurchaseOrder = () => {
             <div className="text-slate-50 bg-slate-600 rounded-md absolute top-20 right-10 p-3 shadow-lg z-10">
                 Total del pedido: $ {total}
             </div>
-            <table className="bg-slate-200 text-center min-w-fit max-w-screen-lg shadow-lg">
+            <table className="bg-slate-200 text-center min-w-fit max-w-screen-lg shadow-xl rounded-lg overflow-hidden">
                 <thead className="bg-slate-500 text-slate-200">
                     <tr>
                         <th className="p-3">Descripción</th>

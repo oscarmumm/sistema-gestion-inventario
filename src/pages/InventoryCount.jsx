@@ -75,12 +75,12 @@ export const InventoryCount = () => {
 
     return (
         <div
-            className="flex flex-col h-full overflow-auto p-3 items-center"
+            className="flex flex-col h-full overflow-auto p-3 items-center relative"
             style={{maxHeight: 'calc(100vh - 64px)'}}>
-            <div className="flex justify-between">
-                <h2 className="text-2xl font-semibold my-5">Conteo de Inventario</h2>
+            <div className="flex flex-col justify-between">
+                <h2 className="text-2xl text-center font-semibold my-5">Conteo de Inventario</h2>
                 <button
-                    className="bg-slate-600 hover:bg-slate-500 text-slate-50 p-3 my-3 ml-3 rounded-md shadow-lg flex items-center"
+                    className="bg-slate-600 hover:bg-slate-500 text-slate-50 p-3 my-3 rounded-md shadow-xl flex items-center absolute top-2 right-2"
                     onClick={handlePrint}>
                     <IconContext.Provider
                         value={{className: 'text-slate-200 w-7 h-7'}}>
@@ -91,7 +91,7 @@ export const InventoryCount = () => {
             </div>
             <table
                 ref={ref}
-                className="printable-table bg-white text-center min-w-fit max-w-screen-lg shadow-lg">
+                className="printable-table bg-white text-center min-w-fit max-w-screen-lg shadow-xl overflow-hidden rounded-lg">
                 <thead className="bg-slate-500 text-slate-200">
                     <tr>
                         <th className="p-3">Descripcion</th>
@@ -103,9 +103,9 @@ export const InventoryCount = () => {
                 <tbody>
                     {products.map((product) => (
                         <tr
-                            className="hover:bg-slate-300 border-b-2 border-slate-300"
+                            className="hover:bg-slate-300 border-b border-slate-300"
                             key={product.id}>
-                            <td className="p-3 text-slate-900 font-semibold">
+                            <td className="p-3 text-slate-900">
                                 {product.descripcion}
                             </td>
                             <td className="p-3 text-slate-900 font-semibold">
@@ -113,7 +113,7 @@ export const InventoryCount = () => {
                             </td>
                             <td className="min-w-32">
                                 <input
-                                    className="w-24 outline-none border-2 border-slate-400 px-3 py-1 text-center rounded-md"
+                                    className="w-24 outline-none border border-slate-400 px-3 py-1 text-center rounded-md"
                                     type="number"
                                     name={`${product.id}-cajas`}
                                     value={inputValues[`${product.id}-cajas`]}
@@ -123,7 +123,7 @@ export const InventoryCount = () => {
                             </td>
                             <td className="min-w-32">
                                 <input
-                                    className="w-24 outline-none border-2 border-slate-400 px-3 py-1 text-center rounded-md"
+                                    className="w-24 outline-none border border-slate-400 px-3 py-1 text-center rounded-md"
                                     type="number"
                                     name={`${product.id}-unidades`}
                                     value={inputValues[`${product.id}-unidades`]}

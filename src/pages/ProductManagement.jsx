@@ -88,7 +88,7 @@ export const ProductManagement = () => {
             style={{ maxHeight: 'calc(100vh - 64px)' }}
         >
             <h2 className='text-2xl font-semibold my-5 text-slate-800'>Gestión de Productos</h2>
-            <div className='flex justify-between items-center  min-w-max'>
+            <div className='flex justify-between items-center  min-w-max my-5'>
                 <div className='flex items-center'>
                     <span className='mr-3'>Búsqueda de Productos:</span>
                     <Searchbar
@@ -103,7 +103,7 @@ export const ProductManagement = () => {
                     Agregar Producto
                 </button>
             </div>
-            <table className='bg-slate-50 text-center min-w-max'>
+            <table className='bg-slate-50 text-center min-w-max rounded-lg shadow-xl overflow-hidden'>
                 <thead className='bg-slate-500 text-slate-200'>
                     <IconContext.Provider
                         value={{ className: 'text-slate-200 w-7 h-7' }}

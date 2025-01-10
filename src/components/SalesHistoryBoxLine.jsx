@@ -16,7 +16,7 @@ const arrowVariants = {
 export const SalesHistoryBoxLine = ({ fecha, ventas }) => {
     const [salesExpanded, setSalesExpanded] = useState(false)
     return (
-        <div className='bg-slate-50 flex flex-col items-start p-3 mb-3 rounded-lg shadow-xl text-center'>
+        <div className='bg-slate-50 flex flex-col items-start p-3 mb-3 rounded-lg shadow-xl text-center max-w-fit'>
             <IconContext.Provider value={{ className: 'w-6 h-6' }}>
                 <div className='flex items-center'>
                     <span>{fecha}</span>
