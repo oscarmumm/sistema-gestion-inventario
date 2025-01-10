@@ -72,10 +72,6 @@ export const SalesHistory = () => {
         setFilteredSales(ventas)
     }
 
-    const testClick = () => {
-        console.log(filteredSales)
-    }
-
     return (
         <div
             className='flex flex-col items-center h-full overflow-auto p-3'
@@ -134,7 +130,6 @@ export const SalesHistory = () => {
                         </button>
                     </div>
                 </div>
-                    <button className='absolute top-24 left-96 text-white bg-red-500 p-3 rounded-md shadow-lg' onClick={testClick}>TEST</button>
                 <div className='p-3 flex flex-col'>
                     <div className='bg-slate-500 text-slate-200 text-center font-semibold p-3 mb-3 flex rounded-lg shadow-xl'>
                         <span className='w-40'>Fecha</span>
@@ -146,7 +141,7 @@ export const SalesHistory = () => {
                     {
                         filteredSales.map((date) => (
                             Object.entries(date).map(([fecha, ventas]) => (
-                                <SalesHistoryBoxLine fecha={fecha} ventas={ventas} />
+                                <SalesHistoryBoxLine key={fecha} fecha={fecha} ventas={ventas} />
                             ))
                         ))
                     }

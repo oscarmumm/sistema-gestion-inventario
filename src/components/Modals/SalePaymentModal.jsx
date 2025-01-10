@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
 import { ConfirmationModal } from './ConfirmationModal'
 import { WarningModal } from './WarningModal'
+import { roundTwoDecimals } from '../../utils/Utils'
 
 export const SalePaymentModal = ({
     closeSalePaymentModal,
@@ -61,7 +62,7 @@ export const SalePaymentModal = ({
                 exit={{ opacity: 0, y: 100 }}
             >
                 <h3 className='text-3xl'>Registrar pago</h3>
-                <span className='my-10 text-2xl'>Monto: ${total}</span>
+                <span className='my-10 text-2xl'>Monto: ${roundTwoDecimals(total)}</span>
                 <label className='mb-3'>Método de pago</label>
                 <select
                     name='paymentMethod'

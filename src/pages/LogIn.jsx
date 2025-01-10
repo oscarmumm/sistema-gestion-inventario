@@ -33,19 +33,19 @@ export const LogIn = () => {
         } else {
             setErrorMessage('Datos de inicio de sesión incorrectos')
         }
-        console.log(user)
     }
 
+    // estas funciones setean las credenciales adecuadas para probar el sistema
     const setAdminCredentials = () => {
-        setUserCredentials({username: 'admin', password: 'hJ.56lK.g'})
+        setUserCredentials({ username: 'admin', password: 'hJ.56lK.g' })
     }
 
     const setManagerCredentials = () => {
-        setUserCredentials({username: 'josegarcia', password: '15afG1.cv'})
+        setUserCredentials({ username: 'josegarcia', password: '15afG1.cv' })
     }
-    
+
     const setEmployeeCredentials = () => {
-        setUserCredentials({username: 'carlosperez',password: 'ta68fgVV1.'})
+        setUserCredentials({ username: 'carlosperez', password: 'ta68fgVV1.' })
     }
 
     const viewPasswordInputValue = (e) => {
@@ -55,9 +55,12 @@ export const LogIn = () => {
 
     return (
         <div className='flex flex-col items-center justify-center h-screen w-screen overflow-auto bg-slate-300 text-slate-800'>
-            <h1 className='text-3xl font-semibold  mb-10'>
-                Sistema de Gestión de Comercio
-            </h1>
+            <div className='flex flex-col items-center mb-10'>
+                <h1 className='text-3xl font-semibold mb-2'>
+                    Sistema de Gestión de Comercio
+                </h1>
+                <span className='font-semibold text-xl'>(Prototipo)</span>
+            </div>
             <div className='bg-slate-100 py-5 px-10 w-fit rounded-xl min-w-96 shadow-xl'>
                 <p className='text-center text-xl my-5'>Iniciar Sesión</p>
                 <form className='flex flex-col'>

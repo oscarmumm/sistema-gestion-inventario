@@ -159,7 +159,7 @@ export const RegisterSale = () => {
         setData({
             ...data,
             productos: newProductData,
-            ventas: [...data.ventas, newSale]
+            ventasDeHoy: [...data.ventasDeHoy, newSale]
         })
 
         setQuantityToAdd('')
