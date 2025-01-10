@@ -290,7 +290,7 @@ export const db = {
             apellido: 'Rodriguez',
             fechaCreacion: 1734678272367,
             role: 'admin',
-            password: 'admin',
+            password: 'hJ.56lK.g',
         },
         {
             id: 2,
@@ -299,7 +299,7 @@ export const db = {
             apellido: 'García',
             fechaCreacion: 1734678272767,
             role: 'manager',
-            password: '1234',
+            password: '15afG1.cv',
         },
         {
             id: 2,
@@ -308,7 +308,7 @@ export const db = {
             apellido: 'Perez',
             fechaCreacion: 1734678273267,
             role: 'user',
-            password: '1234',
+            password: 'ta68fgVV1.',
         },
     ],
     pedidosAProveedores: [

@@ -19,10 +19,10 @@ export const roundTwoDecimals = (num) => {
 // date management helper
 export const timeGetter = () => {
     const dateObj = new Date()
-    const hours = dateObj.getHours() > 10 ? dateObj.getHours() : `0${dateObj.getHours()}`
-    const minutes = dateObj.getMinutes() > 10 ? dateObj.getMinutes() : `0${dateObj.getMinutes()}`
-    const date = dateObj.getDate() > 10 ? dateObj.getDate() : `0${dateObj.getDate()}`
-    const month = dateObj.getMonth() > 10 ? (dateObj.getMonth() + 1) : `0${(dateObj.getMonth() + 1)}`
+    const hours = dateObj.getHours() >= 10 ? dateObj.getHours() : `0${dateObj.getHours()}`
+    const minutes = dateObj.getMinutes() >= 10 ? dateObj.getMinutes() : `0${dateObj.getMinutes()}`
+    const date = dateObj.getDate() >= 10 ? dateObj.getDate() : `0${dateObj.getDate()}`
+    const month = dateObj.getMonth() >= 10 ? (dateObj.getMonth() + 1) : `0${(dateObj.getMonth() + 1)}`
     const dateInfo = {
         fullDate: `${date}/${month}/${dateObj.getFullYear()}`,
         time: `${hours}:${minutes}`,
