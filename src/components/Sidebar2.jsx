@@ -36,6 +36,7 @@ export const Sidebar2 = () => {
         if (subMenuOpen && !inventoryMenuOpen) {
             setInventoryMenuOpen(true)
             setSalesMenuOpen(false)
+            setVendorMenuOpen(false)
         } else if (subMenuOpen && inventoryMenuOpen) {
             setInventoryMenuOpen(false)
             setSubMenuOpen(false)
@@ -49,12 +50,27 @@ export const Sidebar2 = () => {
         if (subMenuOpen && !salesMenuOpen) {
             setSalesMenuOpen(true)
             setInventoryMenuOpen(false)
+            setVendorMenuOpen(false)
         } else if (subMenuOpen && salesMenuOpen) {
             setSalesMenuOpen(false)
             setSubMenuOpen(false)
         } else {
             setSubMenuOpen(true)
             setSalesMenuOpen(true)
+        }
+    }
+
+    const openVendorMenu = () => {
+        if (subMenuOpen && !vendorMenuOpen) {
+            setVendorMenuOpen(true)
+            setSalesMenuOpen(false)
+            setInventoryMenuOpen(false)
+        } else if (subMenuOpen && vendorMenuOpen) {
+            setVendorMenuOpen(false)
+            setSubMenuOpen(false)
+        } else {
+            setSubMenuOpen(true)
+            setVendorMenuOpen(true)
         }
     }
 
@@ -81,7 +97,9 @@ export const Sidebar2 = () => {
                             </button>
                         </li>
                         <li className='flex items-center mb-3'>
-                            <MdOutlineDiversity3 />
+                            <button onClick={openVendorMenu}>
+                                <MdOutlineDiversity3 />
+                            </button>
                         </li>
                         <li className='flex items-center mb-3'>
                             <MdDataThresholding />
@@ -99,64 +117,73 @@ export const Sidebar2 = () => {
                     variants={submenuVariants}
                     animate={subMenuOpen ? 'open' : 'close'}
                 >
-                    <AnimatePresence>
-                        {inventoryMenuOpen && (
-                            <motion.div
-                                variants={linksVariants}
-                                animate={inventoryMenuOpen ? 'open' : 'close'}
-                                className='pl-10'
-                            >
-                                <p className='mb-12'>Inventario</p>
-                                <ul>
-                                    <li className='mt-2 hover:text-sky-200'>
-                                        <Link to='/product-list'>
-                                            Lista de Productos
-                                        </Link>
-                                    </li>
-                                    <li className='mt-2 hover:text-sky-200'>
-                                        <Link to='/inventory-count'>
-                                            Conteo de Inventario
-                                        </Link>
-                                    </li>
-                                    <li className='mt-2 hover:text-sky-200'>
-                                        <Link to='/stock-difference'>
-                                            Diferencias de Stock
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
+                    {inventoryMenuOpen && (
+                        <div className='pl-10'>
+                            <p className='mb-12'>Inventario</p>
+                            <ul>
+                                <li className='mt-2 hover:text-sky-200'>
+                                    <Link to='/product-list'>
+                                        Lista de Productos
+                                    </Link>
+                                </li>
+                                <li className='mt-2 hover:text-sky-200'>
+                                    <Link to='/inventory-count'>
+                                        Conteo de Inventario
+                                    </Link>
+                                </li>
+                                <li className='mt-2 hover:text-sky-200'>
+                                    <Link to='/stock-difference'>
+                                        Diferencias de Stock
+                                    </Link>
+                                </li>
+                            </ul>
+                        </div>
+                    )}
 
-                    <AnimatePresence>
-                        {salesMenuOpen && (
-                            <motion.div
-                                variants={linksVariants}
-                                animate={salesMenuOpen ? 'open' : 'close'}
-                                className='pl-10'
-                            >
-                                <p className='mb-12'>Ventas</p>
-                                <ul>
-                                    <li className='mt-3 hover:text-sky-200'>
-                                        <Link to='/register-sale'>
-                                            Registrar Ventas
-                                        </Link>
-                                    </li>
+                    {salesMenuOpen && (
+                        <div className='pl-10'>
+                            <p className='mb-12'>Ventas</p>
+                            <ul>
+                                <li className='mt-3 hover:text-sky-200'>
+                                    <Link to='/register-sale'>
+                                        Registrar Ventas
+                                    </Link>
+                                </li>
 
-                                    <li className='mt-3 hover:text-sky-200'>
-                                        <Link to='/today-sales-history'>
-                                            Ventas de Hoy
-                                        </Link>
-                                    </li>
-                                    <li className='mt-3 hover:text-sky-200'>
-                                        <Link to='/sales-history'>
-                                            Historial de Ventas
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
+                                <li className='mt-3 hover:text-sky-200'>
+                                    <Link to='/today-sales-history'>
+                                        Ventas de Hoy
+                                    </Link>
+                                </li>
+                                <li className='mt-3 hover:text-sky-200'>
+                                    <Link to='/sales-history'>
+                                        Historial de Ventas
+                                    </Link>
+                                </li>
+                            </ul>
+                        </div>
+                    )}
+
+                    {vendorMenuOpen && (
+                        <div className='pl-10'>
+                            <p className='mb-12'>Proveedores</p>
+                            <ul>
+                                <li className='mt-3 hover:text-sky-200'>
+                                    <Link to='/vendor-list'>Agenda</Link>
+                                </li>
+                                <li className='mt-3 hover:text-sky-200'>
+                                    <Link to='/purchase-order'>
+                                        Realizar pedido
+                                    </Link>
+                                </li>
+                                <li className='mt-3 hover:text-sky-200'>
+                                    <Link to='/orders-history'>
+                                        Historial de Pedidos
+                                    </Link>
+                                </li>
+                            </ul>
+                        </div>
+                    )}
                 </motion.div>
             </IconContext.Provider>
         </div>
