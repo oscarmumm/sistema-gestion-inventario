@@ -1,6 +1,6 @@
+import { IconContext } from 'react-icons'
 import { useContext, useState } from 'react'
 import headerLogo from '../assets/img/logo/header-logo.png'
-import { IconContext } from 'react-icons'
 import { MdMenu } from 'react-icons/md'
 import { MdPerson } from 'react-icons/md'
 import { UserContext } from '../context/UserContext'

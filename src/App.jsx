@@ -8,6 +8,8 @@ import { Sidebar } from './components/Sidebar'
 import { UserContext } from './context/UserContext'
 import { LogIn } from './pages/LogIn'
 
+import { Sidebar2 } from './components/Sidebar2'
+
 const sidebarVariants = {
     open: { marginLeft: 0 },
     close: { marginLeft: '-256px' },
@@ -24,6 +26,15 @@ function App() {
         <DataProvider>
             <Router>
                 {user ? (
+                    <div className='flex items-center justify-center h-screen w-screen overflow-auto bg-slate-300'>
+                        <Sidebar2 />
+                        <AppRoutes />
+                    </div>
+                ) : (
+                    <LogIn />
+                )}
+                
+                {/* {user ? (
                     <div className='flex flex-col h-screen w-screen overflow-auto'>
                         <Header toggleSidebar={toggleSidebar} />
                         <main className='flex flex-grow mt-16'>
@@ -41,7 +52,7 @@ function App() {
                     </div>
                 ) : (
                     <LogIn />
-                )}
+                )} */}
             </Router>
         </DataProvider>
     )
