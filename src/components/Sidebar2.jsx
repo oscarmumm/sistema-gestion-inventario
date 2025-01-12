@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { UserContext } from '../context/UserContext'
 import headerLogo from '../assets/img/logo/header-logo.png'
 import { IconContext } from 'react-icons'
 import { MdMenu } from 'react-icons/md'
@@ -11,32 +12,36 @@ import { MdGroup } from 'react-icons/md'
 import { MdOutlineDiversity3 } from 'react-icons/md'
 import { MdDataThresholding } from 'react-icons/md'
 import { MdKeyboardArrowDown } from 'react-icons/md'
+import { MdKeyboardArrowLeft } from 'react-icons/md'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 
 const submenuVariants = {
     open: { opacity: 1, x: -20, display: 'block' },
-    close: { opacity: 0, x: -50, display: 'none' },
+    close: { opacity: 0, x: -60, display: 'none' },
 }
 
 const linksVariants = {
-    open: { opacity: 1, x: -20, display: 'block' },
-    close: { opacity: 0, x: -150, display: 'none' },
+    open: { opacity: 1, display: 'block', height: '100px' },
+    close: { opacity: 0, display: 'none', height: 0 },
 }
 
 export const Sidebar2 = () => {
-    const [menuOpen, setMenuOpen] = useState(false)
+    const { user, logOut } = useContext(UserContext)
     const [subMenuOpen, setSubMenuOpen] = useState(false)
     const [inventoryMenuOpen, setInventoryMenuOpen] = useState(false)
     const [salesMenuOpen, setSalesMenuOpen] = useState(false)
     const [vendorMenuOpen, setVendorMenuOpen] = useState(false)
     const [reportsMenuOpen, setReportsMenuOpen] = useState(false)
+    const [configurationMenuOpen, setConfigurationMenuOpen] = useState(false)
 
     const openInventoryMenu = () => {
         if (subMenuOpen && !inventoryMenuOpen) {
             setInventoryMenuOpen(true)
             setSalesMenuOpen(false)
             setVendorMenuOpen(false)
+            setConfigurationMenuOpen(false)
+            setReportsMenuOpen(false)
         } else if (subMenuOpen && inventoryMenuOpen) {
             setInventoryMenuOpen(false)
             setSubMenuOpen(false)
@@ -51,6 +56,8 @@ export const Sidebar2 = () => {
             setSalesMenuOpen(true)
             setInventoryMenuOpen(false)
             setVendorMenuOpen(false)
+            setConfigurationMenuOpen(false)
+            setReportsMenuOpen(false)
         } else if (subMenuOpen && salesMenuOpen) {
             setSalesMenuOpen(false)
             setSubMenuOpen(false)
@@ -65,6 +72,8 @@ export const Sidebar2 = () => {
             setVendorMenuOpen(true)
             setSalesMenuOpen(false)
             setInventoryMenuOpen(false)
+            setConfigurationMenuOpen(false)
+            setReportsMenuOpen(false)
         } else if (subMenuOpen && vendorMenuOpen) {
             setVendorMenuOpen(false)
             setSubMenuOpen(false)
@@ -74,13 +83,62 @@ export const Sidebar2 = () => {
         }
     }
 
+    const openReportsMenu = () => {
+        if (subMenuOpen && !reportsMenuOpen) {
+            setReportsMenuOpen(true)
+            setSalesMenuOpen(false)
+            setInventoryMenuOpen(false)
+            setVendorMenuOpen(false)
+            setConfigurationMenuOpen(false)
+        } else if (subMenuOpen && reportsMenuOpen) {
+            setReportsMenuOpen(false)
+            setSubMenuOpen(false)
+        } else {
+            setSubMenuOpen(true)
+            setReportsMenuOpen(true)
+        }
+    }
+    const openConfigMenu = () => {
+        if (subMenuOpen && !configurationMenuOpen) {
+            setConfigurationMenuOpen(true)
+            setSalesMenuOpen(false)
+            setInventoryMenuOpen(false)
+            setVendorMenuOpen(false)
+            setReportsMenuOpen(false)
+        } else if (subMenuOpen && configurationMenuOpen) {
+            setConfigurationMenuOpen(false)
+            setSubMenuOpen(false)
+        } else {
+            setSubMenuOpen(true)
+            setConfigurationMenuOpen(true)
+        }
+    }
+
+    const closeAll = () => {
+        subMenuOpen &&
+            (setSubMenuOpen(false),
+            setConfigurationMenuOpen(false),
+            setSalesMenuOpen(false),
+            setVendorMenuOpen(false),
+            setInventoryMenuOpen(false),
+            setReportsMenuOpen(false))
+    }
+
+    const clickOnUser = () => {
+        setSubMenuOpen(!subMenuOpen)
+    }
+
+    const cerrarSesion = () => {
+        logOut()
+    }
+
     return (
         <div className='fixed flex left-0 top-0 p-5 h-full max-h-screen overflow-hidden z-50'>
             <IconContext.Provider value={{ className: 'w-8 h-8' }}>
                 <div className='bg-slate-600 p-6 h-full w-20 rounded-xl shadow-xl text-slate-50 flex flex-col items-start justify-between overflow-hidden z-40'>
                     <ul>
                         <li className='flex items-center mb-3'>
-                            <button>
+                            <button onClick={closeAll}>
                                 <Link to='/'>
                                     <MdHome />
                                 </Link>
@@ -102,14 +160,20 @@ export const Sidebar2 = () => {
                             </button>
                         </li>
                         <li className='flex items-center mb-3'>
-                            <MdDataThresholding />
+                            <button onClick={openReportsMenu}>
+                                <MdDataThresholding />
+                            </button>
                         </li>
                         <li className='flex items-center mb-3'>
-                            <MdSettings />
+                            <button onClick={openConfigMenu}>
+                                <MdSettings />
+                            </button>
                         </li>
                     </ul>
                     <div>
-                        <MdPerson />
+                        <button onClick={clickOnUser}>
+                            <MdPerson />
+                        </button>
                     </div>
                 </div>
                 <motion.div
@@ -117,73 +181,152 @@ export const Sidebar2 = () => {
                     variants={submenuVariants}
                     animate={subMenuOpen ? 'open' : 'close'}
                 >
-                    {inventoryMenuOpen && (
-                        <div className='pl-10'>
-                            <p className='mb-12'>Inventario</p>
-                            <ul>
-                                <li className='mt-2 hover:text-sky-200'>
-                                    <Link to='/product-list'>
-                                        Lista de Productos
-                                    </Link>
-                                </li>
-                                <li className='mt-2 hover:text-sky-200'>
-                                    <Link to='/inventory-count'>
-                                        Conteo de Inventario
-                                    </Link>
-                                </li>
-                                <li className='mt-2 hover:text-sky-200'>
-                                    <Link to='/stock-difference'>
-                                        Diferencias de Stock
-                                    </Link>
-                                </li>
-                            </ul>
+                    <div className='p-4 absolute bottom-0 left-0 flex justify-between w-full'>
+                        <div className='flex flex-col ml-3'>
+                            <span>Usuario:</span>
+                            <span>{user.username}</span>
                         </div>
-                    )}
+                        <button
+                            className='bg-slate-700 hover:bg-slate-600 text-slate-50 p-2 w-32 ml-3 rounded-lg shadow-xl'
+                            onClick={cerrarSesion}
+                        >
+                            Cerrar Sesión
+                        </button>
+                    </div>
+                    <div className='absolute right-0 top-0 p-5'>
+                        <button onClick={closeAll}>
+                            <MdKeyboardArrowLeft />
+                        </button>
+                    </div>
 
-                    {salesMenuOpen && (
-                        <div className='pl-10'>
-                            <p className='mb-12'>Ventas</p>
-                            <ul>
-                                <li className='mt-3 hover:text-sky-200'>
-                                    <Link to='/register-sale'>
-                                        Registrar Ventas
-                                    </Link>
-                                </li>
+                    <motion.div
+                        className='pl-10 hidden'
+                        animate={inventoryMenuOpen ? 'open' : 'close'}
+                        variants={linksVariants}
+                    >
+                        <p className='mb-12 text-xl font-semibold'>
+                            Inventario
+                        </p>
+                        <ul>
+                            <li className='mt-2 hover:text-sky-200'>
+                                <Link to='/product-list' onClick={closeAll}>
+                                    Lista de Productos
+                                </Link>
+                            </li>
+                            <li className='mt-2 hover:text-sky-200'>
+                                <Link to='/inventory-count' onClick={closeAll}>
+                                    Conteo de Inventario
+                                </Link>
+                            </li>
+                            <li className='mt-2 hover:text-sky-200'>
+                                <Link to='/stock-difference' onClick={closeAll}>
+                                    Diferencias de Stock
+                                </Link>
+                            </li>
+                        </ul>
+                    </motion.div>
 
-                                <li className='mt-3 hover:text-sky-200'>
-                                    <Link to='/today-sales-history'>
-                                        Ventas de Hoy
-                                    </Link>
-                                </li>
-                                <li className='mt-3 hover:text-sky-200'>
-                                    <Link to='/sales-history'>
-                                        Historial de Ventas
-                                    </Link>
-                                </li>
-                            </ul>
-                        </div>
-                    )}
+                    <motion.div
+                        className='pl-10 hidden'
+                        animate={salesMenuOpen ? 'open' : 'close'}
+                        variants={linksVariants}
+                    >
+                        <p className='mb-12 text-xl font-semibold'>Ventas</p>
+                        <ul>
+                            <li className='mt-3 hover:text-sky-200'>
+                                <Link to='/register-sale' onClick={closeAll}>
+                                    Registrar Ventas
+                                </Link>
+                            </li>
 
-                    {vendorMenuOpen && (
-                        <div className='pl-10'>
-                            <p className='mb-12'>Proveedores</p>
-                            <ul>
-                                <li className='mt-3 hover:text-sky-200'>
-                                    <Link to='/vendor-list'>Agenda</Link>
-                                </li>
-                                <li className='mt-3 hover:text-sky-200'>
-                                    <Link to='/purchase-order'>
-                                        Realizar pedido
-                                    </Link>
-                                </li>
-                                <li className='mt-3 hover:text-sky-200'>
-                                    <Link to='/orders-history'>
-                                        Historial de Pedidos
-                                    </Link>
-                                </li>
-                            </ul>
-                        </div>
-                    )}
+                            <li className='mt-3 hover:text-sky-200'>
+                                <Link
+                                    to='/today-sales-history'
+                                    onClick={closeAll}
+                                >
+                                    Ventas de Hoy
+                                </Link>
+                            </li>
+                            <li className='mt-3 hover:text-sky-200'>
+                                <Link to='/sales-history' onClick={closeAll}>
+                                    Historial de Ventas
+                                </Link>
+                            </li>
+                        </ul>
+                    </motion.div>
+                    <motion.div
+                        className='pl-10 hidden'
+                        animate={vendorMenuOpen ? 'open' : 'close'}
+                        variants={linksVariants}
+                    >
+                        <p className='mb-12 text-xl font-semibold'>
+                            Proveedores
+                        </p>
+                        <ul>
+                            <li className='mt-3 hover:text-sky-200'>
+                                <Link to='/vendor-list' onClick={closeAll}>
+                                    Agenda
+                                </Link>
+                            </li>
+                            <li className='mt-3 hover:text-sky-200'>
+                                <Link to='/purchase-order' onClick={closeAll}>
+                                    Realizar pedido
+                                </Link>
+                            </li>
+                            <li className='mt-3 hover:text-sky-200'>
+                                <Link to='/orders-history' onClick={closeAll}>
+                                    Historial de Pedidos
+                                </Link>
+                            </li>
+                        </ul>
+                    </motion.div>
+
+                    <motion.div
+                        className='pl-10 hidden'
+                        animate={reportsMenuOpen ? 'open' : 'close'}
+                        variants={linksVariants}
+                    >
+                        <p className='mb-12 text-xl font-semibold'>Reportes</p>
+                        <ul>
+                            <li className='mt-3 hover:text-sky-200'>
+                                <Link to='/dashboard' onClick={closeAll}>
+                                    Dashboard
+                                </Link>
+                            </li>
+                        </ul>
+                    </motion.div>
+                    <motion.div
+                        className='pl-10 hidden'
+                        animate={configurationMenuOpen ? 'open' : 'close'}
+                        variants={linksVariants}
+                    >
+                        <p className='mb-12 text-xl font-semibold'>
+                            Configuración
+                        </p>
+                        <ul>
+                            <li className='mt-3 hover:text-sky-200'>
+                                <Link
+                                    to='/product-management'
+                                    onClick={closeAll}
+                                >
+                                    Productos
+                                </Link>
+                            </li>
+                            <li className='mt-3 hover:text-sky-200'>
+                                <Link
+                                    to='/vendor-management'
+                                    onClick={closeAll}
+                                >
+                                    Proveedores
+                                </Link>
+                            </li>
+                            <li className='mt-3 hover:text-sky-200'>
+                                <Link to='/user-management' onClick={closeAll}>
+                                    Usuarios
+                                </Link>
+                            </li>
+                        </ul>
+                    </motion.div>
                 </motion.div>
             </IconContext.Provider>
         </div>

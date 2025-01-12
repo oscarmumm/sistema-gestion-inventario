@@ -118,10 +118,13 @@ export const LogIn = () => {
                 </p>
             </div>
             <div className='flex flex-col items-center p-3 absolute top-24 right-24 bg-slate-600 rounded-lg shadow-xl text-slate-50'>
-                <p className='max-w-32 text-center mb-10'>
-                    DEV note: Cliquea alguna de estas opciones para setear las
-                    credenciales y probar el sistema
-                </p>
+                <div className='max-w-36 text-center mb-10 flex flex-col'>
+                    <span className='mb-4 font-semibold'>NOTA DEL DESARROLLADOR:</span>
+                    <span>
+                        Cliquea alguna de estas opciones para setear las
+                        credenciales y probar el sistema
+                    </span>
+                </div>
                 <button
                     onClick={setAdminCredentials}
                     className='bg-slate-500 hover:bg-slate-400 text-slate-50 p-2 w-32 rounded-md shadow-lg mb-3'
