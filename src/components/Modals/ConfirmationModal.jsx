@@ -8,6 +8,7 @@ export const ConfirmationModal = ({
     supplierInfo,
     purchaseOrderInfo,
     userInfo,
+    businessDayInfo,
 }) => {
     const clickOnAgree = () => {
         agreeAction()
@@ -53,6 +54,11 @@ export const ConfirmationModal = ({
                 {userInfo && (
                     <div className="text-xl font-bold flex flex-col my-5">
                         <span>{userInfo.nombreUsuario}</span>
+                    </div>
+                )}
+                {businessDayInfo && (
+                    <div className="text-xl font-bold flex flex-col my-5">
+                        <span>{businessDayInfo}</span>
                     </div>
                 )}
                 <div className="flex justify-around mt-10">
