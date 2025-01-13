@@ -198,6 +198,7 @@ export const db = {
         },
     ],
     ventasDeHoy: [],
+    businessDay: '',
     usuarios: [
         {
             id: 1,

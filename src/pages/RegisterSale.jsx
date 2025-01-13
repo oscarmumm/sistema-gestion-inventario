@@ -225,8 +225,8 @@ export const RegisterSale = () => {
                     </button>
                 </div>
                 <div className='px-5'>
-                    <h2 className='text-2xl my-2'>Detalle de la Venta:</h2>
-                    <table className='bg-slate-50 text-center min-w-fit max-w-screen-lg border-collapse shadow-lg'>
+                    <h2 className='text-2xl mb-5'>Detalle de la Venta:</h2>
+                    <table className='bg-slate-50 text-center min-w-fit max-w-screen-lg border-collapse shadow-lg rounded-lg overflow-hidden'>
                         <thead className='bg-slate-500 text-slate-200 border-solid border-slate-500 border-2'>
                             <tr>
                                 <th className='w-24'>Cantidad</th>

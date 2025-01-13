@@ -14,6 +14,7 @@ import {OrdersHistory} from '../pages/OrdersHistory'
 import {StockDifference} from '../pages/StockDifference'
 import {ProtectedRoute} from './ProtectedRoute'
 import {Unauthorized} from '../pages/Unauthorized'
+import { TodaySales } from '../pages/TodaySales'
 
 const publicRoutes = [
     {path: '/', element: <Home />},
@@ -50,14 +51,6 @@ const userRoutes = [
         element: (
             <ProtectedRoute allowedRoles={['admin', 'manager', 'user']}>
                 <VendorList />
-            </ProtectedRoute>
-        ),
-    },
-    {
-        path: '/sales-history',
-        element: (
-            <ProtectedRoute allowedRoles={['admin', 'manager', 'user']}>
-                <SalesHistory />
             </ProtectedRoute>
         ),
     },
@@ -109,6 +102,22 @@ const managerRoutes = [
         element: (
             <ProtectedRoute allowedRoles={['admin', 'manager']}>
                 <Dashboard />
+            </ProtectedRoute>
+        ),
+    },
+    {
+        path: '/today-sales-history',
+        element: (
+            <ProtectedRoute allowedRoles={['admin', 'manager']}>
+                <TodaySales />
+            </ProtectedRoute>
+        )
+    },
+    {
+        path: '/sales-history',
+        element: (
+            <ProtectedRoute allowedRoles={['admin', 'manager']}>
+                <SalesHistory />
             </ProtectedRoute>
         ),
     },

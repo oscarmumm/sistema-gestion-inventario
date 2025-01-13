@@ -11,11 +11,11 @@ export const Home = () => {
     const [businessDayState, setBusinessDayState] = useState(true)
 
     return (
-        <div>
+        <div className='flex flex-col items-center'>
             <h1 className='text-3xl font-semibold text-slate-700 my-10'>
                 Bienvenido al Sistema de Gestión de Comercio
             </h1>
-            <div className='text-2xl font-semibold text-slate-700 flex flex-col bg-slate-50 p-10 rounded-xl shadow-xl mb-10'>
+            <div className='min-w-full text-2xl font-semibold text-slate-700 flex flex-col bg-slate-50 p-10 rounded-xl shadow-xl mb-10'>
                 <div className='flex justify-between mb-5'>
                     <span>Usuario Activo: </span>
                     <span className='text-emerald-600'>{user.username}</span>
@@ -31,7 +31,7 @@ export const Home = () => {
                     </span>
                 </div>
             </div>
-            <div className='text-2xl font-semibold text-slate-700 flex flex-col bg-slate-50 p-10 rounded-xl shadow-xl'>
+            <div className='min-w-full text-2xl font-semibold text-slate-700 flex flex-col bg-slate-50 p-10 rounded-xl shadow-xl'>
                 <div className='flex justify-between mb-5'>
                     <span>Acciones Recomendadas:</span>
                 </div>
@@ -43,6 +43,9 @@ export const Home = () => {
                     <span>Arquear la caja registradora </span>
                     <span>{}</span>
                 </div>
+            </div>
+            <div className='mt-10'>
+                <button className='bg-red-500 hover:bg-red-400  text-slate-50 font-semibold p-2 w-48 ml-3 rounded-md shadow-xl'>Cerrar Día de Negocio</button>
             </div>
         </div>
     )

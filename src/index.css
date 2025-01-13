@@ -14,12 +14,12 @@
 }
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #bae6fd;
+    background: #38bdf8;
     border-radius: 0;
 }
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #38bdf8;
+    background: #bae6fd;
 }
 
 .modal-main-bg {
