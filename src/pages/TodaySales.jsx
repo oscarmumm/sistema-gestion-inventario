@@ -34,13 +34,13 @@ export const TodaySales = () => {
                     {todaySales.map((sale) => (
                         <tr
                             key={sale.id}
-                            className="hover:bg-slate-200 border-t-slate-200 border-t-2"
+                            className="hover:bg-slate-200 border-t-slate-200 border-t-2 cursor-pointer"
                             onClick={() => {
                                 setSelectedSale(sale)
                                 setSaleHistoryModalActive(true)
                             }}>
                             <td className="p-3">{sale.hora}</td>
-                            <td className="p-3">{sale.importe}</td>
+                            <td className="p-3">${sale.importe}</td>
                             <td className="p-3">{sale.metodoDePago}</td>
                         </tr>
                     ))}
