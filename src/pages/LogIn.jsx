@@ -53,8 +53,9 @@ export const LogIn = () => {
         setViewPassInputValueActive(!viewPassInputValueActive)
     }
 
+    // bg-slate-300
     return (
-        <div className='flex flex-col items-center justify-center h-screen w-screen overflow-auto bg-slate-300 text-slate-800'>
+        <div className='bg-gradient-to-b from-sky-50 to-sky-200  flex flex-col items-center justify-center h-screen w-screen overflow-auto text-slate-800'>
             <div className='flex flex-col items-center mb-10'>
                 <h1 className='text-3xl font-semibold mb-2'>
                     Sistema de Gestión de Comercio

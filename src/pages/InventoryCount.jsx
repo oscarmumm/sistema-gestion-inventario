@@ -81,7 +81,7 @@ export const InventoryCount = () => {
                     Conteo de Inventario
                 </h2>
                 <button
-                    className='bg-slate-600 hover:bg-sky-300 hover:text-slate-800 text-slate-50 font-semibold p-3 my-3 rounded-md shadow-xl flex items-center absolute top-2 right-2'
+                    className='bg-slate-600 hover:bg-sky-300 hover:text-slate-800 text-slate-50 font-semibold p-3 my-3 rounded-md shadow-xl flex items-center absolute top-2 right-5 outline-none'
                     onClick={handlePrint}
                 >
                     <IconContext.Provider value={{ className: ' w-7 h-7' }}>
@@ -143,7 +143,7 @@ export const InventoryCount = () => {
                 </tbody>
             </table>
             <button
-                className='bg-slate-600 hover:bg-sky-300 hover:text-slate-800 text-slate-50 font-semibold p-3 my-3 ml-3 rounded-md shadow-lg flex items-center'
+                className='bg-slate-600 hover:bg-sky-300 hover:text-slate-800 text-slate-50 font-semibold p-3 my-3 rounded-md shadow-lg flex items-center'
                 onClick={clickOnSave}
             >
                 <IconContext.Provider

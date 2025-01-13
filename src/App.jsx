@@ -26,10 +26,13 @@ function App() {
         <DataProvider>
             <Router>
                 {user ? (
-                    <div className='flex items-center justify-center h-screen w-screen overflow-auto bg-slate-300'>
+                    <div className='bg-gradient-to-b from-sky-50 to-sky-200 flex items-center justify-center h-screen w-screen overflow-auto'>
                         <Sidebar2 />
                         <div className='flex flex-col items-center h-full w-full overflow-auto p-3'>
                             <AppRoutes />
+                        </div>
+                        <div className='fixed bottom-0 right-2'>
+                            <span>Desarrollador: Oscar Mumm</span>
                         </div>
                     </div>
                 ) : (
