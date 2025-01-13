@@ -1,16 +1,16 @@
-import {DataContext} from '../context/DataContext'
-import {useContext, useEffect, useRef, useState} from 'react'
-import {MdSave} from 'react-icons/md'
-import {IconContext} from 'react-icons'
-import {ConfirmationModal} from '../components/Modals/ConfirmationModal'
-import {WarningModal} from '../components/Modals/WarningModal'
-import {AnimatePresence} from 'framer-motion'
-import {timeGetter, toRounded} from '../utils/Utils'
-import {ToastNotification} from '../components/Modals/ToastNotification'
+import { DataContext } from '../context/DataContext'
+import { useContext, useEffect, useRef, useState } from 'react'
+import { MdSave } from 'react-icons/md'
+import { IconContext } from 'react-icons'
+import { ConfirmationModal } from '../components/Modals/ConfirmationModal'
+import { WarningModal } from '../components/Modals/WarningModal'
+import { AnimatePresence } from 'framer-motion'
+import { timeGetter, toRounded } from '../utils/Utils'
+import { ToastNotification } from '../components/Modals/ToastNotification'
 import html2pdf from 'html2pdf.js'
 
 export const PurchaseOrder = () => {
-    const {data, setData} = useContext(DataContext)
+    const { data, setData } = useContext(DataContext)
     const [products, setProducts] = useState(data.productos)
     const [inputValues, setInputValues] = useState({})
     const [confirmationModalActive, setConfirmationModalActive] =
@@ -87,8 +87,8 @@ export const PurchaseOrder = () => {
         const options = {
             margin: 0,
             filename: `pedido_a_provedores_${order.fechaPedido}.pdf`,
-            html2canvas: {scale: 2},
-            jsPDF: {unit: 'in', format: 'A4', orientation: 'portrait'},
+            html2canvas: { scale: 2 },
+            jsPDF: { unit: 'in', format: 'A4', orientation: 'portrait' },
         }
         html2pdf().set(options).from(element).save()
     }
@@ -119,53 +119,55 @@ export const PurchaseOrder = () => {
     }, [data, inputValues])
 
     return (
-        <div
-            className="flex flex-col items-center h-full overflow-auto p-3"
-            style={{maxHeight: 'calc(100vh - 64px)'}}>
-            <h2 className="text-2xl font-semibold my-5 text-slate-800">Pedido a Proveedores</h2>
+        <div>
+            <h2 className='text-2xl font-semibold my-5 text-slate-800'>
+                Pedido a Proveedores
+            </h2>
             <button
-                className="bg-slate-600 hover:bg-slate-500 text-slate-50 p-3 my-3 ml-3 rounded-md shadow-lg flex items-center"
-                onClick={clickOnSave}>
+                className='bg-slate-600 hover:bg-sky-300 hover:text-slate-800 text-slate-50 font-semibold p-3 my-3 rounded-md shadow-lg flex items-center'
+                onClick={clickOnSave}
+            >
                 <IconContext.Provider
-                    value={{className: 'text-slate-200 w-7 h-7'}}>
+                    value={{ className: 'text-slate-200 w-7 h-7' }}
+                >
                     <MdSave />
                 </IconContext.Provider>
                 Guardar pedido
             </button>
-            <div className="text-slate-50 bg-slate-600 rounded-md absolute top-20 right-10 p-3 shadow-lg z-10">
+            <div className='text-slate-50 bg-slate-600 rounded-md absolute top-20 right-10 p-3 shadow-lg z-10'>
                 Total del pedido: $ {total}
             </div>
-            <table className="bg-slate-200 text-center min-w-fit max-w-screen-lg shadow-xl rounded-lg overflow-hidden">
-                <thead className="bg-slate-500 text-slate-200">
+            <table className='bg-slate-200 text-center min-w-fit max-w-screen-lg shadow-xl rounded-lg overflow-hidden'>
+                <thead className='bg-slate-500 text-slate-200'>
                     <tr>
-                        <th className="p-3">Descripción</th>
-                        <th className="p-3">Cant x caja</th>
-                        <th className="p-3">Stock actual</th>
-                        <th className="p-3">Pedido</th>
-                        <th className="p-3">Precio Por Caja</th>
-                        <th className="p-3">Costo Total Producto</th>
+                        <th className='p-3'>Descripción</th>
+                        <th className='p-3'>Cant x caja</th>
+                        <th className='p-3'>Stock actual</th>
+                        <th className='p-3'>Pedido</th>
+                        <th className='p-3'>Precio Por Caja</th>
+                        <th className='p-3'>Costo Total Producto</th>
                     </tr>
                 </thead>
                 <tbody>
                     {products.map((product) => (
-                        <tr key={product.id} className="hover:bg-slate-100">
-                            <td className="p-3 ">{product.descripcion}</td>
-                            <td className="p-3">{product.cantidadPorCaja}</td>
-                            <td className="p-3">{product.stockActual}</td>
-                            <td className="p-3">
+                        <tr key={product.id} className='hover:bg-slate-100'>
+                            <td className='p-3 '>{product.descripcion}</td>
+                            <td className='p-3'>{product.cantidadPorCaja}</td>
+                            <td className='p-3'>{product.stockActual}</td>
+                            <td className='p-3'>
                                 <input
-                                    type="number"
+                                    type='number'
                                     name={product.id}
-                                    className="w-24 outline-none px-3 py-2 text-center rounded-md"
+                                    className='w-24 outline-none px-3 py-2 text-center rounded-md'
                                     onChange={handleChange}
                                 />
                             </td>
-                            <td className="p-3">
+                            <td className='p-3'>
                                 $
                                 {product.precioUnitarioCompra *
                                     product.cantidadPorCaja}
                             </td>
-                            <td className="p-3">
+                            <td className='p-3'>
                                 $
                                 {(inputValues[product.id] || 0) *
                                     (product.precioUnitarioCompra *
@@ -173,52 +175,54 @@ export const PurchaseOrder = () => {
                             </td>
                         </tr>
                     ))}
-                    <tr className="bg-slate-500 text-slate-200">
+                    <tr className='bg-slate-500 text-slate-200'>
                         <td
-                            colSpan="5"
-                            className="p-3 text-lg text-right font-bold">
+                            colSpan='5'
+                            className='p-3 text-lg text-right font-bold'
+                        >
                             TOTAL PEDIDO
                         </td>
-                        <td className="text-lg font-bold">${total || 0}</td>
+                        <td className='text-lg font-bold'>${total || 0}</td>
                     </tr>
                 </tbody>
             </table>
-            <div className="hidden">
+            <div className='hidden'>
                 <div ref={ref}>
-                    <h3 className="text-xl mb-5">Pedido a Proveedores</h3>
-                    <table className="printable-table bg-white text-center min-w-fit max-w-screen-lg shadow-lg">
-                        <thead className="bg-slate-500 text-slate-200">
+                    <h3 className='text-xl mb-5'>Pedido a Proveedores</h3>
+                    <table className='printable-table bg-white text-center min-w-fit max-w-screen-lg shadow-lg'>
+                        <thead className='bg-slate-500 text-slate-200'>
                             <tr>
-                                <th className="p-3">Cajas</th>
-                                <th className="p-3">Descripción</th>
-                                <th className="p-3">Proveedor</th>
-                                <th className="p-3">Importe</th>
+                                <th className='p-3'>Cajas</th>
+                                <th className='p-3'>Descripción</th>
+                                <th className='p-3'>Proveedor</th>
+                                <th className='p-3'>Importe</th>
                             </tr>
                         </thead>
                         <tbody>
                             {order?.detallesPedido.map((entry) => (
-                                <tr key={entry.id} className="text-center">
-                                    <td className="text-center p-3 border border-slate-500">
+                                <tr key={entry.id} className='text-center'>
+                                    <td className='text-center p-3 border border-slate-500'>
                                         {entry.cantidadAPedir}
                                     </td>
-                                    <td className="p-3 border border-slate-500">
+                                    <td className='p-3 border border-slate-500'>
                                         {entry.descripcion}
                                     </td>
-                                    <td className="p-3 border border-slate-500">
+                                    <td className='p-3 border border-slate-500'>
                                         {entry.proveedor}
                                     </td>
-                                    <td className="p-3 border border-slate-500">
+                                    <td className='p-3 border border-slate-500'>
                                         ${entry.importe}
                                     </td>
                                 </tr>
                             ))}
                             <tr>
                                 <td
-                                    colSpan="3"
-                                    className="bg-slate-500 text-slate-50 p-3 font-bold text-right">
+                                    colSpan='3'
+                                    className='bg-slate-500 text-slate-50 p-3 font-bold text-right'
+                                >
                                     TOTAL DEL PEDIDO
                                 </td>
-                                <td className="bg-slate-500 text-slate-50 font-bold">
+                                <td className='bg-slate-500 text-slate-50 font-bold'>
                                     ${total}
                                 </td>
                             </tr>

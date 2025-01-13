@@ -28,12 +28,14 @@ function App() {
                 {user ? (
                     <div className='flex items-center justify-center h-screen w-screen overflow-auto bg-slate-300'>
                         <Sidebar2 />
-                        <AppRoutes />
+                        <div className='flex flex-col items-center h-full w-full overflow-auto p-3'>
+                            <AppRoutes />
+                        </div>
                     </div>
                 ) : (
                     <LogIn />
                 )}
-                
+
                 {/* {user ? (
                     <div className='flex flex-col h-screen w-screen overflow-auto'>
                         <Header toggleSidebar={toggleSidebar} />

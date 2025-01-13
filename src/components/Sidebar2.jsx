@@ -137,41 +137,47 @@ export const Sidebar2 = () => {
             <IconContext.Provider value={{ className: 'w-8 h-8' }}>
                 <div className='bg-slate-600 p-6 h-full w-20 rounded-xl shadow-xl text-slate-50 flex flex-col items-start justify-between overflow-hidden z-40'>
                     <ul>
-                        <li className='flex items-center mb-3'>
-                            <button onClick={closeAll}>
+                        <li className='flex items-center mb-5'>
+                            <button
+                                onClick={closeAll}
+                                className='hover:text-sky-300'
+                            >
                                 <Link to='/'>
                                     <MdHome />
                                 </Link>
                             </button>
                         </li>
-                        <li className='flex items-center mb-3'>
+                        <li className='flex items-center mb-5 hover:text-sky-300'>
                             <button onClick={openInventoryMenu}>
                                 <MdContentPaste />
                             </button>
                         </li>
-                        <li className='flex items-center mb-3'>
+                        <li className='flex items-center mb-5 hover:text-sky-300'>
                             <button onClick={openSalesMenu}>
                                 <MdMonetizationOn />
                             </button>
                         </li>
-                        <li className='flex items-center mb-3'>
+                        <li className='flex items-center mb-5 hover:text-sky-300'>
                             <button onClick={openVendorMenu}>
                                 <MdOutlineDiversity3 />
                             </button>
                         </li>
-                        <li className='flex items-center mb-3'>
+                        <li className='flex items-center mb-5 hover:text-sky-300'>
                             <button onClick={openReportsMenu}>
                                 <MdDataThresholding />
                             </button>
                         </li>
-                        <li className='flex items-center mb-3'>
+                        <li className='flex items-center mb-5 hover:text-sky-300'>
                             <button onClick={openConfigMenu}>
                                 <MdSettings />
                             </button>
                         </li>
                     </ul>
                     <div>
-                        <button onClick={clickOnUser}>
+                        <button
+                            onClick={clickOnUser}
+                            className='hover:text-sky-300'
+                        >
                             <MdPerson />
                         </button>
                     </div>
@@ -186,12 +192,13 @@ export const Sidebar2 = () => {
                             <span>Usuario:</span>
                             <span>{user.username}</span>
                         </div>
-                        <button
-                            className='bg-slate-700 hover:bg-slate-600 text-slate-50 p-2 w-32 ml-3 rounded-lg shadow-xl'
+                        <Link
+                            className='bg-slate-700 hover:bg-sky-300 hover:text-slate-800 text-slate-50 font-semibold p-2 w-32 ml-3 rounded-lg shadow-xl text-center flex items-center justify-center'
                             onClick={cerrarSesion}
+                            to='/'
                         >
                             Cerrar Sesión
-                        </button>
+                        </Link>
                     </div>
                     <div className='absolute right-0 top-0 p-5'>
                         <button onClick={closeAll}>
@@ -208,17 +215,17 @@ export const Sidebar2 = () => {
                             Inventario
                         </p>
                         <ul>
-                            <li className='mt-2 hover:text-sky-200'>
+                            <li className='mt-2 hover:text-sky-300'>
                                 <Link to='/product-list' onClick={closeAll}>
                                     Lista de Productos
                                 </Link>
                             </li>
-                            <li className='mt-2 hover:text-sky-200'>
+                            <li className='mt-2 hover:text-sky-300'>
                                 <Link to='/inventory-count' onClick={closeAll}>
                                     Conteo de Inventario
                                 </Link>
                             </li>
-                            <li className='mt-2 hover:text-sky-200'>
+                            <li className='mt-2 hover:text-sky-300'>
                                 <Link to='/stock-difference' onClick={closeAll}>
                                     Diferencias de Stock
                                 </Link>
@@ -233,13 +240,13 @@ export const Sidebar2 = () => {
                     >
                         <p className='mb-12 text-xl font-semibold'>Ventas</p>
                         <ul>
-                            <li className='mt-3 hover:text-sky-200'>
+                            <li className='mt-3 hover:text-sky-300'>
                                 <Link to='/register-sale' onClick={closeAll}>
                                     Registrar Ventas
                                 </Link>
                             </li>
 
-                            <li className='mt-3 hover:text-sky-200'>
+                            <li className='mt-3 hover:text-sky-300'>
                                 <Link
                                     to='/today-sales-history'
                                     onClick={closeAll}
@@ -247,7 +254,7 @@ export const Sidebar2 = () => {
                                     Ventas de Hoy
                                 </Link>
                             </li>
-                            <li className='mt-3 hover:text-sky-200'>
+                            <li className='mt-3 hover:text-sky-300'>
                                 <Link to='/sales-history' onClick={closeAll}>
                                     Historial de Ventas
                                 </Link>
@@ -263,17 +270,17 @@ export const Sidebar2 = () => {
                             Proveedores
                         </p>
                         <ul>
-                            <li className='mt-3 hover:text-sky-200'>
+                            <li className='mt-3 hover:text-sky-300'>
                                 <Link to='/vendor-list' onClick={closeAll}>
                                     Agenda
                                 </Link>
                             </li>
-                            <li className='mt-3 hover:text-sky-200'>
+                            <li className='mt-3 hover:text-sky-300'>
                                 <Link to='/purchase-order' onClick={closeAll}>
                                     Realizar pedido
                                 </Link>
                             </li>
-                            <li className='mt-3 hover:text-sky-200'>
+                            <li className='mt-3 hover:text-sky-300'>
                                 <Link to='/orders-history' onClick={closeAll}>
                                     Historial de Pedidos
                                 </Link>
@@ -288,7 +295,7 @@ export const Sidebar2 = () => {
                     >
                         <p className='mb-12 text-xl font-semibold'>Reportes</p>
                         <ul>
-                            <li className='mt-3 hover:text-sky-200'>
+                            <li className='mt-3 hover:text-sky-300'>
                                 <Link to='/dashboard' onClick={closeAll}>
                                     Dashboard
                                 </Link>
@@ -304,7 +311,7 @@ export const Sidebar2 = () => {
                             Configuración
                         </p>
                         <ul>
-                            <li className='mt-3 hover:text-sky-200'>
+                            <li className='mt-3 hover:text-sky-300'>
                                 <Link
                                     to='/product-management'
                                     onClick={closeAll}
@@ -312,7 +319,7 @@ export const Sidebar2 = () => {
                                     Productos
                                 </Link>
                             </li>
-                            <li className='mt-3 hover:text-sky-200'>
+                            <li className='mt-3 hover:text-sky-300'>
                                 <Link
                                     to='/vendor-management'
                                     onClick={closeAll}
@@ -320,7 +327,7 @@ export const Sidebar2 = () => {
                                     Proveedores
                                 </Link>
                             </li>
-                            <li className='mt-3 hover:text-sky-200'>
+                            <li className='mt-3 hover:text-sky-300'>
                                 <Link to='/user-management' onClick={closeAll}>
                                     Usuarios
                                 </Link>

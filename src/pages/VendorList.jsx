@@ -1,10 +1,10 @@
-import {useContext, useState} from 'react'
-import {DataContext} from '../context/DataContext'
-import {Searchbar} from '../components/Searchbar'
-import {IconContext} from 'react-icons'
+import { useContext, useState } from 'react'
+import { DataContext } from '../context/DataContext'
+import { Searchbar } from '../components/Searchbar'
+import { IconContext } from 'react-icons'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 
-import {motion} from 'framer-motion'
+import { motion } from 'framer-motion'
 import {
     stringAscSort,
     stringDesSort,
@@ -18,7 +18,7 @@ const arrowVariants = {
 }
 
 export const VendorList = () => {
-    const {data, setData} = useContext(DataContext)
+    const { data, setData } = useContext(DataContext)
     const [searchResults, setSearchResults] = useState(data.proveedores)
     const [orderedSuppliers, setOrderedSuppliers] = useState(data.proveedores)
 
@@ -44,29 +44,32 @@ export const VendorList = () => {
     const sortColumn = (key, isString = false) => {
         const isAsc = order === `${key}Asc`
         const temp = isAsc
-            ? (isString ? stringDesSort(searchResults, key) : numericDesSort(searchResults, key))
-            : (isString ? stringAscSort(searchResults, key) : numericAscSort(searchResults, key))
+            ? isString
+                ? stringDesSort(searchResults, key)
+                : numericDesSort(searchResults, key)
+            : isString
+            ? stringAscSort(searchResults, key)
+            : numericAscSort(searchResults, key)
         setOrder(isAsc ? `${key}Desc` : `${key}Asc`)
         setOrderedSuppliers(temp)
     }
 
-
     return (
-        <div
-            className="flex flex-col items-center h-full overflow-auto p-3"
-            style={{maxHeight: 'calc(100vh - 64px)'}}>
-            <div className="flex items-center justify-between max-w-screen-sm">
-                <h2 className="text-2xl font-semibold my-5 text-slate-800">Agenda de Proveedores</h2>
+        <div>
+            <div className='flex items-center justify-between max-w-screen-sm'>
+                <h2 className='text-2xl font-semibold my-5 text-slate-800'>
+                    Agenda de Proveedores
+                </h2>
             </div>
-            <div className="flex items-center my-5">
-                <span className="mr-3">Búsqueda de Proveedor</span>
+            <div className='flex items-center my-5'>
+                <span className='mr-3'>Búsqueda de Proveedor</span>
                 <Searchbar
                     startSearch={startSearch}
                     resetSearch={resetSearch}
                 />
             </div>
-            <table className="bg-slate-50 text-center min-w-fit overflow-hidden rounded-lg shadow-xl">
-            <thead className='bg-slate-500 text-slate-200'>
+            <table className='bg-slate-50 text-center min-w-fit overflow-hidden rounded-lg shadow-xl'>
+                <thead className='bg-slate-500 text-slate-200'>
                     <IconContext.Provider
                         value={{ className: 'text-slate-200 w-7 h-7' }}
                     >
@@ -74,7 +77,11 @@ export const VendorList = () => {
                             <th className='p-3'>
                                 <div className='flex items-center justify-center'>
                                     Nombre
-                                    <button onClick={() => sortColumn('nombre', true)}>
+                                    <button
+                                        onClick={() =>
+                                            sortColumn('nombre', true)
+                                        }
+                                    >
                                         <motion.div
                                             animate={
                                                 order === 'nombreAsc'
@@ -95,7 +102,11 @@ export const VendorList = () => {
                             <th className='p-3'>
                                 <div className='flex items-center justify-center'>
                                     Email
-                                    <button onClick={() => sortColumn('email', true)}>
+                                    <button
+                                        onClick={() =>
+                                            sortColumn('email', true)
+                                        }
+                                    >
                                         <motion.div
                                             animate={
                                                 order === 'emailAsc'
@@ -116,7 +127,11 @@ export const VendorList = () => {
                             <th className='p-3'>
                                 <div className='flex items-center justify-center'>
                                     Dirección
-                                    <button onClick={() => sortColumn('direccion', true)}>
+                                    <button
+                                        onClick={() =>
+                                            sortColumn('direccion', true)
+                                        }
+                                    >
                                         <motion.div
                                             animate={
                                                 order === 'direccionAsc'
@@ -137,7 +152,11 @@ export const VendorList = () => {
                             <th className='p-3'>
                                 <div className='flex items-center justify-center'>
                                     Teléfono
-                                    <button onClick={() => sortColumn('telefono', true)}>
+                                    <button
+                                        onClick={() =>
+                                            sortColumn('telefono', true)
+                                        }
+                                    >
                                         <motion.div
                                             animate={
                                                 order === 'telefonoAsc'

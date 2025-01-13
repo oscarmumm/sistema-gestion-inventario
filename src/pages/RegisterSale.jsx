@@ -120,10 +120,12 @@ export const RegisterSale = () => {
     }
 
     const clickOnProccessSale = () => {
-        if(details.length > 0) {
+        if (details.length > 0) {
             setPaymentModalActive(true)
         } else {
-            setWarningModalMessage('Debe agregar productos para procesar la compra')
+            setWarningModalMessage(
+                'Debe agregar productos para procesar la compra'
+            )
             setWarningModalActive(true)
         }
     }
@@ -159,7 +161,7 @@ export const RegisterSale = () => {
         setData({
             ...data,
             productos: newProductData,
-            ventasDeHoy: [...data.ventasDeHoy, newSale]
+            ventasDeHoy: [...data.ventasDeHoy, newSale],
         })
 
         setQuantityToAdd('')
@@ -174,18 +176,17 @@ export const RegisterSale = () => {
     }
 
     return (
-        <div
-            className='flex flex-col items-center h-full overflow-auto p-3'
-            style={{ maxHeight: 'calc(100vh - 64px)' }}
-        >
-            <h2 className='text-slate-800 text-3xl font-semibold mt-3 mb-5 text-center'>Registrar Venta</h2>
+        <div>
+            <h2 className='text-slate-800 text-3xl font-semibold mt-3 mb-5 text-center'>
+                Registrar Venta
+            </h2>
             <div className='p-3 flex justify-center min-w-max w-full'>
                 <div className='flex flex-col'>
                     <div className='p-5 mb-5 text-center flex flex-col text-slate-50 bg-slate-600 rounded-md max-h-min shadow-lg'>
                         <div className='flex items-center '>
                             <h2 className='text-lg'>Agregar productos:</h2>
                             <button
-                                className='p-2 ml-3 bg-sky-500 text-slate-50 rounded-md'
+                                className='p-2 ml-3 bg-sky-500 text-slate-50 hover:bg-sky-300 hover:text-slate-800 rounded-md font-semibold'
                                 onClick={buscarProducto}
                             >
                                 Buscar Producto
@@ -209,7 +210,7 @@ export const RegisterSale = () => {
                                 }
                             />
                             <button
-                                className='p-2 mt-10 bg-emerald-500 text-slate-50 rounded-md'
+                                className='p-2 mt-10 bg-emerald-500 text-slate-50 hover:bg-emerald-300 hover:text-slate-800 font-semibold rounded-md'
                                 onClick={addProductToDetails}
                             >
                                 Agregar
@@ -217,7 +218,7 @@ export const RegisterSale = () => {
                         </form>
                     </div>
                     <button
-                        className='p-2 mt-5 bg-yellow-500 text-slate-600 text-lg rounded-md shadow-lg font-bold'
+                        className='p-2 mt-5 bg-yellow-500 text-slate-600 hover:bg-yellow-300 text-lg rounded-md shadow-lg font-semibold'
                         onClick={clickOnProccessSale}
                     >
                         Procesar Compra

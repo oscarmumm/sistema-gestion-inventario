@@ -103,7 +103,7 @@ export const LogIn = () => {
                     </span>
                     <div className='flex justify-center mt-5'>
                         <button
-                            className='bg-slate-700 hover:bg-slate-600 text-slate-50 p-2 w-48 ml-3 rounded-md shadow-xl'
+                            className='bg-slate-700 hover:bg-sky-300 hover:text-slate-800 text-slate-50 p-2 w-48 ml-3 rounded-md shadow-xl'
                             onClick={submitClick}
                         >
                             Iniciar Sesión
@@ -127,19 +127,19 @@ export const LogIn = () => {
                 </div>
                 <button
                     onClick={setAdminCredentials}
-                    className='bg-slate-500 hover:bg-slate-400 text-slate-50 p-2 w-32 rounded-md shadow-lg mb-3'
+                    className='bg-slate-500 hover:bg-sky-300 hover:text-slate-800 text-slate-50 p-2 w-32 rounded-md shadow-lg mb-3'
                 >
                     Admin
                 </button>
                 <button
                     onClick={setManagerCredentials}
-                    className='bg-slate-500 hover:bg-slate-400 text-slate-50 p-2 w-32 rounded-md shadow-lg mb-3'
+                    className='bg-slate-500 hover:bg-sky-300 hover:text-slate-800 text-slate-50 p-2 w-32 rounded-md shadow-lg mb-3'
                 >
                     Encargado
                 </button>
                 <button
                     onClick={setEmployeeCredentials}
-                    className='bg-slate-500 hover:bg-slate-400 text-slate-50 p-2 w-32 rounded-md shadow-lg'
+                    className='bg-slate-500 hover:bg-sky-300 hover:text-slate-800 text-slate-50 p-2 w-32 rounded-md shadow-lg'
                 >
                     Usuario
                 </button>

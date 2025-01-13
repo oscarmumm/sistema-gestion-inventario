@@ -11,9 +11,7 @@ export const Searchbar = ({ startSearch, resetSearch }) => {
     }
     return (
         <div className='flex my-3 rounded-md shadow-lg w-96'>
-            <IconContext.Provider
-                value={{ className: 'text-slate-200 w-8 h-8' }}
-            >
+            <IconContext.Provider value={{ className: 'w-8 h-8' }}>
                 <input
                     className='p-3 flex-grow rounded-l-md outline-none'
                     type='text'
@@ -23,14 +21,14 @@ export const Searchbar = ({ startSearch, resetSearch }) => {
                 />
                 {searchValue && (
                     <button
-                        className='px-3 bg-orange-600'
+                        className='px-3 text-slate-50 bg-orange-600 hover:bg-orange-400 hover:text-slate-800 '
                         onClick={handleCLick}
                     >
                         <MdReplay />
                     </button>
                 )}
                 <button
-                    className='px-3 bg-slate-600 rounded-r-md'
+                    className='px-3 bg-slate-600 text-slate-50 hover:bg-sky-300 hover:text-slate-800 rounded-r-md'
                     onClick={() => startSearch(searchValue)}
                 >
                     <MdOutlineSearch />

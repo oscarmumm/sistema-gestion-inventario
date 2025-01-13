@@ -83,11 +83,10 @@ export const ProductManagement = () => {
     }
 
     return (
-        <div
-            className='flex flex-col items-center h-full overflow-auto p-3'
-            style={{ maxHeight: 'calc(100vh - 64px)' }}
-        >
-            <h2 className='text-2xl font-semibold my-5 text-slate-800'>Gestión de Productos</h2>
+        <div>
+            <h2 className='text-2xl font-semibold my-5 text-slate-800'>
+                Gestión de Productos
+            </h2>
             <div className='flex justify-between items-center  min-w-max my-5'>
                 <div className='flex items-center'>
                     <span className='mr-3'>Búsqueda de Productos:</span>
@@ -169,7 +168,8 @@ export const ProductManagement = () => {
                                     >
                                         <motion.div
                                             animate={
-                                                order === 'precioUnitarioCompraAsc'
+                                                order ===
+                                                'precioUnitarioCompraAsc'
                                                     ? 'asc'
                                                     : 'desc'
                                             }
@@ -194,7 +194,8 @@ export const ProductManagement = () => {
                                     >
                                         <motion.div
                                             animate={
-                                                order === 'precioUnitarioVentaAsc'
+                                                order ===
+                                                'precioUnitarioVentaAsc'
                                                     ? 'asc'
                                                     : 'desc'
                                             }
@@ -249,8 +250,12 @@ export const ProductManagement = () => {
                         >
                             <td className='p-3'>{product.descripcion}</td>
                             <td className='p-3'>{product.proveedor}</td>
-                            <td className='p-3'>$ {product.precioUnitarioCompra}</td>
-                            <td className='p-3'>$ {product.precioUnitarioVenta}</td>
+                            <td className='p-3'>
+                                $ {product.precioUnitarioCompra}
+                            </td>
+                            <td className='p-3'>
+                                $ {product.precioUnitarioVenta}
+                            </td>
                             <td className='p-3'>{product.cantidadPorCaja}</td>
                         </tr>
                     ))}

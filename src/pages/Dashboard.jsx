@@ -31,9 +31,7 @@ export const Dashboard = () => {
     }, [data.ventasDeHoy, businessDay]);
     
     return (
-        <div
-            className="flex flex-col h-full overflow-auto p-3 min-w-96 items-center"
-            style={{maxHeight: 'calc(100vh - 64px)'}}>
+        <div>
             <h2 className="text-3xl my-5">Dashboard</h2>
             <div className="min-w-72 bg-slate-50 p-3 rounded-md shadow-lg text-center mb-5">
                 <p className="p-3 text-xl font-bold text-slate-800">
