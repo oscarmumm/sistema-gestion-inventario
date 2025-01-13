@@ -40,8 +40,8 @@ export const ConfirmationModal = ({
                     </div>
                 )}
                 {productInfo && (
-                    <div className="text-xl font-bold flex flex-col my-5">
-                        <span>{productInfo.nombre}</span>
+                    <div className="text-xl font-semibold flex flex-col my-5">
+                        <span>{productInfo.descripcion}</span>
                         <span>Proveedor: {productInfo.proveedor}</span>
                     </div>
                 )}
