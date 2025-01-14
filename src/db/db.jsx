@@ -198,7 +198,7 @@ export const db = {
         },
     ],
     ventasDeHoy: [],
-    businessDay: '',
+    businessDayState: true,
     usuarios: [
         {
             id: 1,
