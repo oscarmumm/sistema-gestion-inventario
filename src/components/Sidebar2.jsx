@@ -1,29 +1,29 @@
-import {useContext, useState} from 'react'
-import {UserContext} from '../context/UserContext'
-import {IconContext} from 'react-icons'
-import {MdPerson} from 'react-icons/md'
-import {MdHome} from 'react-icons/md'
-import {MdContentPaste} from 'react-icons/md'
-import {MdMonetizationOn} from 'react-icons/md'
-import {MdSettings} from 'react-icons/md'
-import {MdOutlineDiversity3} from 'react-icons/md'
-import {MdDataThresholding} from 'react-icons/md'
-import {MdKeyboardArrowLeft} from 'react-icons/md'
-import {motion} from 'framer-motion'
-import {Link} from 'react-router-dom'
+import { useContext, useState } from 'react'
+import { UserContext } from '../context/UserContext'
+import { IconContext } from 'react-icons'
+import { MdPerson } from 'react-icons/md'
+import { MdHome } from 'react-icons/md'
+import { MdContentPaste } from 'react-icons/md'
+import { MdMonetizationOn } from 'react-icons/md'
+import { MdSettings } from 'react-icons/md'
+import { MdOutlineDiversity3 } from 'react-icons/md'
+import { MdDataThresholding } from 'react-icons/md'
+import { MdKeyboardArrowLeft } from 'react-icons/md'
+import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
 const submenuVariants = {
-    open: {opacity: 1, x: -20, display: 'block'},
-    close: {opacity: 0, x: -60, display: 'none'},
+    open: { opacity: 1, x: -20, display: 'block' },
+    close: { opacity: 0, x: -60, display: 'none' },
 }
 
 const linksVariants = {
-    open: {opacity: 1, display: 'block', height: '100px'},
-    close: {opacity: 0, display: 'none', height: 0},
+    open: { opacity: 1, display: 'block', height: '100px' },
+    close: { opacity: 0, display: 'none', height: 0 },
 }
 
 export const Sidebar2 = () => {
-    const {user, logOut} = useContext(UserContext)
+    const { user, logOut } = useContext(UserContext)
     const [subMenuOpen, setSubMenuOpen] = useState(false)
     const [inventoryMenuOpen, setInventoryMenuOpen] = useState(false)
     const [salesMenuOpen, setSalesMenuOpen] = useState(false)
@@ -129,40 +129,41 @@ export const Sidebar2 = () => {
     }
 
     return (
-        <div className="fixed flex left-0 top-0 p-5 h-full max-h-screen overflow-hidden z-50">
-            <IconContext.Provider value={{className: 'w-8 h-8'}}>
-                <div className="bg-slate-600 p-6 h-full w-20 rounded-xl shadow-xl text-slate-50 flex flex-col items-start justify-between overflow-hidden z-40">
+        <div className='fixed flex left-0 top-0 p-5 h-full max-h-screen overflow-hidden z-50'>
+            <IconContext.Provider value={{ className: 'w-8 h-8' }}>
+                <div className='bg-slate-600 p-6 h-full w-20 rounded-xl shadow-xl text-slate-50 flex flex-col items-start justify-between overflow-hidden z-40'>
                     <ul>
-                        <li className="flex items-center mb-5">
+                        <li className='flex items-center mb-5'>
                             <button
                                 onClick={closeAll}
-                                className="hover:text-sky-400">
-                                <Link to="/">
+                                className='hover:text-sky-400'
+                            >
+                                <Link to='/'>
                                     <MdHome />
                                 </Link>
                             </button>
                         </li>
-                        <li className="flex items-center mb-5 hover:text-sky-400">
+                        <li className='flex items-center mb-5 hover:text-sky-400'>
                             <button onClick={openSalesMenu}>
                                 <MdMonetizationOn />
                             </button>
                         </li>
-                        <li className="flex items-center mb-5 hover:text-sky-400">
+                        <li className='flex items-center mb-5 hover:text-sky-400'>
                             <button onClick={openInventoryMenu}>
                                 <MdContentPaste />
                             </button>
                         </li>
-                        <li className="flex items-center mb-5 hover:text-sky-400">
+                        <li className='flex items-center mb-5 hover:text-sky-400'>
                             <button onClick={openVendorMenu}>
                                 <MdOutlineDiversity3 />
                             </button>
                         </li>
-                        <li className="flex items-center mb-5 hover:text-sky-400">
+                        <li className='flex items-center mb-5 hover:text-sky-400'>
                             <button onClick={openReportsMenu}>
                                 <MdDataThresholding />
                             </button>
                         </li>
-                        <li className="flex items-center mb-5 hover:text-sky-400">
+                        <li className='flex items-center mb-5 hover:text-sky-400'>
                             <button onClick={openConfigMenu}>
                                 <MdSettings />
                             </button>
@@ -171,53 +172,86 @@ export const Sidebar2 = () => {
                     <div>
                         <button
                             onClick={clickOnUser}
-                            className="hover:text-sky-400">
+                            className='hover:text-sky-400'
+                        >
                             <MdPerson />
                         </button>
                     </div>
                 </div>
                 <motion.div
-                    className="hidden h-full w-72 p-5 bg-slate-500 text-slate-50 rounded-tr-xl rounded-br-xl shadow-xl z-20"
+                    className='hidden h-full w-72 p-5 bg-slate-500 text-slate-50 rounded-tr-xl rounded-br-xl shadow-xl z-20'
                     variants={submenuVariants}
-                    animate={subMenuOpen ? 'open' : 'close'}>
-                    <div className="p-4 absolute bottom-0 left-0 flex justify-between w-full">
-                        <div className="flex flex-col ml-5">
+                    animate={subMenuOpen ? 'open' : 'close'}
+                >
+                    <div className='p-4 absolute bottom-0 left-0 flex justify-between w-full'>
+                        <div className='flex flex-col ml-5'>
                             <span>Usuario:</span>
                             <span>{user.username}</span>
                         </div>
                         <Link
-                            className="bg-slate-700 hover:bg-sky-300 hover:text-slate-800 text-slate-50 font-semibold p-2 w-32 ml-3 rounded-lg shadow-xl text-center flex items-center justify-center"
+                            className='bg-slate-700 hover:bg-sky-300 hover:text-slate-800 text-slate-50 font-semibold p-2 w-32 ml-3 rounded-lg shadow-xl text-center flex items-center justify-center'
                             onClick={cerrarSesion}
-                            to="/">
+                            to='/'
+                        >
                             Cerrar Sesión
                         </Link>
                     </div>
-                    <div className="absolute right-0 top-0 p-5 hover:text-sky-400">
+                    <div className='absolute right-0 top-0 p-5 hover:text-sky-400'>
                         <button onClick={closeAll}>
                             <MdKeyboardArrowLeft />
                         </button>
                     </div>
 
                     <motion.div
-                        className="pl-10 hidden"
+                        className='pl-10 hidden h-0'
+                        animate={salesMenuOpen ? 'open' : 'close'}
+                        variants={linksVariants}
+                    >
+                        <p className='mb-16 text-xl font-semibold'>Ventas</p>
+                        <ul>
+                            <li className='mt-5 hover:text-sky-200'>
+                                <Link to='/register-sale' onClick={closeAll}>
+                                    Registrar Ventas
+                                </Link>
+                            </li>
+
+                            <li className='mt-5 hover:text-sky-200'>
+                                <Link
+                                    to='/today-sales-history'
+                                    onClick={closeAll}
+                                >
+                                    Ventas de Hoy
+                                </Link>
+                            </li>
+                            <li className='mt-5 hover:text-sky-200'>
+                                <Link to='/sales-history' onClick={closeAll}>
+                                    Historial de Ventas
+                                </Link>
+                            </li>
+                        </ul>
+                    </motion.div>
+
+                    <motion.div
+                        className='pl-10 hidden h-0'
                         animate={inventoryMenuOpen ? 'open' : 'close'}
-                        variants={linksVariants}>
-                        <p className="mb-16 text-xl font-semibold">
+                        variants={linksVariants}
+                    >
+                        <p className='mb-16 text-xl font-semibold'>
                             Inventario
                         </p>
                         <ul>
-                            <li className="mt-5 hover:text-sky-200">
-                                <Link to="/product-list" onClick={closeAll}>
+                            <li className='mt-5 hover:text-sky-200'>
+                                <Link to='/product-list' onClick={closeAll}>
                                     Lista de Productos
                                 </Link>
                             </li>
-                            <li className="mt-5 hover:text-sky-200">
-                                <Link to="/inventory-count" onClick={closeAll}>
+                            <li className='mt-5 hover:text-sky-200'>
+                                <Link to='/inventory-count' onClick={closeAll}>
                                     Conteo de Inventario
                                 </Link>
                             </li>
-                            <li className="mt-5 hover:text-sky-200">
-                                <Link to="/stock-difference" onClick={closeAll}>
+                            <li className='mt-5 hover:text-sky-200'>
+                                <Link to='/stock-difference' onClick={closeAll}>
                                     Diferencias de Stock
                                 </Link>
                             </li>
@@ -225,51 +259,26 @@ export const Sidebar2 = () => {
                     </motion.div>
 
                     <motion.div
-                        className="pl-10 hidden"
-                        animate={salesMenuOpen ? 'open' : 'close'}
-                        variants={linksVariants}>
-                        <p className="mb-16 text-xl font-semibold">Ventas</p>
-                        <ul>
-                            <li className="mt-5 hover:text-sky-200">
-                                <Link to="/register-sale" onClick={closeAll}>
-                                    Registrar Ventas
-                                </Link>
-                            </li>
-
-                            <li className="mt-5 hover:text-sky-200">
-                                <Link
-                                    to="/today-sales-history"
-                                    onClick={closeAll}>
-                                    Ventas de Hoy
-                                </Link>
-                            </li>
-                            <li className="mt-5 hover:text-sky-200">
-                                <Link to="/sales-history" onClick={closeAll}>
-                                    Historial de Ventas
-                                </Link>
-                            </li>
-                        </ul>
-                    </motion.div>
-                    <motion.div
-                        className="pl-10 hidden"
+                        className='pl-10 hidden h-0'
                         animate={vendorMenuOpen ? 'open' : 'close'}
-                        variants={linksVariants}>
-                        <p className="mb-16 text-xl font-semibold">
+                        variants={linksVariants}
+                    >
+                        <p className='mb-16 text-xl font-semibold'>
                             Proveedores
                         </p>
                         <ul>
-                            <li className="mt-5 hover:text-sky-200">
-                                <Link to="/vendor-list" onClick={closeAll}>
+                            <li className='mt-5 hover:text-sky-200'>
+                                <Link to='/vendor-list' onClick={closeAll}>
                                     Agenda
                                 </Link>
                             </li>
-                            <li className="mt-5 hover:text-sky-200">
-                                <Link to="/purchase-order" onClick={closeAll}>
+                            <li className='mt-5 hover:text-sky-200'>
+                                <Link to='/purchase-order' onClick={closeAll}>
                                     Realizar pedido
                                 </Link>
                             </li>
-                            <li className="mt-5 hover:text-sky-200">
-                                <Link to="/orders-history" onClick={closeAll}>
+                            <li className='mt-5 hover:text-sky-200'>
+                                <Link to='/orders-history' onClick={closeAll}>
                                     Historial de Pedidos
                                 </Link>
                             </li>
@@ -277,42 +286,46 @@ export const Sidebar2 = () => {
                     </motion.div>
 
                     <motion.div
-                        className="pl-10 hidden"
+                        className='pl-10 hidden h-0'
                         animate={reportsMenuOpen ? 'open' : 'close'}
-                        variants={linksVariants}>
-                        <p className="mb-16 text-xl font-semibold">Reportes</p>
+                        variants={linksVariants}
+                    >
+                        <p className='mb-16 text-xl font-semibold'>Reportes</p>
                         <ul>
-                            <li className="mt-5 hover:text-sky-200">
-                                <Link to="/dashboard" onClick={closeAll}>
+                            <li className='mt-5 hover:text-sky-200'>
+                                <Link to='/dashboard' onClick={closeAll}>
                                     Dashboard
                                 </Link>
                             </li>
                         </ul>
                     </motion.div>
                     <motion.div
-                        className="pl-10 hidden"
+                        className='pl-10 hidden h-0'
                         animate={configurationMenuOpen ? 'open' : 'close'}
-                        variants={linksVariants}>
-                        <p className="mb-16 text-xl font-semibold">
+                        variants={linksVariants}
+                    >
+                        <p className='mb-16 text-xl font-semibold'>
                             Configuración
                         </p>
                         <ul>
-                            <li className="mt-5 hover:text-sky-200">
+                            <li className='mt-5 hover:text-sky-200'>
                                 <Link
-                                    to="/product-management"
-                                    onClick={closeAll}>
+                                    to='/product-management'
+                                    onClick={closeAll}
+                                >
                                     Productos
                                 </Link>
                             </li>
-                            <li className="mt-5 hover:text-sky-200">
+                            <li className='mt-5 hover:text-sky-200'>
                                 <Link
-                                    to="/vendor-management"
-                                    onClick={closeAll}>
+                                    to='/vendor-management'
+                                    onClick={closeAll}
+                                >
                                     Proveedores
                                 </Link>
                             </li>
-                            <li className="mt-5 hover:text-sky-200">
-                                <Link to="/user-management" onClick={closeAll}>
+                            <li className='mt-5 hover:text-sky-200'>
+                                <Link to='/user-management' onClick={closeAll}>
                                     Usuarios
                                 </Link>
                             </li>
