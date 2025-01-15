@@ -47,4 +47,4 @@ Usuarios: en este apartado se pueden ver los usuarios disponibles en el sistema,
 - Tailwind
 - Framer Motion
 - html2pdf
-Utilizo JavaScript como lenguaje
+- Utilizo JavaScript como lenguaje
