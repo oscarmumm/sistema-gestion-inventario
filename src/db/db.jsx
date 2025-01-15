@@ -219,7 +219,7 @@ export const db = {
             password: '15afG1.cv',
         },
         {
-            id: 2,
+            id: 3,
             nombreUsuario: 'carlosperez',
             nombre: 'Carlos',
             apellido: 'Perez',

@@ -5,13 +5,12 @@ import { MdOutlineVisibility } from 'react-icons/md'
 import { IconContext } from 'react-icons'
 
 export const LogIn = () => {
-    const { user, logIn, logOut } = useContext(UserContext)
-    const { data, setData } = useContext(DataContext)
+    const { logIn } = useContext(UserContext)
+    const { data } = useContext(DataContext)
     const [userCredentials, setUserCredentials] = useState({
         username: '',
         password: '',
     })
-    const [forgottenPassword, setForgottenPassword] = useState(false)
     const [errorMessage, setErrorMessage] = useState()
     const [viewPassInputValueActive, setViewPassInputValueActive] =
         useState(false)
