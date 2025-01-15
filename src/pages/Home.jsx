@@ -16,14 +16,19 @@ export const Home = () => {
         useState(false)
     const [confirmationModalMessage, setConfirmationModalMesagge] = useState([])
 
-    // funcion que cierra el dia de negocio
     const agreeAction = () => {
         setData((prevData) => ({
             ...prevData,
-            businessDayState: !prevData.businessDayState
+            businessDayState: !prevData.businessDayState,
+            historialVentas: [
+                ...prevData.historialVentas,
+                {
+                    [businessDay]: [...prevData.ventasDeHoy],
+                },
+            ],
         }))
-        setConfirmationModalActive(false);
-    };
+        setConfirmationModalActive(false)
+    }
 
     const cancelAction = () => {
         setConfirmationModalActive(false)
@@ -60,46 +65,41 @@ export const Home = () => {
                     </span>
                 </div>
             </div>
-            {/* <div className="min-w-full text-2xl font-semibold text-slate-700 flex flex-col bg-slate-50 p-10 rounded-xl shadow-xl">
-                <div className="flex justify-between mb-5">
-                    <span>Acciones Recomendadas:</span>
+            {(user.role === 'admin' || user.role === 'manager') && (
+                <div className='mt-10'>
+                    {businessDayState ? (
+                        <button
+                            onClick={() => {
+                                setConfirmationModalMesagge([
+                                    'Cerrar el dia de negocio actual?',
+                                ])
+                                setConfirmationModalActive(true)
+                            }}
+                            className='bg-red-500 hover:bg-red-400  text-slate-50 font-semibold p-2 w-48 ml-3 rounded-md shadow-xl'
+                        >
+                            Cerrar Día de Negocio
+                        </button>
+                    ) : (
+                        <button
+                            onClick={() => {
+                                setConfirmationModalMesagge([
+                                    'Abrir el día de negocio?',
+                                ])
+                                setConfirmationModalActive(true)
+                            }}
+                            className='bg-emerald-500 hover:bg-emerald-400  text-slate-50 font-semibold p-2 w-48 ml-3 rounded-md shadow-xl'
+                        >
+                            Abrir Día de Negocio
+                        </button>
+                    )}
                 </div>
-                <div className="flex justify-between mb-5">
-                    <span>Ingresar conteo de inventario</span>
-                    <span>{}</span>
-                </div>
-                <div className="flex justify-between mb-5">
-                    <span>Arquear la caja registradora </span>
-                    <span>{}</span>
-                </div>
-            </div> */}
-            <div className='mt-10'>
-                {businessDayState ? (
-                    <button
-                        onClick={() => {
-                            setConfirmationModalMesagge([
-                                'Cerrar el dia de negocio actual?',
-                            ])
-                            setConfirmationModalActive(true)
-                        }}
-                        className='bg-red-500 hover:bg-red-400  text-slate-50 font-semibold p-2 w-48 ml-3 rounded-md shadow-xl'
-                    >
-                        Cerrar Día de Negocio
-                    </button>
-                ) : (
-                    <button
-                        onClick={() => {
-                            setConfirmationModalMesagge([
-                                'Abrir el día de negocio?',
-                            ])
-                            setConfirmationModalActive(true)
-                        }}
-                        className='bg-emerald-500 hover:bg-emerald-400  text-slate-50 font-semibold p-2 w-48 ml-3 rounded-md shadow-xl'
-                    >
-                        Abrir Día de Negocio
-                    </button>
-                )}
-            </div>
+            )}
+            {user.role === 'employee' && (
+                <h3 className='text-lg'>
+                    (El estado del día de negocio solo puede ser modificado por
+                    un encargado)
+                </h3>
+            )}
             {confirmationModalActive && (
                 <ConfirmationModal
                     agreeAction={agreeAction}

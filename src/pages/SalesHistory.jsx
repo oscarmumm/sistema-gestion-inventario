@@ -125,10 +125,17 @@ export const SalesHistory = () => {
                     </div>
                 )}
                 {!filteredSales && (
-                    <p className='text-xl mt-5'>
-                        Ingrese una fecha o rango para buscar ventas en el
-                        historial
-                    </p>
+                    <div className='max-w-96 text-center'>
+                        <p className='text-xl mt-5'>
+                            Ingrese una fecha o rango para buscar ventas en el
+                            historial
+                        </p>
+                        <p className='italic text-slate-600 mt-3'>
+                            Nota del Desarrollador: Hay ventas guardadas del mes
+                            de enero. También aquí verás las ventas que registres hoy
+                            una vez que cierres el día de negocio
+                        </p>
+                    </div>
                 )}
                 <AnimatePresence>
                     {saleHistoryModalActive && (

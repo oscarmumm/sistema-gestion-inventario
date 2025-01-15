@@ -158,16 +158,20 @@ export const Sidebar2 = () => {
                                 <MdOutlineDiversity3 />
                             </button>
                         </li>
-                        <li className='flex items-center mb-5 hover:text-sky-400'>
-                            <button onClick={openReportsMenu}>
-                                <MdDataThresholding />
-                            </button>
-                        </li>
-                        <li className='flex items-center mb-5 hover:text-sky-400'>
-                            <button onClick={openConfigMenu}>
-                                <MdSettings />
-                            </button>
-                        </li>
+                        {(user.role === 'admin' || user.role === 'manager') && (
+                            <div>
+                                <li className='flex items-center mb-5 hover:text-sky-400'>
+                                    <button onClick={openReportsMenu}>
+                                        <MdDataThresholding />
+                                    </button>
+                                </li>
+                                <li className='flex items-center mb-5 hover:text-sky-400'>
+                                    <button onClick={openConfigMenu}>
+                                        <MdSettings />
+                                    </button>
+                                </li>
+                            </div>
+                        )}
                     </ul>
                     <div>
                         <button
@@ -207,27 +211,35 @@ export const Sidebar2 = () => {
                         animate={salesMenuOpen ? 'open' : 'close'}
                         variants={linksVariants}
                     >
-                        <p className='mb-16 text-xl font-semibold'>Ventas</p>
+                        <p className='mb-16 text-2xl font-semibold'>Ventas</p>
                         <ul>
-                            <li className='mt-5 hover:text-sky-200'>
+                            <li className='mt-5 text-lg hover:text-sky-200'>
                                 <Link to='/register-sale' onClick={closeAll}>
                                     Registrar Ventas
                                 </Link>
                             </li>
 
-                            <li className='mt-5 hover:text-sky-200'>
-                                <Link
-                                    to='/today-sales-history'
-                                    onClick={closeAll}
-                                >
-                                    Ventas de Hoy
-                                </Link>
-                            </li>
-                            <li className='mt-5 hover:text-sky-200'>
-                                <Link to='/sales-history' onClick={closeAll}>
-                                    Historial de Ventas
-                                </Link>
-                            </li>
+                            {(user.role === 'admin' ||
+                                user.role === 'manager') && (
+                                <div>
+                                    <li className='mt-5 text-lg hover:text-sky-200'>
+                                        <Link
+                                            to='/today-sales-history'
+                                            onClick={closeAll}
+                                        >
+                                            Ventas de Hoy
+                                        </Link>
+                                    </li>
+                                    <li className='mt-5 text-lg hover:text-sky-200'>
+                                        <Link
+                                            to='/sales-history'
+                                            onClick={closeAll}
+                                        >
+                                            Historial de Ventas
+                                        </Link>
+                                    </li>
+                                </div>
+                            )}
                         </ul>
                     </motion.div>
 
@@ -236,21 +248,21 @@ export const Sidebar2 = () => {
                         animate={inventoryMenuOpen ? 'open' : 'close'}
                         variants={linksVariants}
                     >
-                        <p className='mb-16 text-xl font-semibold'>
+                        <p className='mb-16 text-2xl font-semibold'>
                             Inventario
                         </p>
                         <ul>
-                            <li className='mt-5 hover:text-sky-200'>
+                            <li className='mt-5 text-lg hover:text-sky-200'>
                                 <Link to='/product-list' onClick={closeAll}>
                                     Lista de Productos
                                 </Link>
                             </li>
-                            <li className='mt-5 hover:text-sky-200'>
+                            <li className='mt-5 text-lg hover:text-sky-200'>
                                 <Link to='/inventory-count' onClick={closeAll}>
                                     Conteo de Inventario
                                 </Link>
                             </li>
-                            <li className='mt-5 hover:text-sky-200'>
+                            <li className='mt-5 text-lg hover:text-sky-200'>
                                 <Link to='/stock-difference' onClick={closeAll}>
                                     Diferencias de Stock
                                 </Link>
@@ -263,21 +275,21 @@ export const Sidebar2 = () => {
                         animate={vendorMenuOpen ? 'open' : 'close'}
                         variants={linksVariants}
                     >
-                        <p className='mb-16 text-xl font-semibold'>
+                        <p className='mb-16 text-2xl font-semibold'>
                             Proveedores
                         </p>
                         <ul>
-                            <li className='mt-5 hover:text-sky-200'>
+                            <li className='mt-5 text-lg hover:text-sky-200'>
                                 <Link to='/vendor-list' onClick={closeAll}>
                                     Agenda
                                 </Link>
                             </li>
-                            <li className='mt-5 hover:text-sky-200'>
+                            <li className='mt-5 text-lg hover:text-sky-200'>
                                 <Link to='/purchase-order' onClick={closeAll}>
                                     Realizar pedido
                                 </Link>
                             </li>
-                            <li className='mt-5 hover:text-sky-200'>
+                            <li className='mt-5 text-lg hover:text-sky-200'>
                                 <Link to='/orders-history' onClick={closeAll}>
                                     Historial de Pedidos
                                 </Link>
@@ -290,9 +302,9 @@ export const Sidebar2 = () => {
                         animate={reportsMenuOpen ? 'open' : 'close'}
                         variants={linksVariants}
                     >
-                        <p className='mb-16 text-xl font-semibold'>Reportes</p>
+                        <p className='mb-16 text-2xl font-semibold'>Reportes</p>
                         <ul>
-                            <li className='mt-5 hover:text-sky-200'>
+                            <li className='mt-5 text-lg hover:text-sky-200'>
                                 <Link to='/dashboard' onClick={closeAll}>
                                     Dashboard
                                 </Link>
@@ -304,31 +316,41 @@ export const Sidebar2 = () => {
                         animate={configurationMenuOpen ? 'open' : 'close'}
                         variants={linksVariants}
                     >
-                        <p className='mb-16 text-xl font-semibold'>
+                        <p className='mb-16 text-2xl font-semibold'>
                             Configuración
                         </p>
                         <ul>
-                            <li className='mt-5 hover:text-sky-200'>
-                                <Link
-                                    to='/product-management'
-                                    onClick={closeAll}
-                                >
-                                    Productos
-                                </Link>
-                            </li>
-                            <li className='mt-5 hover:text-sky-200'>
-                                <Link
-                                    to='/vendor-management'
-                                    onClick={closeAll}
-                                >
-                                    Proveedores
-                                </Link>
-                            </li>
-                            <li className='mt-5 hover:text-sky-200'>
-                                <Link to='/user-management' onClick={closeAll}>
-                                    Usuarios
-                                </Link>
-                            </li>
+                            {(user.role === 'manager' ||
+                                user.role === 'admin') && (
+                                <div>
+                                    <li className='mt-5 text-lg hover:text-sky-200'>
+                                        <Link
+                                            to='/product-management'
+                                            onClick={closeAll}
+                                        >
+                                            Productos
+                                        </Link>
+                                    </li>
+                                    <li className='mt-5 text-lg hover:text-sky-200'>
+                                        <Link
+                                            to='/vendor-management'
+                                            onClick={closeAll}
+                                        >
+                                            Proveedores
+                                        </Link>
+                                    </li>
+                                </div>
+                            )}
+                            {user.role === 'admin' && (
+                                <li className='mt-5 text-lg hover:text-sky-200'>
+                                    <Link
+                                        to='/user-management'
+                                        onClick={closeAll}
+                                    >
+                                        Usuarios
+                                    </Link>
+                                </li>
+                            )}
                         </ul>
                     </motion.div>
                 </motion.div>

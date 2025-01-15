@@ -31,7 +31,7 @@ function App() {
                         <div className='flex flex-col items-center h-full w-full overflow-auto p-3'>
                             <AppRoutes />
                         </div>
-                        <div className='fixed bottom-0 right-2'>
+                        <div className='fixed bottom-0 right-2 italic text-slate-700'>
                             <span>Desarrollador: Oscar Mumm</span>
                         </div>
                     </div>
@@ -39,25 +39,6 @@ function App() {
                     <LogIn />
                 )}
 
-                {/* {user ? (
-                    <div className='flex flex-col h-screen w-screen overflow-auto'>
-                        <Header toggleSidebar={toggleSidebar} />
-                        <main className='flex flex-grow mt-16'>
-                            <motion.div
-                                variants={sidebarVariants}
-                                animate={sidebarStatus ? 'open' : 'close'}
-                                style={{ marginLeft: '-256px' }}
-                            >
-                                <Sidebar />
-                            </motion.div>
-                            <div className='bg-slate-300 flex-grow'>
-                                <AppRoutes />
-                            </div>
-                        </main>
-                    </div>
-                ) : (
-                    <LogIn />
-                )} */}
             </Router>
         </DataProvider>
     )
