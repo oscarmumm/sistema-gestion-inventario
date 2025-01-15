@@ -1,41 +1,50 @@
-1. **Inicio**: Un panel de control que muestre un resumen general de inventario, ventas recientes, productos agotados, y métricas clave.
+# PROTOTIPO DE SISTEMA DE GESTIÓN DE COMERCIO
 
-2. **Inventario**:
-   - **Lista de Productos**: Detalles de cada producto (título, autor, editorial, categoría, cantidad en stock, precios).
-   - **Categorías**: Opciones para agrupar los productos por género o tipo.
-   - **Gestión de Stock**: Opciones para agregar, editar, o dar de baja productos.
+## Descripción
 
-3. **Ventas**:
-   - **Registrar Venta**: Interfaz para realizar ventas, escanear productos (si es posible) y emitir facturas.
-   - **Historial de Ventas**: Registro de transacciones, clientes, productos vendidos y métodos de pago.
+El sistema será una webapp que permitirá gestionar un pequeño negocio. En este caso utilizo como ejemplo un local que comercializa productos de librería.
 
-4. **Proveedores**:
-   - **Gestión de Proveedores**: Información de contacto, historial de pedidos y condiciones de cada proveedor.
-   - **Órdenes de Compra**: Crear, gestionar y consultar pedidos a proveedores.
+Este prototipo solo es el Front-end de la app. Sin embargo he incluído los datos y funcionalidades de modo tal que pueda probarse el funcionamiento del sistema.
 
-5. **Clientes** (opcional si la librería tiene clientes recurrentes):
-   - **Lista de Clientes**: Datos de contacto, historial de compras y preferencias.
+Es posible acceder como 3 usuarios distintos (en la página de LogIn está automatizado el seteo de las credenciales).
+Cada uno de esos usuarios tiene un rol distinto que le brinda acceso a mas niveles de la app, siendo 'usuario' el que 
+menos acceso tiene y 'admin' el que tiene todas las funciones disponibles.
 
-6. **Reportes**:
-   - **Reportes de Ventas**: Análisis de ventas por períodos, productos más vendidos, y ventas por categoría.
-   - **Reportes de Inventario**: Productos con bajo stock, días de inventario, entre otros.
+## La aplicación tiene varias funcionalidades:
 
-7. **Configuración**:
-   - **Usuarios**: Gestión de usuarios y permisos de acceso.
-   - **Configuración General**: Opciones de personalización de la app, como impuestos, moneda, etc.# sistema-gestion-inventario
+### Home:
+Muestra el día de negocio actual, su estado (abierto o cerrado) y permite realizar apertura y cierre del día.
+Al realizar el cierre agregará los datos de ventas del día en curso al historial de ventas general.
 
-Estructura de carpetas
-├── public/
-│   └── index.html           # HTML base
-├── src/
-│   ├── assets/              # Imágenes, íconos, etc.
-│   ├── components/          # Componentes reutilizables (Botones, Card, Navbar, etc.)
-│   ├── pages/               # Páginas principales (Home, Products, Sales, etc.)
-│   ├── routes/              # Configuración de rutas
-│   ├── services/            # Funciones para interactuar con localStorage
-│   ├── styles/              # Configuración de Tailwind y estilos globales
-│   ├── App.jsx              # Componente principal
-│   └── index.js             # Punto de entrada
-├── .gitignore               # Archivos a ignorar por git
-├── package.json             # Dependencias y scripts
-└── tailwind.config.js       # Configuración de Tailwind
+### Ventas
+Registrar ventas: búsqueda de productos, vista previa del detalle de la venta, selección de medio de pago, toast notification al confirmar venta.
+Ventas de hoy: muestra una tabla con las ventas del día en curso.
+Historial de ventas: muestra las ventas del intervalo de tiempo seleccionado.
+
+### Inventario
+Lista de productos: muestra todos los productos disponibles, indicando descripción, proveedor, precio de compra, precio de venta, stock actual y cantidad por caja.
+Conteo de inventario: permite imprimir una ficha para facilitar el conteo de inventario de forma física, a la vez que permite ingresar dichos datos.
+Diferencia de stock: si se han registrado datos de conteo de inventario el sistema compara los datos de stock según ventas registradas con los ingresados por conteo y muestra las diferencias.
+
+### Proveedores
+Agenda: una lista con todos los proveedores activos
+Realizar pedido: permite la confección de un pedido para proveedores, mostrando el costo de dicho pedido. Al finalizar descarga un pdf mostrando el pedido.
+Historial de pedidos
+
+### Reportes
+Dashboard: un panel donde el personal autorizado puede ver algunos indicadores del día de negocio en curso
+
+### Configuración
+Productos: una tabla similar a la lista de productos, pero con la diferencia de que se pueden modificar productos, eliminarlos o agregar nuevos.
+Proveedores: tabla similar a la de agenda de proveedores, pero que también permite modificarlos, eliminarlos o agregar uno nuevo.
+Usuarios: en este apartado se pueden ver los usuarios disponibles en el sistema, modificarlos, editarlos o eliminarlos.
+
+## Tecnologías utilizadas:
+- Vite
+- React
+- React Router Dom
+- React Icons
+- Tailwind
+- Framer Motion
+- html2pdf
+Utilizo JavaScript como lenguaje
