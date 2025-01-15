@@ -10,6 +10,8 @@ Es posible acceder como 3 usuarios distintos (en la página de LogIn está autom
 Cada uno de esos usuarios tiene un rol distinto que le brinda acceso a mas niveles de la app, siendo 'usuario' el que 
 menos acceso tiene y 'admin' el que tiene todas las funciones disponibles.
 
+La vista de la aplicación no está adaptada para dispositivos móviles porque no es el target del proyecto. No está pensada para usarse en celulares.
+
 ## La aplicación tiene varias funcionalidades:
 
 ### Home:
